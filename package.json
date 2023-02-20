@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "easy-log": "^0.1.2",
+    "nodemon": "^2.0.20"
+  }
+}
