@@ -1,0 +1,2 @@
+INSERT INTO cars (color, interiorcolor, model)
+VALUES ('red', 'red', 'focus');
