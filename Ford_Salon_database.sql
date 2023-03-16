@@ -12,6 +12,8 @@ CREATE TABLE ford_salon.users (
   address VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
 )
+
+
 ENGINE = INNODB,
 CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
@@ -42,6 +44,8 @@ COLLATE utf8mb4_hungarian_ci;
 CREATE TABLE ford_salon.cars (
   id INT(11) NOT NULL AUTO_INCREMENT,
   color VARCHAR(50) NOT NULL,
+  interiorcolor VARCHAR(50) NOT NULL,
+  motor VARCHAR(50) NOT NULL,
   model VARCHAR(50) NOT NULL,
   userid INT(11) NOT NULL,
   PRIMARY KEY (id)
