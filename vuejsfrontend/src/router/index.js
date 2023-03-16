@@ -11,8 +11,7 @@ import CarsView from "../views/Cars.vue";
 import BoilingView from "../views/Boiling.vue";
 import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
-import ConfiguratorViewStep1 from "../views/ConfiguratorStep1.vue";
-import ConfiguratorViewStep2 from "../views/ConfiguratorStep2.vue";
+import ConfiguratorView from "../views/Configurator.vue";
 
 
 
@@ -65,15 +64,11 @@ const router = createRouter({
       component: ProfileView,
     },
     {
-      path: "/ConfiguratorStep1",
-      name: "ConfiguratorStep1",
-      component: ConfiguratorViewStep1,
+      path: "/Configurator",
+      name: "Configurator",
+      component: ConfiguratorView,
     },
-    {
-      path: "/ConfiguratorStep2",
-      name: "ConfiguratorStep2",
-      component: ConfiguratorViewStep2,
-    },
+
    
    
   ],
