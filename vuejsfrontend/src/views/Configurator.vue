@@ -1,17 +1,20 @@
 <script setup>
 import DataService from "../services/dataservice"
-import { ref, onMounted  } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const model = ref("Mustang");
 const colors = ref([]);
 const interiorcolors = ref([]);
 const extras = ref([]);
 const motor = ref("1.9 TDI");
+const price = ref("10 000 000");
 
-const color = ref("");
 
 
-const interiorcolor = ref("white");
+const color = ref("red");
+
+
+const interiorcolor = ref("red");
 
 const red = ref("red");
 const white = ref("white");
@@ -20,24 +23,24 @@ const black = ref("black");
 const Mustang = ref("Mustang");
 
 DataService.getDeliveryNames()
-  .then((resp) => {
-    colors.value = resp;
-    console.log(colors.value);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((resp) => {
+        colors.value = resp;
+        console.log(colors.value);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
-  DataService.getInteriorColor()
-  .then((resp) => {
-    interiorcolors.value = resp;
-    console.log(interiorcolors.value);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+DataService.getInteriorColor()
+    .then((resp) => {
+        interiorcolors.value = resp;
+        console.log(interiorcolors.value);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
-  const szinValasztas = () => {
+const szinValasztas = () => {
     color.value = []
     colors.value = colors.value.filter(r => r.color.name === colors.value)
     console.log(colors.value);
@@ -55,48 +58,43 @@ DataService.getDeliveryNames()
 
                         <div class="mb-4">
                             <h3 class="display-6 text-uppercase mb-2">Konfigurátor</h3>
-                            <h5 class="display-6 text-uppercase mb-2">{{model}}</h5>
+                            <h5 class="display-6 text-uppercase mb-2">{{ model }}</h5>
 
                         </div>
 
 
                         <div class="mb-3">
                             <table>
-
-
                                 <!-- Mustang -->
                                 <div v-if="model == Mustang">
-                                    <div>
-                                        <td>
-                                            <img v-if="color == red" src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png"
-                                                alt="car" width="550" height="300">
-                                            <img v-if="color == white"
-                                                src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car" width="550"
-                                                height="300">
-                                            <img v-if="color == black"
-                                                src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car" width="550"
-                                                height="300">
-                                        </td>
-                                    </div>
 
-                                    <div>
+                                        <td>
+                                            <img v-if="color == red"
+                                                src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png" alt="car"
+                                                width="550" height="300">
+                                            <img v-if="color == white"
+                                                src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car"
+                                                width="550" height="300">
+                                            <img v-if="color == black"
+                                                src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car"
+                                                width="550" height="300">
+                                        </td>
                                         <td>
                                             <img v-if="interiorcolor == red"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car" width="550"
-                                                height="300">
+                                                src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car"
+                                                width="550" height="300">
                                             <img v-if="interiorcolor == white"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car" width="550"
-                                                height="300">
+                                                src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car"
+                                                width="550" height="300">
                                             <img v-if="interiorcolor == black"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car" width="550"
-                                                height="300">
+                                                src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car"
+                                                width="550" height="300">
                                         </td>
-                                    </div>
                                 </div>
                                 <!---->
 
 
-                                  <div v-if="interiorcolors.value == red">
+                                <div v-if="interiorcolors.value == red">
                                     <td>
                                         <img src="../assets/img/Cars/Mustang/GT/Interior/Ceramic.png" alt="" width="550"
                                             height="300">
@@ -117,23 +115,56 @@ DataService.getDeliveryNames()
     <div class="mb-0 col-lg-12 p-5 ColorMenu">
         <div class="center">
 
-            <select>
-                <option v-for="szin in colors">{{ szin.color }}</option>
-            </select>
 
-            <select  >
-                <option v-for="intcolor in interiorcolors">{{ intcolor.interiorcolor }}</option>
-            </select>
+            <table class="table text-light">
+                <tr>
+                    <th>Színe</th>
+                    <th>Kárpit színe</th>
+                    <th>Extra</th>
+                    <th>motor</th>
+                    <th>ár</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option v-for="szin in colors">{{ szin.color }}</option>
+                        </select>
+                    </td>
 
-            <select >
-                <option v-for="extra in extras">{{ extra }}</option>
-            </select>
+                    <td>
+                        <select>
+                            <option v-for="intcolor in interiorcolors">{{ intcolor.interiorcolor }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option v-for="extra in extras">{{ extra }}</option>
+                        </select>
+                    </td>
+                    <td>
 
-            <select >
-                <option>{{ motor }}</option>
-            </select>
+                        <select>
+                            <option>{{ motor }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        {{ price }} Ft
+                    </td>
+                </tr>
 
-            {{ color }}
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
 
