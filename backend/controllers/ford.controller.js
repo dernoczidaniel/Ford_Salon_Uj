@@ -15,6 +15,19 @@ const Ford = {
             }
         })
     },
+    getInteriorColor(req,res){
+        let sql= 'SELECT * FROM cars';
+        connection.query(sql, (err,data) => {
+            if (err){
+                res.status(500).send({
+                    message: err.message || "Database error"
+                });
+            } else {
+                res.send(data);
+                // res.send(data.map(x => x.fnev))
+            }
+        })
+    },
 
 }
 

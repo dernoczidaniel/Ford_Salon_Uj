@@ -365,6 +365,6 @@
         <!-- Kocsik vége -->
     </div>
 
-    <a href="/ConfiguratorStep1">Konfigurator test</a>
+    <a href="/Configurator">Konfigurator test</a>
 
 </template>

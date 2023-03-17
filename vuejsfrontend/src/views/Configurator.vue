@@ -3,15 +3,15 @@ import DataService from "../services/dataservice"
 import { ref, onMounted  } from 'vue'
 
 const model = ref("Mustang");
-const colors = ref(["red","black","whie"]);
-const interiorcolors = ref([""]);
-const extras = ref([""]);
+const colors = ref([]);
+const interiorcolors = ref([]);
+const extras = ref([]);
 const motor = ref("1.9 TDI");
 
 const color = ref("");
 
 
-DataService.getAllColor()
+DataService.getDeliveryNames()
   .then((resp) => {
     colors.value = resp;
     console.log(colors.value);
@@ -20,13 +20,19 @@ DataService.getAllColor()
     console.log(err);
   });
 
+  DataService.getInteriorColor()
+  .then((resp) => {
+    interiorcolors.value = resp;
+    console.log(interiorcolors.value);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
   const szinValasztas = () => {
-  valasztottId.value = colors.value.find((t) => t.nev === valasztas.value)._id;
-  console.log(valasztottId.value);
-  color.value = color.value.filter(
-    (t) => t.gyarto === valasztottId.value
-  );
-  console.log(color.value);
+    color.value = []
+    colors.value = colors.value.filter(r => r.color.name === colors.value)
+    console.log(colors.value);
 };
 </script>
 
@@ -76,19 +82,19 @@ DataService.getAllColor()
     <div class="mb-0 col-lg-12 p-5 ColorMenu">
         <div class="center">
 
-            <select v-model="szinValasztas" @change="color">
-                <option v-for="color in colors">{{ color }}</option>
+            <select>
+                <option v-for="szin in colors">{{ szin.color }}</option>
             </select>
 
-            <select v-model="valasztas" @change="valaszto">
-                <option v-for="interiorcolor in interiorcolors">{{ interiorcolor }}</option>
+            <select  >
+                <option v-for="intcolor in interiorcolors">{{ intcolor.interiorcolor }}</option>
             </select>
 
-            <select v-model="valasztas" @change="valaszto">
+            <select >
                 <option v-for="extra in extras">{{ extra }}</option>
             </select>
 
-            <select v-model="valasztas" @change="valaszto">
+            <select >
                 <option>{{ motor }}</option>
             </select>
 
