@@ -11,6 +11,14 @@ const motor = ref("1.9 TDI");
 const color = ref("");
 
 
+const interiorcolor = ref("white");
+
+const red = ref("red");
+const white = ref("white");
+const black = ref("black");
+
+const Mustang = ref("Mustang");
+
 DataService.getDeliveryNames()
   .then((resp) => {
     colors.value = resp;
@@ -56,18 +64,45 @@ DataService.getDeliveryNames()
                             <table>
 
 
-                                <div v-if="color.value === red">
-                                <td>
-                                    <img src="../assets/img/Cars/Mustang/GT/GT.jpg" alt="car" width="550" height="300">
-                                </td>
+                                <!-- Mustang -->
+                                <div v-if="model == Mustang">
+                                    <div>
+                                        <td>
+                                            <img v-if="color == red" src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png"
+                                                alt="car" width="550" height="300">
+                                            <img v-if="color == white"
+                                                src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car" width="550"
+                                                height="300">
+                                            <img v-if="color == black"
+                                                src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car" width="550"
+                                                height="300">
+                                        </td>
+                                    </div>
+
+                                    <div>
+                                        <td>
+                                            <img v-if="interiorcolor == red"
+                                                src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car" width="550"
+                                                height="300">
+                                            <img v-if="interiorcolor == white"
+                                                src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car" width="550"
+                                                height="300">
+                                            <img v-if="interiorcolor == black"
+                                                src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car" width="550"
+                                                height="300">
+                                        </td>
+                                    </div>
+                                </div>
+                                <!---->
+
+
+                                  <div v-if="interiorcolors.value == red">
+                                    <td>
+                                        <img src="../assets/img/Cars/Mustang/GT/Interior/Ceramic.png" alt="" width="550"
+                                            height="300">
+                                    </td>
                                 </div>
 
-
-                                <div v-if="interiorcolors.value === red">
-                                <td>
-                                    <img src="../assets/img/Cars/Mustang/GT/Interior/Ceramic.png" alt="" width="550" height="300">
-                                </td>
-                                </div>  
 
 
                             </table>
