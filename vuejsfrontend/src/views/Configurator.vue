@@ -2,8 +2,11 @@
 import DataService from "../services/dataservice"
 import { ref, onMounted } from 'vue'
 
+
 const model = ref("Mustang");
 const colors = ref([]);
+const cars = ref([]);
+
 const interiorcolors = ref([]);
 const extras = ref([]);
 const motor = ref("1.9 TDI");
@@ -22,23 +25,15 @@ const black = ref("black");
 
 const Mustang = ref("Mustang");
 
-DataService.getDeliveryNames()
+DataService.getCars()
     .then((resp) => {
-        colors.value = resp;
-        console.log(colors.value);
+        cars.value = resp;
+        console.log(cars.value);
     })
     .catch((err) => {
         console.log(err);
     });
 
-DataService.getInteriorColor()
-    .then((resp) => {
-        interiorcolors.value = resp;
-        console.log(interiorcolors.value);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
 const szinValasztas = () => {
     color.value = []
@@ -126,13 +121,13 @@ const szinValasztas = () => {
                 <tr>
                     <td>
                         <select>
-                            <option v-for="szin in colors">{{ szin.color }}</option>
+                            <option v-for="szin in cars">{{ szin.color }}</option>
                         </select>
                     </td>
 
                     <td>
                         <select>
-                            <option v-for="intcolor in interiorcolors">{{ intcolor.interiorcolor }}</option>
+                            <option v-for="intcolor in cars">{{ intcolor.interiorcolor }}</option>
                         </select>
                     </td>
                     <td>

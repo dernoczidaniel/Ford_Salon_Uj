@@ -2,8 +2,8 @@ import Axios from 'axios';
 Axios.defaults.baseURL = 'http://localhost:3000/api/ford';
 
 export default {
-    getDeliveryNames(){
-        return Axios.get('/getDeliveryNames')
+    getCars(){
+        return Axios.get('/getCars')
             .then(resp => {
                 console.log(resp.data);
                 return resp.data;

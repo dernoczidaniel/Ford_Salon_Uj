@@ -2,7 +2,7 @@ const connection = require('../config/db');
 
 const Ford = {
     // Hogy hívják az egyes pizzafutárokat?  
-    getDeliveryNames(req,res){
+    getCars(req,res){
         let sql= 'SELECT * FROM cars';
         connection.query(sql, (err,data) => {
             if (err){
