@@ -13,7 +13,7 @@ import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
 import SummaryPageView from "../views/SummaryPage.vue";
-
+import DonePageView from "../views/Done.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -73,9 +73,13 @@ const router = createRouter({
       name: "SummaryPage",
       component: SummaryPageView,
     },
+    {
+      path: "/Done",
+      name: "Done",
+      component: DonePageView,
+    },
 
-   
-   
+
   ],
 });
 

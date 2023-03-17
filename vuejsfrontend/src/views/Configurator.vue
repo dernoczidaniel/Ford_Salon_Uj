@@ -172,9 +172,7 @@ const szinValasztas = () => {
                 <a href="/SummaryPage">
                     <button class="btn btn-outline-secondary  m-1" type="button">Tovább</button>
                 </a>
-                <a href="/SummaryPage">
-                    <button class="btn btn-outline-secondary m-1" type="button">Mentés</button>
-                </a>
+
             </div>
         </div>
     </div>

@@ -104,5 +104,29 @@ const price = ref("10 000 000");
             </div>
         </div>
     </div>
+
+
+    <div class="mb-0 col-lg-12 p-5 ColorMenu">
+
+        <div class="input-group mb-3 right">
+            <div class="input-group mb-3 right">
+
+                <a href="/SummaryPage">
+                    <button class="btn btn-outline-secondary m-1" type="button">Mégse</button>
+                </a>
+                
+                <a href="/SummaryPage">
+                    <button class="btn btn-outline-secondary m-1" type="button">Mentés</button>
+                </a>
+               
+                <a href="/SummaryPage">
+                    <button class="btn btn-outline-secondary  m-1" type="button">Rendelés</button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </template>
