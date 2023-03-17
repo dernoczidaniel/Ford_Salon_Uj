@@ -68,28 +68,27 @@ const szinValasztas = () => {
                                 <!-- Mustang -->
                                 <div v-if="model == Mustang">
 
-                                        <td>
-                                            <img v-if="color == red"
-                                                src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png" alt="car"
-                                                width="550" height="300">
-                                            <img v-if="color == white"
-                                                src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car"
-                                                width="550" height="300">
-                                            <img v-if="color == black"
-                                                src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car"
-                                                width="550" height="300">
-                                        </td>
-                                        <td>
-                                            <img v-if="interiorcolor == red"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car"
-                                                width="550" height="300">
-                                            <img v-if="interiorcolor == white"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car"
-                                                width="550" height="300">
-                                            <img v-if="interiorcolor == black"
-                                                src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car"
-                                                width="550" height="300">
-                                        </td>
+                                    <td>
+                                        <img v-if="color == red" src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png"
+                                            alt="car" width="550" height="300">
+                                        <img v-if="color == white"
+                                            src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car" width="550"
+                                            height="300">
+                                        <img v-if="color == black"
+                                            src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car" width="550"
+                                            height="300">
+                                    </td>
+                                    <td>
+                                        <img v-if="interiorcolor == red"
+                                            src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car" width="550"
+                                            height="300">
+                                        <img v-if="interiorcolor == white"
+                                            src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car" width="550"
+                                            height="300">
+                                        <img v-if="interiorcolor == black"
+                                            src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car" width="550"
+                                            height="300">
+                                    </td>
                                 </div>
                                 <!---->
 
@@ -170,13 +169,11 @@ const szinValasztas = () => {
 
         <div class="input-group mb-3 right">
             <div class="input-group mb-3 right">
-                <a href="/ConfiguratorStep2">
-
-
-                    <button class="btn btn-outline-secondary m-1" type="button">Mentés</button>
-
+                <a href="/SummaryPage">
                     <button class="btn btn-outline-secondary  m-1" type="button">Tovább</button>
-
+                </a>
+                <a href="/SummaryPage">
+                    <button class="btn btn-outline-secondary m-1" type="button">Mentés</button>
                 </a>
             </div>
         </div>

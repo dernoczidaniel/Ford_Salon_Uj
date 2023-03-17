@@ -12,7 +12,7 @@ import BoilingView from "../views/Boiling.vue";
 import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
-
+import SummaryPageView from "../views/SummaryPage.vue";
 
 
 const router = createRouter({
@@ -67,6 +67,11 @@ const router = createRouter({
       path: "/Configurator",
       name: "Configurator",
       component: ConfiguratorView,
+    },
+    {
+      path: "/SummaryPage",
+      name: "SummaryPage",
+      component: SummaryPageView,
     },
 
    
