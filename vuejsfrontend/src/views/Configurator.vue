@@ -3,6 +3,7 @@ import DataService from "../services/dataservice"
 import { ref, onMounted } from 'vue'
 
 
+
 const model = ref("Mustang");
 const colors = ref([]);
 const cars = ref([]);
@@ -24,6 +25,8 @@ const white = ref("white");
 const black = ref("black");
 
 const Mustang = ref("Mustang");
+
+
 
 DataService.getCars()
     .then((resp) => {
@@ -120,7 +123,9 @@ const szinValasztas = () => {
                 </tr>
                 <tr>
                     <td>
-                        <select>
+                        <select >
+                            <img />
+                            
                             <option v-for="szin in cars">{{ szin.color }}</option>
                         </select>
                     </td>

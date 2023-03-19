@@ -1,2 +1,6 @@
-INSERT INTO cars (color, interiorcolor, model)
-VALUES ('red', 'red', 'focus');
+
+
+INSERT INTO cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
+INSERT INTO models (name) VALUES ('FORD FOCUS TITANIUM'), ('FORD MUSTANG MACH-E'), ('FORD MUSTANG GT'),('FORD RANGER RAPTOR'),('FORD S-MAX');
+
+

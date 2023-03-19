@@ -91,7 +91,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1 m-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1 m-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1 m-1" href="#">További információ</a>
                                                 </div>
                                             </div>
@@ -146,7 +146,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1" href="#">További információ</a>
                                                 </div>
                                             </div>
@@ -195,7 +195,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1" href="#">További információ</a>
                                                 </div>
                                             </div>
@@ -244,7 +244,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1" href="#">További információ</a>
                                                 </div>
                                             </div>
@@ -294,7 +294,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1" href="#">További információ</a>
                                                 </div>
                                             </div>
@@ -341,7 +341,7 @@
                                                     </p>
 
 
-                                                    <a class="btn btn-light  mx-1" href="#">Konfigurálás</a>
+                                                    <a class="btn btn-light  mx-1" href="/Configurator">Konfigurálás</a>
                                                     <a class="btn btn-light  mx-1" href="#">További információ</a>
                                                 </div>
                                             </div>
