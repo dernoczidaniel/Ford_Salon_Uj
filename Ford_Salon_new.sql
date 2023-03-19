@@ -42,6 +42,7 @@ COLLATE utf8mb4_hungarian_ci;
 CREATE TABLE ford_salon.cars (
   id INT(11) NOT NULL AUTO_INCREMENT,
   color VARCHAR(50) NOT NULL,
+  interiorcolor VARCHAR(50) NOT NULL,
   modelid INT(11) NOT NULL,
   userid INT(11) NOT NULL,
   PRIMARY KEY (id)
