@@ -15,8 +15,8 @@ const Ford = {
             }
         })
     },
-    getInteriorColor(req,res){
-        let sql= 'SELECT * FROM cars';
+    getModels(req,res){
+        let sql= 'SELECT * FROM models';
         connection.query(sql, (err,data) => {
             if (err){
                 res.status(500).send({

@@ -3,7 +3,8 @@ module.exports = (app) =>{
     const ford = require('../controllers/ford.controller');
 
     router.get('/ford/getCars',ford.getCars)
-    router.get('/ford/getInteriorColor',ford.getInteriorColor)
+    router.get('/ford/getModels',ford.getModels)
+
     
     app.use('/api',router); // default route név
 }

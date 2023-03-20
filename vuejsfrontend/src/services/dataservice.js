@@ -13,8 +13,8 @@ export default {
                 return Promise.reject(err);
             })
     },
-    getInteriorColor(){
-        return Axios.get('/getInteriorColor')
+    getModels(){
+        return Axios.get('/getModels')
             .then(resp => {
                 console.log(resp.data);
                 return resp.data;

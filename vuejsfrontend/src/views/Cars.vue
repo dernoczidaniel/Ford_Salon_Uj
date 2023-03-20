@@ -1,3 +1,22 @@
+<script setup>
+import DataService from "../services/dataservice"
+import { ref, onMounted } from 'vue'
+
+const models = ref([]);
+
+
+DataService.getModels()
+    .then((resp) => {
+        models.value = resp;
+        console.log(models.value);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+</script>
+
+
 <template>
 
 
@@ -84,10 +103,10 @@
                                             <div class="row g-60">
                                                 <div class="col-lg-20 col-md-20">
 
-                                                    <p class="text-light mb-4">Ajánlott kedvezményes
+                                                    <p class="text-light mb-4" >Ajánlott kedvezményes
                                                         ár (az áfá-t tartalmazza) <br>
-                                                        10 410 000 Ft
-                                                        10 410 000 Ft -tól listaáron
+                                                        {{models[0].price}} Ft
+                                                         listaáron
                                                     </p>
 
 
