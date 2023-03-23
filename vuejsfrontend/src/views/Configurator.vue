@@ -5,9 +5,8 @@ import { ref, onMounted } from 'vue'
 
 
 const model = ref("Mustang");
-const colors = ref([]);
+const colors = ref();
 const cars = ref([]);
-
 const interiorcolors = ref([]);
 const extras = ref([]);
 const motor = ref("1.9 TDI");
@@ -15,16 +14,40 @@ const price = ref("10 000 000");
 
 
 
-const color = ref("red");
 
 
-const interiorcolor = ref("red");
 
-const red = ref("red");
-const white = ref("white");
-const black = ref("black");
+
+
+
+
+
+
+
+
+
+
+
+const kivalasztottszin = ref();
+
+const color = ref("piros")
+const interiorcolor = ref("piros");
+
+
+const red = ref("piros");
+const white = ref("fehér");
+const black = ref("fekete");
 
 const Mustang = ref("Mustang");
+
+
+
+const SzinValaszto = () => {
+    cars.color.value = color.value.filter(r => r.color.value === kivalasztottszin.value);
+    console.log(color);
+};
+
+
 
 
 
@@ -38,11 +61,9 @@ DataService.getCars()
     });
 
 
-const szinValasztas = () => {
-    color.value = []
-    colors.value = colors.value.filter(r => r.color.name === colors.value)
-    console.log(colors.value);
-};
+
+
+
 </script>
 
 
@@ -123,9 +144,8 @@ const szinValasztas = () => {
                 </tr>
                 <tr>
                     <td>
-                        <select >
+                        <select v-model="kivalasztottszin" @change="SzinValaszto()">
                             <img />
-                            
                             <option v-for="szin in cars">{{ szin.color }}</option>
                         </select>
                     </td>
@@ -178,6 +198,18 @@ const szinValasztas = () => {
     </div>
 
     <div class="container-fluid mt-0 p-5">
+
+
+
+        <p>{{ colors }}</p>
+
+
+
+
+
+
+
+
         <h2>FŐBB JELLEMZŐK</h2>
         <p>
             Négy króm kipufogóvég (aktív hangerőszabályozással)
