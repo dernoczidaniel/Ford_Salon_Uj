@@ -8,8 +8,12 @@ CREATE TABLE ford_salon.users (
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
   password VARCHAR(50) NOT NULL,
-  birthdate DATE NOT NULL,
   address VARCHAR(50) NOT NULL,
+  telefon VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  postalcode VARCHAR(50) NOT NULL,
+  birthdate VARCHAR(50) NOT NULL,
+
   PRIMARY KEY (id)
 )
 ENGINE = INNODB,
