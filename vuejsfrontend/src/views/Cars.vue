@@ -86,7 +86,7 @@ DataService.getModels()
                         <img src="" alt="">
                         <p class="card-text">
                             
-                            <img src={{auto.img_url}}>
+                            <img src="{{auto.img_url}}">
                             
                             {{ auto.price }} Ft
                         </p>
