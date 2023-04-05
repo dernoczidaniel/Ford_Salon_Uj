@@ -1,7 +1,7 @@
 module.exports = (app) =>{
     const router = require('express').Router(); // router tárolja a útvonalakat
     const ford = require('../controllers/ford.controller');
-    const blog = require('../controllers/LoggedIn.controller.js');
+    // const blog = require('../controllers/LoggedIn.controller.js');
 
 
     router.get('/ford/getCars',ford.getCars)
@@ -11,7 +11,7 @@ module.exports = (app) =>{
     router.get('/ford/getSalons',ford.getSalons)
     router.get('/ford/getUsers',ford.getUsers)
 
-    router.post('/login',auth.login);
+    // router.post('/login',auth.login);
     
     app.use('/api',router); // default route név
 }
