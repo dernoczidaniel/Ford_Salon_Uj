@@ -71,6 +71,12 @@ CREATE TABLE ford_salon.models (
   id INT(11) NOT NULL AUTO_INCREMENT,
   price INT(11) NOT NULL,
   name VARCHAR(50) NOT NULL,
+  img_url varchar(255) NOT NULL,
+  img_interior1 varchar(255) NOT NULL,
+  img_interior2 varchar(255) NOT NULL,
+  img_color1 varchar(255) NOT NULL,
+  img_color2 varchar(255) NOT NULL,
+  img_color3 varchar(255) NOT NULL,
   PRIMARY KEY (id)
 )
 ENGINE = INNODB,
