@@ -1,34 +1,56 @@
-../assets/img/Cars/Focus/interior/black/black.jpg
-../assets/img/Cars/Focus/interior/white/white.jpg
+../src/assets/img/Cars/Focus/interior/black/black.jpg
+../src/assets/img/Cars/Focus/interior/white/white.jpg
 
-../assets/img/Cars/Focus/colors/black/black.png
-../assets/img/Cars/Focus/colors/white/white.png
-../assets/img/Cars/Focus/colors/red/red.png
+../src/assets/img/Cars/Focus/colors/black/black.png
+../src/assets/img/Cars/Focus/colors/white/white.png
+../src/assets/img/Cars/Focus/colors/red/red.png
 
-../assets/img/Cars/Mustang Mach-E/interior/black/black.jpeg
-../assets/img/Cars/Mustang Mach-E/interior/white/white.jpeg
+../src/assets/img/Cars/Mustang Mach-E/interior/black/black.jpeg
+../src/assets/img/Cars/Mustang Mach-E/interior/white/white.jpeg
 
-../assets/img/Cars/Mustang Mach-E/colors/black/black.png
-../assets/img/Cars/Mustang Mach-E/colors/white/white.png
-../assets/img/Cars/Mustang Mach-E/colors/red/red.png
+../src/assets/img/Cars/Mustang Mach-E/colors/black/black.png
+../src/assets/img/Cars/Mustang Mach-E/colors/white/white.png
+../src/assets/img/Cars/Mustang Mach-E/colors/red/red.png
 
-../assets/img/Cars/Mustang/interior/black/black.png
-../assets/img/Cars/Mustang/interior/white/white.png
+../src/assets/img/Cars/Mustang/interior/black/black.png
+../src/assets/img/Cars/Mustang/interior/white/white.png
 
-../assets/img/Cars/Mustang/colors/black/black.png
-../assets/img/Cars/Mustang/colors/white/white.png
-../assets/img/Cars/Mustang/colors/red/red.png
+../src/assets/img/Cars/Mustang/colors/black/black.png
+../src/assets/img/Cars/Mustang/colors/white/white.png
+../src/assets/img/Cars/Mustang/colors/red/red.png
 
-../assets/img/Cars/Ranger Raptop/interior/black/black.jpeg
-../assets/img/Cars/Ranger Raptop/interior/white/white.jpeg
+../src/assets/img/Cars/Ranger Raptop/interior/black/black.jpeg
+../src/assets/img/Cars/Ranger Raptop/interior/white/white.jpeg
 
-../assets/img/Cars/Ranger Raptop/colors/black/black.png
-../assets/img/Cars/Ranger Raptop/colors/white/white.png
-../assets/img/Cars/Ranger Raptop/colors/red/red.png
+../src/assets/img/Cars/Ranger Raptop/colors/black/black.png
+../src/assets/img/Cars/Ranger Raptop/colors/white/white.png
+../src/assets/img/Cars/Ranger Raptop/colors/red/red.png
 
-../assets/img/Cars/S-Max/interior/black/black.jpg
-../assets/img/Cars/S-Max/interior/white/white.jpg
+../src/assets/img/Cars/S-Max/interior/black/black.jpg
+../src/assets/img/Cars/S-Max/interior/white/white.jpg
 
-../assets/img/Cars/S-Max/colors/black/black.png
-../assets/img/Cars/S-Max/colors/white/white.jpeg
-../assets/img/Cars/S-Max/colors/red/red.png
+../src/assets/img/Cars/S-Max/colors/black/black.png
+../src/assets/img/Cars/S-Max/colors/white/white.jpeg
+../src/assets/img/Cars/S-Max/colors/red/red.png
+
+../src/assets/img/Cars/Kuga/interior/black/black.jpg
+../src/assets/img/Cars/Kuga/interior/white/white.png
+
+../src/assets/img/Cars/Kuga/colors/black/black.jpg
+../src/assets/img/Cars/Kuga/colors/white/white.jpg
+../src/assets/img/Cars/Kuga/colors/red/red.jpeg
+
+../src/assets/img/Cars/Puma/interior/black/black.jpg
+../src/assets/img/Cars/Puma/interior/white/white.png
+
+../src/assets/img/Cars/Puma/colors/black/black.jpg
+../src/assets/img/Cars/Puma/colors/white/white.jpg
+../src/assets/img/Cars/Puma/colors/red/red.png
+
+../src/assets/img/Cars/Explorer/interior/black/black.jpg
+../src/assets/img/Cars/Explorer/interior/white/white.png
+
+../src/assets/img/Cars/Explorer/colors/black/black.jpg
+../src/assets/img/Cars/Explorer/colors/white/white.png
+../src/assets/img/Cars/Explorer/colors/red/red.png
+
