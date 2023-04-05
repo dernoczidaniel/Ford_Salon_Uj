@@ -3,11 +3,11 @@
 INSERT INTO cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
 
 INSERT INTO ford_salon.models(id, price, name, img_url, img_interior1, img_interior2, img_color1, img_color2, img_color3) VALUES
-(1, 10410000, 'FORD FOCUS TITANIUM', '"../assets/img/Cars/Focus/Icon.png"', '', '', '', '', ''),
-(2, 27850000, 'FORD MUSTANG MACH-E', '"../assets/img/Cars/Mustang Mach-E/Icon.png"', '', '', '', '', ''),
-(3, 22500000, 'FORD MUSTANG GT', '"../assets/img/Cars/Mustang/Icon.png"', '', '', '', '', ''),
-(4, 18884900, 'FORD RANGER RAPTOR', '"../assets/img/Cars/Ranger Raptop/Icon.png"', '', '', '', '', ''),
-(5, 14160000, 'FORD S-MAX', '"../assets/img/Cars/S-Max/Icon.png"', '', '', '', '', '');
+(1, 10410000, 'FORD FOCUS TITANIUM', '../assets/img/Cars/Focus/Icon.png', '', '', '', '', ''),
+(2, 27850000, 'FORD MUSTANG MACH-E', '../assets/img/Cars/Mustang Mach-E/Icon.png', '', '', '', '', ''),
+(3, 22500000, 'FORD MUSTANG GT', '../assets/img/Cars/Mustang/Icon.png', '', '', '', '', ''),
+(4, 18884900, 'FORD RANGER RAPTOR', '../assets/img/Cars/Ranger Raptop/Icon.png', '', '', '', '', ''),
+(5, 14160000, 'FORD S-MAX', '../assets/img/Cars/S-Max/Icon.png', '', '', '', '', '');
 
 
 INSERT INTO extras(id, price, name) VALUES
