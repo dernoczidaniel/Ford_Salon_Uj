@@ -147,6 +147,30 @@ ALTER TABLE ford_salon.cars_salons
   ADD CONSTRAINT FK_cars_salons_salonid FOREIGN KEY (salonid)
     REFERENCES ford_salon.salons(id) ON DELETE NO ACTION;
 
--- SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
 
+USE ford_salon
+
+INSERT INTO cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
+
+INSERT INTO ford_salon.models(id, price, name, img_url, img_interior1, img_interior2, img_color1, img_color2, img_color3) VALUES
+(1, 10410000, 'FORD FOCUS TITANIUM', '../src/assets/img/Cars/Focus/Icon.png', '../src/assets/img/Cars/Focus/interior/black/black.jpg', '../src/assets/img/Cars/Focus/interior/white/white.jpg', '../src/assets/img/Cars/Focus/colors/black/black.png', '../src/assets/img/Cars/Focus/colors/white/white.png', '../src/assets/img/Cars/Focus/colors/red/red.png'),
+(2, 27850000, 'FORD MUSTANG MACH-E', '../src/assets/img/Cars/Mustang Mach-E/Icon.png', '../src/assets/img/Cars/Mustang Mach-E/interior/black/black.jpeg', '../src/assets/img/Cars/Mustang Mach-E/interior/white/white.jpeg', '../src/assets/img/Cars/Mustang Mach-E/colors/black/black.png', '../src/assets/img/Cars/Mustang Mach-E/colors/white/white.png', '../src/assets/img/Cars/Mustang Mach-E/colors/red/red.png'),
+(3, 22500000, 'FORD MUSTANG GT', '../src/assets/img/Cars/Mustang/Icon.png', '../src/assets/img/Cars/Mustang/interior/black/black.png', '../src/assets/img/Cars/Mustang/interior/white/white.png', '../src/assets/img/Cars/Mustang/colors/black/black.png', '../src/assets/img/Cars/Mustang/colors/white/white.png', '../src/assets/img/Cars/Mustang/colors/red/red.png'),
+(4, 18884900, 'FORD RANGER RAPTOR', '../src/assets/img/Cars/Ranger Raptop/Icon.png', '../src/assets/img/Cars/Ranger Raptop/interior/black/black.jpeg', '../src/assets/img/Cars/Ranger Raptop/interior/white/white.jpeg', '../src/assets/img/Cars/Ranger Raptop/colors/black/black.png', '../src/assets/img/Cars/Ranger Raptop/colors/white/white.png', '../src/assets/img/Cars/Ranger Raptop/colors/red/red.png'),
+(5, 14160000, 'FORD S-MAX', '../src/assets/img/Cars/S-Max/Icon.png', '../src/assets/img/Cars/S-Max/interior/black/black.jpg', '../src/assets/img/Cars/S-Max/interior/white/white.jpg', '../src/assets/img/Cars/S-Max/colors/black/black.png', '../src/assets/img/Cars/S-Max/colors/white/white.jpeg', '../src/assets/img/Cars/S-Max/colors/red/red.png'),
+(6, 8670000, 'FORD PUMA', '../src/assets/img/Cars/Puma/icon1.jpg', '../src/assets/img/Cars/Puma/interior/black/black.jpg', '../src/assets/img/Cars/Puma/interior/white/white.png', '../src/assets/img/Cars/Puma/colors/black/black.jpg', '../src/assets/img/Cars/Puma/colors/white/white.jpg', '../src/assets/img/Cars/Puma/colors/red/red.png'),
+(7, 11890000, 'FORD KUGA', '../src/assets/img/Cars/Kuga/icon1.jpg', '../src/assets/img/Cars/Kuga/interior/black/black.jpg', '../src/assets/img/Cars/Kuga/interior/white/white.png', '../src/assets/img/Cars/Kuga/colors/black/black.jpg', '../src/assets/img/Cars/Kuga/colors/white/white.jpg', '../src/assets/img/Cars/Kuga/colors/red/red.jpeg'),
+(8, 35572000, 'FORD EXPLORER', '../src/assets/img/Cars/Explorer/icon.png', '../src/assets/img/Cars/Explorer/interior/black/black.jpg', '../src/assets/img/Cars/Explorer/interior/white/white.png', '../src/assets/img/Cars/Explorer/colors/black/black.jpg', '../src/assets/img/Cars/Explorer/colors/white/white.png', '../src/assets/img/Cars/Explorer/colors/red/red.png');
+
+
+
+INSERT INTO extras(id, price, name) VALUES
+(1, 100000, 'Tolatókamera'),
+(2, 145000, 'ERGO üléscsomag'),
+(3, 190000, 'Vonóhorog');
+
+
+INSERT INTO users(id, name, email, password, address, telefon, city, postalcode, birthdate) VALUES
+(1,'Teszt Elek','teszt@gmail.com','jelszo','tó út 21', '06302003042','Győr','9000', '2000.01.01');
 
