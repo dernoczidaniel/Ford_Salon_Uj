@@ -1,8 +1,12 @@
 <script setup>
-import DataService from "../services/dataservice"
+import dataservice from "../services/dataservice";
+import DataService from "../services/dataservice";
+import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue'
 
 const models = ref([]);
+
+
 
 
 DataService.getModels()
@@ -14,6 +18,11 @@ DataService.getModels()
         console.log(err);
     });
 
+
+
+
+
+
 </script>
 
 
@@ -22,7 +31,7 @@ DataService.getModels()
 
     <!-- Kocsik -->
     <div class="container-fluid p-0 mb-5 ">
-        <div class="mb-0 text-center p-5 CarsHeader">
+        <div class="  mb-0 text-center p-5 CarsHeader">
 
             <h1 class="display-3 text-uppercase mb-0 text-light">Modellek</h1> <!-- cím -->
 
@@ -86,11 +95,12 @@ DataService.getModels()
                         <img src="" alt="">
                         <p class="card-text">
                             
-                            <img src="{{auto.img_url}}">
+                            <img :src="auto.img_url" class="card-img-top p-3">
                             
                             {{ auto.price }} Ft
                         </p>
                         <p class="text-center mb-0">
+                           
                             <a href="" class="btn btn-primary">Konfigurator</a>
                         </p>
                     </div>
