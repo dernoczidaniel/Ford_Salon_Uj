@@ -146,3 +146,7 @@ ALTER TABLE ford_salon.cars_salons
 ALTER TABLE ford_salon.cars_salons 
   ADD CONSTRAINT FK_cars_salons_salonid FOREIGN KEY (salonid)
     REFERENCES ford_salon.salons(id) ON DELETE NO ACTION;
+
+-- SET FOREIGN_KEY_CHECKS=0;
+
+
