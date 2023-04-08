@@ -15,19 +15,6 @@ const price = ref("10 000 000");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const kivalasztottszin = ref();
 
 const color = ref("piros")

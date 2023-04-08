@@ -1,6 +1,6 @@
 
 
-INSERT INTO cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
+INSERT INTO ford_salon.cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
 
 INSERT INTO ford_salon.models(id, price, name, img_url, img_interior1, img_interior2, img_color1, img_color2, img_color3) VALUES
 (1, 10410000, 'FORD FOCUS TITANIUM', '../assets/img/Cars/Focus/Icon.png', '../assets/img/Cars/Focus/interior/black/black.jpg', '../assets/img/Cars/Focus/interior/white/white.jpg', '../assets/img/Cars/Focus/colors/black/black.png', '../assets/img/Cars/Focus/colors/white/white.png', '../assets/img/Cars/Focus/colors/red/red.png'),
@@ -10,11 +10,11 @@ INSERT INTO ford_salon.models(id, price, name, img_url, img_interior1, img_inter
 (5, 14160000, 'FORD S-MAX', '../assets/img/Cars/S-Max/Icon.png', '../assets/img/Cars/S-Max/interior/black/black.jpg', '../assets/img/Cars/S-Max/interior/white/white.jpg', '../assets/img/Cars/S-Max/colors/black/black.png', '../assets/img/Cars/S-Max/colors/white/white.jpeg', '../assets/img/Cars/S-Max/colors/red/red.png');
 
 
-INSERT INTO extras(id, price, name) VALUES
+INSERT INTO ford_salon.extras(id, price, name) VALUES
 (1, 100000, 'Tolatókamera'),
 (2, 145000, 'ERGO üléscsomag'),
 (3, 190000, 'Vonóhorog');
 
 
-INSERT INTO users(id, name, email, password, address, telefon, city, postalcode, birthdate) VALUES
+INSERT INTO ford_salon.users(id, name, email, password, address, telefon, city, postalcode, birthdate) VALUES
 (1,'Teszt Elek','teszt@gmail.com','jelszo','tó út 21', '06302003042','Győr','9000', '2000.01.01');

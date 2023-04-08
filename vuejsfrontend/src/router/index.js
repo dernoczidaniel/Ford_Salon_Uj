@@ -14,6 +14,7 @@ import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
 import SummaryPageView from "../views/SummaryPage.vue";
 import DonePageView from "../views/Done.vue";
+import TestView from "../views/test.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -77,6 +78,11 @@ const router = createRouter({
       path: "/Done",
       name: "Done",
       component: DonePageView,
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: TestView,
     },
 
 
