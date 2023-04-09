@@ -1,12 +1,16 @@
 <script>
 import DataService from "../services/dataservice";
 import { ref, computed } from "vue";
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
         const models = ref([]);
         const searchQuery = ref("");
         const selectedIndex = ref(0); // új változó
+        const router = useRouter()
+        const autok = ref([])
+        
 
         DataService.getModels()
             .then((resp) => {
@@ -16,6 +20,20 @@ export default {
             .catch((err) => {
                 console.log(err);
             });
+
+            
+
+
+        const valaszto = (model) => {
+            router.push({ name: 'Configurator', params: { id: model.id } })
+        }
+
+
+
+
+
+
+        
 
         const filteredModels = computed(() => {
             return models.value.filter((model) => {
@@ -30,7 +48,8 @@ export default {
             console.log("Selected index:", selectedIndex.value);
         };
 
-        return { models, searchQuery, filteredModels, IndexValaszto, selectedIndex };
+        return { models, searchQuery, filteredModels, IndexValaszto, selectedIndex,autok,
+        valaszto };
     },
 };
 </script>
@@ -82,8 +101,9 @@ export default {
                     <div class="card-body">
                         <h2>{{ model.name }}</h2>
                         <img :src="model.img_url" :alt="model.img_url" width="500" height="300">
+
                         <p>Ár: {{ model.price }} Ft-tól</p>
-                        <a href="/Configurator"><button  :id="model.id" class="btn btn-primary" @click="() => IndexValaszto(model.id)"> Konfigurator </button>
+                        <a href="Configurator"><button  :id="model.id" class="btn btn-primary"  @click="() => IndexValaszto(model.id)"> Konfigurator </button>
                         </a>
                     </div>
                 </div>
