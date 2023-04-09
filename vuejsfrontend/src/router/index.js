@@ -16,9 +16,11 @@ import SummaryPageView from "../views/SummaryPage.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
     {
       path: "/",
       name: "home",

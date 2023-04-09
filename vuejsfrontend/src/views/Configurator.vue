@@ -1,122 +1,119 @@
 <script setup>
 import DataService from "../services/dataservice"
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
+import { defineComponent } from 'vue'
+import carsList from '../components/carsList.vue';
+ 
+const index = ref(1);
 
+// const carsComponent = defineComponent({
+//   name: 'carsComponent',
+//   components: { carsList },
+//   data() {
+//     return {
+//       selectedIndex: 0,
+//     }
+//   },
+// })
+// const index = ref(carsComponent.selectedIndex);
+// watch(carsComponent, 'selectedIndex', (newValue) => {
+//   index.value = newValue;
+// });
 
-
-const model = ref("Mustang");
-const colors = ref();
+const models = ref([]);
 const cars = ref([]);
-const interiorcolors = ref([]);
 const extras = ref([]);
 const motor = ref("1.9 TDI");
-const price = ref("10 000 000");
-
-
-
+const price = ref(0);
+const description = ref('');
 
 const kivalasztottszin = ref();
+const kivalasztottszinkulso = ref();
+const color = ref("fehér")
+const interiorcolor = ref("fehér");
 
-const color = ref("piros")
-const interiorcolor = ref("piros");
-
-
-const red = ref("piros");
-const white = ref("fehér");
-const black = ref("fekete");
-
-const Mustang = ref("Mustang");
-
-
+const colors = ref([]);
 
 const SzinValaszto = () => {
-    cars.color.value = color.value.filter(r => r.color.value === kivalasztottszin.value);
-    console.log(color);
+    color.value = kivalasztottszin.value.color;
 };
-
-
-
-
+const SzinValasztoKulso = () => {
+    interiorcolor.value = kivalasztottszinkulso.value.interiorcolor;
+};
 
 DataService.getCars()
     .then((resp) => {
         cars.value = resp;
         console.log(cars.value);
+
+        // colors list
+        colors.value = cars.value.map((car) => ({ color: car.color, interiorcolor: car.interiorcolor }));
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+DataService.getModels()
+    .then((resp) => {
+        models.value = resp;
+        console.log(models.value);
+        fetch(models.value[0].description) //indexedik elemére átszerkezteni
+            .then((response) => response.text())
+            .then((data) => {
+                description.value = data;
+            });
+        // add models[1].price to price
+        price.value += models.value[0].price; //indexedik elemére átszerkezteni
     })
     .catch((err) => {
         console.log(err);
     });
 
-
-
-
-
+DataService.getExtras()
+    .then((resp) => {
+        extras.value = resp;
+        console.log(extras.value);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 </script>
-
 
 <template>
     <div class="container-fluid mt-0 center  ">
         <div class="position-relative">
             <div class="row gx-5">
                 <div class="col-lg-6">
-
                     <div class="m-4 p-4">
-
                         <div class="mb-4">
                             <h3 class="display-6 text-uppercase mb-2">Konfigurátor</h3>
-                            <h5 class="display-6 text-uppercase mb-2">{{ model }}</h5>
-
+                            <h5 class="display-6 text-uppercase mb-2">{{ models[index].name }}</h5>
                         </div>
-
-
                         <div class="mb-3">
                             <table>
-                                <!-- Mustang -->
-                                <div v-if="model == Mustang">
-
+                                <div>
                                     <td>
-                                        <img v-if="color == red" src="../assets/img/Cars/Mustang/GT/Colors/Red/1.png"
-                                            alt="car" width="550" height="300">
-                                        <img v-if="color == white"
-                                            src="../assets/img/Cars/Mustang/GT/Colors/White/1.png" alt="car" width="550"
-                                            height="300">
-                                        <img v-if="color == black"
-                                            src="../assets/img/Cars/Mustang/GT/Colors/Black/1.png" alt="car" width="550"
-                                            height="300">
+                                        <img v-if="color == 'fekete'" :src="models[index].img_color1"
+                                            :alt="models[index].img_url1" width="650" height="400">
+                                        <img v-if="color == 'fehér'" :src="models[index].img_color2"
+                                            :alt="models[index].img_url2" width="650" height="400">
+                                        <img v-if="color == 'piros'" :src="models[index].img_color3"
+                                            :alt="models[index].img_url3" width="650" height="400">
                                     </td>
                                     <td>
-                                        <img v-if="interiorcolor == red"
-                                            src="../assets/img/Cars/Mustang/GT/Interior/red.png" alt="car" width="550"
-                                            height="300">
-                                        <img v-if="interiorcolor == white"
-                                            src="../assets/img/Cars/Mustang/GT/Interior/white.png" alt="car" width="550"
-                                            height="300">
-                                        <img v-if="interiorcolor == black"
-                                            src="../assets/img/Cars/Mustang/GT/Interior/black.png" alt="car" width="550"
-                                            height="300">
+                                        <img v-if="interiorcolor == 'fekete'" :src="models[index].img_interior1"
+                                            :alt="models[index].img_interior1" width="650" height="400">
+                                        <img v-if="interiorcolor == 'fehér'" :src="models[index].img_interior2"
+                                            :alt="models[index].img_interior2" width="650" height="400">
                                     </td>
                                 </div>
-                                <!---->
-
-
-                                <div v-if="interiorcolors.value == red">
-                                    <td>
-                                        <img src="../assets/img/Cars/Mustang/GT/Interior/Ceramic.png" alt="" width="550"
-                                            height="300">
-                                    </td>
-                                </div>
-
-
 
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="mb-0 col-lg-12 p-5 ColorMenu">
         <div class="center">
 
@@ -132,26 +129,22 @@ DataService.getCars()
                 <tr>
                     <td>
                         <select v-model="kivalasztottszin" @change="SzinValaszto()">
-                            <img />
-                            <option v-for="szin in cars">{{ szin.color }}</option>
+                            <option v-for="szin in colors" :value="szin">{{ szin.color }}</option>
                         </select>
                     </td>
 
                     <td>
-                        <select>
-                            <option v-for="intcolor in cars">{{ intcolor.interiorcolor }}</option>
+                        <select v-model="kivalasztottszinkulso" @change="SzinValasztoKulso()">
+                            <option class="selected" v-for="szin in colors" :value="szin">{{ szin.interiorcolor }}</option>
                         </select>
                     </td>
                     <td>
                         <select>
-                            <option v-for="extra in extras">{{ extra }}</option>
+                            <option v-for="extra in extras">{{ extra.name }}</option>
                         </select>
                     </td>
                     <td>
-
-                        <select>
-                            <option>{{ motor }}</option>
-                        </select>
+                        {{ motor }}
                     </td>
                     <td>
                         {{ price }} Ft
@@ -159,21 +152,7 @@ DataService.getCars()
                 </tr>
 
             </table>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
-
-
         <div class="input-group mb-3 right">
             <div class="input-group mb-3 right">
                 <a href="/SummaryPage">
@@ -183,69 +162,8 @@ DataService.getCars()
             </div>
         </div>
     </div>
-
+    <h2 class="m-2">Leírás</h2>
+    <p class="m-2">{{ description }}</p>
     <div class="container-fluid mt-0 p-5">
-
-
-
-        <p>{{ colors }}</p>
-
-
-
-
-
-
-
-
-        <h2>FŐBB JELLEMZŐK</h2>
-        <p>
-            Négy króm kipufogóvég (aktív hangerőszabályozással)
-            Aktív kipufogó rendszer (hangerőszabályzással)
-            Karosszéria színével megegyező színű tükörház fényezés és hátsó spoiler
-            Egyedi GT lökhárító
-            Fekete hűtőrács króm Pony logoval
-            Króm Pony logo a hűtőrácson, GT felirat hátul és 5.0 embléma az első sárvédőkön
-            Fekete könnyűfém felni - Elöl: 19"x 9.0" - Hátul 19"x 9.5"
-            Elöl: 255/40R19 gumi Hátul: 275/40R19 gumi
-            Elektromosan állítható, behajtható (automatikus), fűthető külső visszapillantó tükrök, tükörházba integrált
-            kilépővilágítással
-            LED fényszórók
-            LED hátsó lámpák
-            Laminált szélvédő
-            Fekete féknyergek
-            Gumijavító készlet
-            Sebességváltó fülek a kormányon- automata váltó esetén
-            Kétzónás automata klímaberendezés
-            12"-os digitális kijelző a kormánykerék mögött
-            Aluminium pedálok
-            Elektromosan, 6-irányban (előre/hátra, fel/le, háttámla előre-hátra) álítható első ülések, statikus (nem
-            állítható) deréktámasszal
-            Első szőnyegek - fekete, szövet
-            Belső hangulatfény
-            Bőrborítású kormánykerék
-            Bőrborítású kézifékkar
-            Megvilágított küszöbborítás
-            Elektronikus Line Lock - pályaalkalmazás, az első kerekeket blokkolja, miközben a hátsó kerekek
-            kipöröghetnek
-            felmelegítve a gumiabroncsokat, elősegítve a legoptimálisabb kigyorsítást
-            Rajtautomatika (manuális váltó esetén)
-            Hatdugattyús BremboTM első féknyergek
-            Fűthető kormánykerék
-            Választható vezetési módok
-            CD-rádiós audiorendszer
-            9 hangszóró
-            8"-os színes érintőképernyős kijelző
-            SYNC 3 - Bluetooth kihangosító és hangvezérlő rendszer
-            Automatikus távolsági fényszóróvezérlés
-            Automatikus fényszóróvezérlés (ki- és bekapcsolás)
-            Ütközésmegelőző rendszer (kamera és radar alapú)
-            Visszagurulásgátló
-            Hátsó parkolóradar
-            Keréknyomásfigyelő rendszer
-            ISOFIX előkészítés - mindkét hátsó ülésen
-            Tolatókamera
-            Adaptív sebességtartó automatika
-            Sávelhagyásra figyelmeztető rendszer
-        </p>
     </div>
 </template>
