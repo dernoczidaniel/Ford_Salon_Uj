@@ -392,3 +392,14 @@ h6,
 .BodySize{
     min-height: 690px;;
 }
+
+.Config {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ConfigTd {
+    flex-basis: calc(100% / 3 - 10px); /* Az oszlopok szélessége a táblázat három részre bontása esetén */
+    margin: 5px;
+  }

@@ -1,113 +1,6 @@
-
-
-
 <script setup >
 import { ref } from 'vue'
-const alert = ref();
-
-
-//Bejelenkezés
-
-const Username = ref([""]);
-const password = ref([""]);
-const Email = ref([""]);
-const BelepesJo = false;
-
-
-const belepes = () => {
-  alert.value = "";
-  if (Username.value && Email.value && password.value == "" || password.value.length <= 8) {
-    alert.value = "Rosszul adta meg az adatokat!";
-  }
-
-}
-
-
-//Regisztáció
-
-
-const registrationClickEll = ref(false);
-const vizsgal = ref(false);
-
-
-
-
-
-const Rjo = ref();
-const Ralert = ref();
-const RFirstName = ref([""]);
-const RLastName = ref([""]);
-const RUsername = ref([""]);
-const REmail = ref([""]);
-const RTelefon = ref([""]);
-//const RDate = ref([""]);
-const RZipCode = ref([""]);
-const RCity = ref([""]);
-const RAdres = ref([""]);
-const Rpassword = ref([""]);
-
-
-const registration = () => {
-  Ralert.value = "";
-  Rjo.value = "";
-  vizsgal.value = false; // false al jó a regisztráció
-  // Email vizsgálat
-  for (let index = 0; index < REmail.value.length; index++) {
-    if (REmail.value[index] == "@") {
-      vizsgal.value = false;
-      break
-    }
-    else {
-      Ralert.value = "Az Email cím nem megfelelő formátumú!";
-      vizsgal.value = true;
-    }
-  }
-  for (let index = 0; index < REmail.value.length; index++) {
-    if (REmail.value[index] == ".") {
-      vizsgal.value = false;
-      break
-    }
-    else {
-      Ralert.value = "Az Email cím nem megfelelő formátumú!";
-      vizsgal.value = true;
-    }
-  }
-  // ---------------------
-  // Jelszó vizsgálat
-  if (Rpassword.value.length <= 8) {
-    Ralert.value = "A jelszó nem megfelelő! Legalább 8 karaktert kell tartalmaznia!";
-    vizsgal.value = true;
-  }
-
-  for (let index = 0; index < Rpassword.length; index++) {
-    if (Rpassword[index] != index) {
-      Ralert.value = "A jelszó nem megfelelő! Legalább egy számot kell tartalmaznia!";
-      vizsgal.value = true;
-    }
-  }
-  // ---------------------
-  // telefon szám vizsgálat
-  if (RTelefon.value.length != 8) {
-    Ralert.value = "A telefon számot nem jól adta meg!";
-    vizsgal.value = true;
-  }
-  // ---------------------
-  // Üres mező vizsgálat
-  if (RFirstName.value && RLastName.value && RUsername.value && REmail.value && RTelefon.value && RZipCode.value && RCity.value && RAdres.value && Rpassword.value == "") {
-    Ralert.value = "Egyik mező sem lehet üres!";
-    vizsgal.value = true;
-  }
-  // ---------------------
-  //Sikeres az ellenörzés
-  //további ellenörzés a backend-ben!!
-  if (vizsgal.value == false) {
-    Rjo.value = "Sikeres regisztráció!";
-    registrationClickEll.value = false;
-  }
-
-}
-
-
+const registrationClickEll = true;
 
 const registrationClick = () => {
   registrationClickEll.value = true;
@@ -117,26 +10,10 @@ const registrationClick = () => {
 const Close = () => {
   Rjo.value = vizsgal.value == true;
 }
-
-
-
-
-
-
-
-
-
 </script>
 <template>
-
-
-
-
   <body class="LoginRegistrationbackground BodySize">
     <div class="">
-
-
-
       <div class="container-fluid p-0 mt-0 center ">
         <div class="position-relative">
           <div class="row gx-5 mb-5">
@@ -166,18 +43,6 @@ const Close = () => {
                     </span><input type="text" class="form-control inputTransparent" placeholder="Felhasználónév"
                       v-model="Username" aria-label="Felhasználónév" aria-describedby="basic-addon1">
                   </div>
-
-
-
-
-
-
-
-
-
-
-
-
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
 
@@ -192,18 +57,6 @@ const Close = () => {
                     <input v-model="Email" type="text" class="form-control inputTransparent" placeholder="E-mail cím"
                       aria-label="Email" aria-describedby="basic-addon1">
                   </div>
-
-
-
-
-
-
-
-
-
-
-
-
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">
 
@@ -214,8 +67,6 @@ const Close = () => {
                           d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
                         <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                       </svg>
-
-
                     </span>
                     <input v-model="password" type="password" class="form-control inputTransparent" placeholder="Jelszó"
                       aria-label="" aria-describedby="basic-addon1">
@@ -231,11 +82,6 @@ const Close = () => {
                         regisztráltam.</button>
                     </a>
                   </div>
-
-
-
-
-
                   <div class="mb-3">
                     <a href="">Elfelejtettem a jelszót.</a>
                   </div>
@@ -245,19 +91,9 @@ const Close = () => {
 
                 </div>
               </div>
-
-
-
-
-
-
               <div id="registrationClick" v-if="registrationClickEll == true">
 
                 <hr>
-
-
-
-
                 <div class="LoginRegistrationbackgroundMenu">
                   <div class="m-4 p-4">
 
@@ -302,36 +138,27 @@ const Close = () => {
                       <input class="form-control inputTransparent" type="date" id="start" name="trip-start"
                         value="2000-01-01" min="1900-01-01" max="2025-01-01">
                     </div>
-
-
-
-
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Irányítószám</span>
                       <input v-model="RZipCode" type="number" class="form-control inputTransparent" placeholder="1000"
                         aria-label="Irányítószám" min="1000" max="9999" aria-describedby="basic-addon1">
                     </div>
-
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Település</span>
                       <input v-model="RCity" type="text" class="form-control inputTransparent" placeholder="(Budapest)"
                         aria-label="(Budapest)" aria-describedby="basic-addon1">
                     </div>
-
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Utca, házszám</span>
                       <input v-model="RAdres" type="text" class="form-control inputTransparent"
                         placeholder="deák ferenc utca 1" aria-label="Utca, házszám" aria-describedby="basic-addon1">
                     </div>
-
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Jelszó</span>
                       <input v-model="Rpassword" type="password" class="form-control inputTransparent"
                         placeholder="*****" aria-label="" aria-describedby="basic-addon1">
                     </div>
                     <p>A jelszónak legalább 8 karaktert, kis és nagy betűt kell tartalmaznia!</p>
-
-
                     <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect01">Rendelkezik már Ford Autóval?</label>
                       <select class="form-select inputTransparent" id="inputGroupSelect01" placeholder="Válasszon...">
@@ -342,7 +169,6 @@ const Close = () => {
                       </select>
                     </div>
                     <p>Válaszon hogy, szervizelését nyomon követhesse!</p>
-
                     <div class="input-group">
                       <button class="btn btn-outline-secondary mb-3" type="button"
                         @click="registration">Regisztráció</button>
