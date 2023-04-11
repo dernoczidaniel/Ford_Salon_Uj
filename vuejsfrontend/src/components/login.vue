@@ -46,16 +46,3 @@
   }
   </script>
 
-<template>
-  <div>
-    <h1>Konfigurátor</h1>
-    <p>A kiválasztott modell azonosítója: {{ id }}</p>
-    <!-- Konfigurációs lehetőségek megjelenítése -->
-  </div>
-</template>
-
-<script>
-export default {
-  props: ['id']
-}
-</script>
