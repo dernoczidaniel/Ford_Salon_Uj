@@ -71,24 +71,6 @@ const price = ref("10 000 000");
 
 
 
-                        <td >
-                            <div class="mb-4">
-                                <h3 class="display-6 text-uppercase mb-0 ">Rendelés</h3>
-                            </div>
-
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem architecto sapiente quis mollitia minima libero ratione ea dolor. Voluptate accusamus, suscipit numquam cupiditate enim maxime praesentium voluptatem eaque consectetur accusantium?
-
-                        </td>
                         </tr>
 
 
@@ -111,7 +93,7 @@ const price = ref("10 000 000");
         <div class="input-group mb-3 right">
             <div class="input-group mb-3 right">
 
-                <a href="/SummaryPage">
+                <a href="/cars">
                     <button class="btn btn-outline-secondary m-1" type="button">Mégse</button>
                 </a>
                 
