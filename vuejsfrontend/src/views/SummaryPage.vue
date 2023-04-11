@@ -111,7 +111,7 @@ const price = ref("10 000 000");
         <div class="input-group mb-3 right">
             <div class="input-group mb-3 right">
 
-                <a href="/SummaryPage">
+                <a href="/Cars">
                     <button class="btn btn-outline-secondary m-1" type="button">Mégse</button>
                 </a>
                 
