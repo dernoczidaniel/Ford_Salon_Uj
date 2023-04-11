@@ -62,8 +62,9 @@ export default {
                         {{ model.fuel }} - {{ model.species }}      
                         <img :src="model.img_url" :alt="model.img_url" width="500" height="300">
                         <p>Ár: {{ model.price }} Ft-tól </p>
-                        <a href="Configurator"><button  :id="model.id" class="btn btn-primary"  @click="() => IndexValaszto(model.id)"> Konfigurator </button>
-                        </a>
+                        <router-link :to="{ name: 'Configurator', params: { modelId: model.id.toString() } }">
+                            <button  :id="model.id" class="btn btn-primary"  @click="() => IndexValaszto(model.id)"> Konfigurator </button>
+                        </router-link>
                     </div>
                 </div>
             </div>   

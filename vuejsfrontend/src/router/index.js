@@ -45,6 +45,7 @@ const router = createRouter({
       path: "/Cars",
       name: "Cars",
       component: CarsView,
+      props: true,
     },
     {
       path: "/Boiling",
@@ -67,7 +68,7 @@ const router = createRouter({
       component: ProfileView,
     },
     {
-      path: "/Configurator",
+      path: "/Configurator/:modelId",
       name: "Configurator",
       component: ConfiguratorView,
     },

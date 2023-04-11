@@ -1,5 +1,10 @@
 <script setup>
 import Configurator from '../components/Configurator.vue';
+
+
+
+
+
 </script>
 
 

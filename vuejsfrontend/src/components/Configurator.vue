@@ -1,83 +1,100 @@
-<script setup>
+<script>
 import DataService from "../services/dataservice"
-import { ref, watch } from 'vue'
-import { defineComponent } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import carsList from '../components/carsList.vue';
 
-const index = ref(1);
+export default {
+    name: 'Configurator',
+    mounted() {
+        const modelId = this.$route.params.modelId;
+        this.index = parseInt(modelId-1);
+        // Do something with the modelId parameter
+    },
+    data() {
+        return {
+            models: [],
+            cars: [],
+            extras: [],
+            price: 0,
+            description: '',
+            kivalasztottszin: null,
+            kivalasztottszinkulso: null,
+            color: 'fehér',
+            interiorcolor: 'fehér',
+            colors: [],
+            index: 0
+        }
+    },
 
-// const carsComponent = defineComponent({
-//   name: 'carsComponent',
-//   components: { carsList },
-//   data() {
-//     return {
-//       selectedIndex: 0,
-//     }
-//   },
-// })
-// const index = ref(carsComponent.selectedIndex);
-// watch(carsComponent, 'selectedIndex', (newValue) => {
-//   index.value = newValue;
-// });
+    components: {
+        carsList
+    },
 
-const models = ref([]);
-const cars = ref([]);
-const extras = ref([]);
-const price = ref(0);
-const description = ref('');
+    methods: {
+        SzinValaszto() {
+            this.color = this.kivalasztottszin.color;
+        },
+        SzinValasztoKulso() {
+            this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
+        }
+    },
 
-const kivalasztottszin = ref();
-const kivalasztottszinkulso = ref();
-const color = ref("fehér")
-const interiorcolor = ref("fehér");
+    created() {
+        DataService.getCars()
+            .then((resp) => {
+                this.cars = resp;
+                console.log(this.cars);
 
-const colors = ref([]);
-
-const SzinValaszto = () => {
-    color.value = kivalasztottszin.value.color;
-};
-const SzinValasztoKulso = () => {
-    interiorcolor.value = kivalasztottszinkulso.value.interiorcolor;
-};
-
-DataService.getCars()
-    .then((resp) => {
-        cars.value = resp;
-        console.log(cars.value);
-
-        // colors list
-        colors.value = cars.value.map((car) => ({ color: car.color, interiorcolor: car.interiorcolor }));
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-DataService.getModels()
-    .then((resp) => {
-        models.value = resp;
-        console.log(models.value);
-        fetch(models.value[0].description) //indexedik elemére átszerkezteni
-            .then((response) => response.text())
-            .then((data) => {
-                description.value = data;
+                // colors list
+                this.colors = this.cars.map((car) => ({ color: car.color, interiorcolor: car.interiorcolor }));
+            })
+            .catch((err) => {
+                console.log(err);
             });
-        // add models[1].price to price
-        price.value += models.value[0].price; //indexedik elemére átszerkezteni
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
-DataService.getExtras()
-    .then((resp) => {
-        extras.value = resp;
-        console.log(extras.value);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+        DataService.getModels()
+            .then((resp) => {
+                this.models = resp;
+                console.log(this.models);
+                fetch(this.models[index].description)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        this.description = data;
+                    });
+                // add models[1].price to price
+                this.price += this.models[index].price;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        DataService.getExtras()
+            .then((resp) => {
+                this.extras = resp;
+                console.log(this.extras);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    },
+
+    watch: {
+        index() {
+            fetch(this.models[this.index].description)
+                .then((response) => response.text())
+                .then((data) => {
+                    this.description = data;
+                });
+            // add models[this.index].price to price
+            this.price += this.models[this.index].price;
+        }
+    }
+}
+
 </script>
 
 <template>
+    {{ index }}
     <div class="container-fluid mt-0 center  ">
         <div class="position-relative">
             <div class="row gx-5">

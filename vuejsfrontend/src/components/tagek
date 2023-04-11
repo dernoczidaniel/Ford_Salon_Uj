@@ -14,3 +14,33 @@
                                     </div>
                                 </div>
                             </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+
+
+// const carsComponent = defineComponent({
+    //   name: 'carsComponent',
+    //   components: { carsList },
+    //   data() {
+    //     return {
+    //       selectedIndex: 0,
+    //     }
+    //   },
+    // })
+    // const index = ref(carsComponent.selectedIndex);
+    // watch(carsComponent, 'selectedIndex', (newValue) => {
+    //   index.value = newValue;
+    // });
+    
