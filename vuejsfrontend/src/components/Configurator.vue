@@ -7,7 +7,7 @@ export default {
     name: 'Configurator',
     mounted() {
         const modelId = this.$route.params.modelId;
-        this.index = parseInt(modelId-1);
+        this.index = parseInt(modelId - 1);
         // Do something with the modelId parameter
     },
     data() {
@@ -22,7 +22,8 @@ export default {
             color: 'fehér',
             interiorcolor: 'fehér',
             colors: [],
-            index: 0
+            index: 0,
+            SelectedCar: [],
         }
     },
 
@@ -36,6 +37,43 @@ export default {
         },
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
+        },
+        CarSelect() {
+            if (this.kivalasztottszin && this.kivalasztottszinkulso) {
+                const selectedCar = {
+                    color: this.kivalasztottszin.color,
+                    interiorcolor: this.kivalasztottszinkulso.interiorcolor,
+                    modelIndex: this.index,
+                    extras: [] // az extra-kat tartalmazó tömb inicializálása
+                };
+                if (this.selectedExtra !== null) {
+                    const extra = this.extras.find(extra => extra.price === this.selectedExtra);
+                    selectedCar.extras.push({ name: extra.name, price: extra.price });
+                    // a kiválasztott extra hozzáadása az extras tömbhöz
+                }
+                this.SelectedCar = selectedCar;
+
+                this.price = this.models[this.index].price;
+                for (const extra of this.extras) {
+                    if (extra.selected) {
+                        this.price += extra.price;
+                    }
+                }
+            } else {
+                alert('Kérlek válaszd ki mindkét színt!');
+            }
+        },
+        sendSelectedCar() {
+            if (this.SelectedCar.length > 0) {
+                this.$router.push({
+                    name: "summary",
+                    params: {
+                        selectedCar: JSON.stringify(this.SelectedCar)
+                    }
+                });
+            } else {
+                alert("Kérlek válassz egy autót!");
+            }
         }
     },
 
@@ -88,7 +126,9 @@ export default {
             // add models[this.index].price to price
             this.price += this.models[this.index].price;
         }
-    }
+    },
+
+
 }
 
 </script>
@@ -122,10 +162,11 @@ export default {
                                             <img v-if="interiorcolor == 'fehér'" :src="models[index].img_interior2"
                                                 :alt="models[index].img_interior2" width="650" height="400">
                                         </td>
+
                                         <td class="col-lg-6 ConfigTd mx-auto">
                                             <h3 class="m-1 text-center">Extra</h3>
                                             <div class="form-check" v-for="extra in extras">
-                                                <input class="form-check-input" type="radio" :name="extra" :id="extra">
+                                                <input class="form-check-input" type="checkbox" :name="extra" :id="extra">
                                                 <label class="form-check-label" :for="extra">
                                                     {{ extra.name }} - {{ extra.price }} Ft
                                                 </label>
@@ -189,15 +230,26 @@ export default {
                 </div>
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
-                        <a href="/SummaryPage">
-                            <button class="btn btn-outline-secondary  m-1" type="button">Tovább</button>
-                        </a>
-
+                        <a href="/summary">
+                        <button @click="CarSelect, sendSelectedCar">Tovább a Summary oldalra</button>
+                    </a>
+                        {{ SelectedCar }}
+                    </div>
+                </div>
+                <div class="left text-light">
+                    <div class="m-2 form-check" v-for="(extra, index) in extras" :key="index">
+                        <input class="checkbox" type="radio" :name="extra.name" :id="extra.name" :value="extra.price"
+                            v-model="selectedExtra" :checked="selectedExtra === extra.price"
+                            @change="extra.selected = selectedExtra === extra.price">
+                        <label class="label" :for="extra.name">
+                            {{ extra.name }} - {{ extra.price }} Ft
+                        </label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <h2 class="m-2">Leírás</h2>
     <p class="m-2">{{ description }}</p>
     <div class="container-fluid mt-0 p-5">
