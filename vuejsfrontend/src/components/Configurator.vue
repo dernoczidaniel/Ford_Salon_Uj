@@ -125,7 +125,7 @@ export default {
                                         <td class="col-lg-6 ConfigTd mx-auto">
                                             <h3 class="m-1 text-center">Extra</h3>
                                             <div class="form-check" v-for="extra in extras">
-                                                <input class="form-check-input" type="radio" :name="extra" :id="extra">
+                                                <input class="form-check-input" type="checkbox" :name="extra" :id="extra">
                                                 <label class="form-check-label" :for="extra">
                                                     {{ extra.name }} - {{ extra.price }} Ft
                                                 </label>
