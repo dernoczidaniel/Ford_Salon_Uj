@@ -290,6 +290,10 @@ h6,
     display: flex;
     justify-content: right;
 }
+.left {
+    display: flex;
+    justify-content: left;
+}
 
 
 .inputTransparent {

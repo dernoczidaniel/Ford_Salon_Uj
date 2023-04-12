@@ -12,7 +12,7 @@ import BoilingView from "../views/Boiling.vue";
 import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
-import SummaryPageView from "../views/SummaryPage.vue";
+import SummaryView from "../views/Summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
 
@@ -73,9 +73,9 @@ const router = createRouter({
       component: ConfiguratorView,
     },
     {
-      path: "/SummaryPage",
-      name: "SummaryPage",
-      component: SummaryPageView,
+      path: "/Summary",
+      name: "Summary",
+      component: SummaryView,
     },
     {
       path: "/Done",
@@ -88,8 +88,11 @@ const router = createRouter({
       component: TestView,
     },
 
-
   ],
+
+  created() {
+    this.selectedCar = JSON.parse(this.$route.params.selectedCar);
+  }
 });
 
 
