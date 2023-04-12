@@ -2,14 +2,16 @@
 import DataService from "../services/dataservice"
 import { ref, watch, reactive } from 'vue'
 import carsList from '../components/carsList.vue';
+import { useRoute } from 'vue-router';
 
 export default {
-    name: 'Configurator',
+
     mounted() {
         const modelId = this.$route.params.modelId;
-        this.index = parseInt(modelId - 1);
+        this.index = parseInt(modelId) - 1;
         // Do something with the modelId parameter
     },
+
     data() {
         return {
             models: [],
@@ -42,7 +44,7 @@ export default {
             if (this.kivalasztottszin && this.kivalasztottszinkulso) {
                 const selectedCar = {
                     color: this.kivalasztottszin.color,
-                    interiorcolor: this.kivalasztottszinkulso.interiorcolor,
+                    interiorcolor: this.interiorcolor,
                     modelIndex: this.index,
                     extras: [] // az extra-kat tartalmazó tömb inicializálása
                 };
@@ -64,15 +66,11 @@ export default {
             }
         },
         sendSelectedCar() {
-            if (this.SelectedCar.length > 0) {
-                this.$router.push({
-                    name: "summary",
-                    params: {
-                        selectedCar: JSON.stringify(this.SelectedCar)
-                    }
-                });
+            if (this.SelectedCar && this.SelectedCar.length > 0 && this.SelectedCar[0].id) {
+                console.log("Selected car: ", this.SelectedCar[0].id);
+                // do something with the selected car
             } else {
-                alert("Kérlek válassz egy autót!");
+                console.log("No car selected");
             }
         }
     },
@@ -115,7 +113,6 @@ export default {
                 console.log(err);
             });
     },
-
     watch: {
         index() {
             fetch(this.models[this.index].description)
@@ -127,10 +124,7 @@ export default {
             this.price += this.models[this.index].price;
         }
     },
-
-
 }
-
 </script>
 
 <template>
@@ -230,10 +224,14 @@ export default {
                 </div>
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
-                        <a href="/summary">
-                        <button @click="CarSelect, sendSelectedCar">Tovább a Summary oldalra</button>
-                    </a>
-                        {{ SelectedCar }}
+                        <div class="input-group mb-3 right">
+                            <button @click="CarSelect">Kész</button>
+                            {{ SelectedCar }}
+                            <router-link
+                                :to="{ path: '/summary/:selectedCar', query: { selectedCar: JSON.stringify(SelectedCar) } }">
+                                <button @click="sendSelectedCar">Tovább a Summary oldalra</button>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
                 <div class="left text-light">

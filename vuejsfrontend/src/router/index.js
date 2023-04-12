@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-
-
-
 import ServiceView from "../views/Service.vue";
 import HomeView from "../views/HomeView.vue";
 import NewsView from "../views/News.vue";
@@ -12,15 +9,13 @@ import BoilingView from "../views/Boiling.vue";
 import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
-import SummaryView from "../views/Summary.vue";
+import SummaryView from "../views/summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
     {
       path: "/",
       name: "home",
@@ -71,10 +66,11 @@ const router = createRouter({
       path: "/Configurator/:modelId",
       name: "Configurator",
       component: ConfiguratorView,
+      props: true,
     },
     {
-      path: "/Summary",
-      name: "Summary",
+      path: "/summary/:selectedCar",
+      name: "summary",
       component: SummaryView,
     },
     {
@@ -87,13 +83,7 @@ const router = createRouter({
       name: "test",
       component: TestView,
     },
-
   ],
-
-  created() {
-    this.selectedCar = JSON.parse(this.$route.params.selectedCar);
-  }
 });
-
 
 export default router;
