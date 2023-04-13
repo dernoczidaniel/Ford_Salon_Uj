@@ -12,6 +12,7 @@ import ConfiguratorView from "../views/Configurator.vue";
 import SummaryView from "../views/summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
+import Summary from './components/summary.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -69,11 +70,6 @@ const router = createRouter({
       props: true,
     },
     {
-      path: "/summary/:selectedCar",
-      name: "summary",
-      component: SummaryView,
-    },
-    {
       path: "/Done",
       name: "Done",
       component: DonePageView,
@@ -83,7 +79,23 @@ const router = createRouter({
       name: "test",
       component: TestView,
     },
+    {
+      path: "/summary",
+      name: "SummaryView",
+      component: SummaryView,
+    },
   ],
 });
+
+router.addRoute({
+  path: '/summary/:selectedCar',
+  name: 'summary',
+  component: Summary,
+  props: (route) => ({ selectedCar: JSON.parse(route.params.selectedCar) })
+});
+
+const app = createApp(App);
+app.use(router);
+app.component('summary', Summary);
 
 export default router;

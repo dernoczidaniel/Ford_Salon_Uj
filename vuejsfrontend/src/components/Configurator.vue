@@ -40,38 +40,26 @@ export default {
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
         },
-        CarSelect() {
+        selectAndSendCar() {
             if (this.kivalasztottszin && this.kivalasztottszinkulso) {
                 const selectedCar = {
                     color: this.kivalasztottszin.color,
                     interiorcolor: this.interiorcolor,
                     modelIndex: this.index,
-                    extras: [] // az extra-kat tartalmazó tömb inicializálása
+                    extras: []
                 };
-                if (this.selectedExtra !== null) {
-                    const extra = this.extras.find(extra => extra.price === this.selectedExtra);
-                    selectedCar.extras.push({ name: extra.name, price: extra.price });
-                    // a kiválasztott extra hozzáadása az extras tömbhöz
-                }
-                this.SelectedCar = selectedCar;
-
-                this.price = this.models[this.index].price;
                 for (const extra of this.extras) {
                     if (extra.selected) {
+                        selectedCar.extras.push({ name: extra.name, price: extra.price });
                         this.price += extra.price;
                     }
                 }
+                this.SelectedCar = selectedCar;
+                this.$emit('carSelected', this.SelectedCar);
             } else {
                 alert('Kérlek válaszd ki mindkét színt!');
             }
-        },
-        sendSelectedCar() {
-            if (this.SelectedCar && this.SelectedCar.length > 0 && this.SelectedCar[0].id) {
-                console.log("Selected car: ", this.SelectedCar[0].id);
-                // do something with the selected car
-            } else {
-                console.log("No car selected");
-            }
+
         }
     },
 
@@ -225,11 +213,9 @@ export default {
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
-                            <button @click="CarSelect">Kész</button>
                             {{ SelectedCar }}
-                            <router-link
-                                :to="{ path: '/summary/:selectedCar', query: { selectedCar: JSON.stringify(SelectedCar) } }">
-                                <button @click="sendSelectedCar">Tovább a Summary oldalra</button>
+                            <router-link :to="{ name: 'Summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
+                                <button @click="selectAndSendCar">Kész</button>
                             </router-link>
                         </div>
                     </div>

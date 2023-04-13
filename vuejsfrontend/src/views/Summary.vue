@@ -5,6 +5,7 @@ import summary from '../components/summary.vue';
 
 
 <template >
+  OK
     <summary></summary>
 
 </template>
