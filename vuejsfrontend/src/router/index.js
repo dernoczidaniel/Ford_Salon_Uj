@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { createApp } from 'vue';
+import App from '../App.vue'
 import ServiceView from "../views/Service.vue";
 import HomeView from "../views/HomeView.vue";
 import NewsView from "../views/News.vue";
@@ -9,10 +11,11 @@ import BoilingView from "../views/Boiling.vue";
 import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
-import SummaryView from "../views/summary.vue";
+import SummaryPage from "../views/SummaryPage.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
-import Summary from './components/summary.vue';
+import Summary from '../components/summary.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,9 +83,9 @@ const router = createRouter({
       component: TestView,
     },
     {
-      path: "/summary",
-      name: "SummaryView",
-      component: SummaryView,
+      path: "/SummaryPage",
+      name: "SummaryPage",
+      component: SummaryPage,
     },
   ],
 });
@@ -98,4 +101,4 @@ const app = createApp(App);
 app.use(router);
 app.component('summary', Summary);
 
-export default router;
+app.mount('#app');
