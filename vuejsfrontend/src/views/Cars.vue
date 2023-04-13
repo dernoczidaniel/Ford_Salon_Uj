@@ -1,10 +1,15 @@
-<script setup>
-import carsComponent from '../components/carsList.vue';
-
-</script>
-
-
-<template >
-    <carsComponent></carsComponent>
-
-</template>
+<template>
+    <div>
+      <cars-component></cars-component>
+    </div>
+  </template>
+  
+  <script>
+  import CarsComponent from '../components/carsList.vue';
+  
+  export default {
+    components: {
+      CarsComponent
+    }
+  }
+  </script>

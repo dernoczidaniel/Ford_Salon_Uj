@@ -1,11 +1,15 @@
-<script setup>
-import summary from '../components/summary.vue';
+<script>
+import Summary from '../components/summary.vue';
 
+export default {
+  components: {
+    Summary
+  }
+}
 </script>
-
-
-<template >
-  OK
-    <summary></summary>
-
+<template>
+  <div>
+    ok
+    <Summary />
+  </div>
 </template>

@@ -54,13 +54,15 @@ export default {
                         this.price += extra.price;
                     }
                 }
-                this.SelectedCar = selectedCar;
-                this.$emit('carSelected', this.SelectedCar);
+                this.$emit('carSelected', selectedCar);
+                this.$router.push({ name: 'summary', state: { selectedCar } })
+
             } else {
                 alert('Kérlek válaszd ki mindkét színt!');
             }
+        },
 
-        }
+
     },
 
     created() {
@@ -144,8 +146,6 @@ export default {
                                             <img v-if="interiorcolor == 'fehér'" :src="models[index].img_interior2"
                                                 :alt="models[index].img_interior2" width="650" height="400">
                                         </td>
-
-                                     
                                     </tr>
                                 </table>
                             </div>
@@ -157,11 +157,8 @@ export default {
     </div>
     <div class="row">
         <div class="col-lg-12">
-
             <div class="mb-0 p-5 ColorMenu">
                 <div class="center">
-
-
                     <table class="table text-light">
                         <tr>
                             <th>Színe</th>
@@ -206,7 +203,8 @@ export default {
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
                             {{ SelectedCar }}
-                            <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
+
+                            <router-link :to="{ name: 'summary', state: { selectedCar: JSON.stringify(selectedCar) } }">
                                 <button @click="selectAndSendCar">Kész</button>
                             </router-link>
                         </div>

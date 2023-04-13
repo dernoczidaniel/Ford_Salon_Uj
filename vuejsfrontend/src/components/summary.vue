@@ -1,22 +1,21 @@
 <template>
   <div>
-    <h2>Összefoglaló</h2>
-    <p>Autó színe: {{ selectedCar.color }}</p>
-    <p>Belső szín: {{ selectedCar.interiorcolor }}</p>
-    <p>Modell index: {{ selectedCar.modelIndex }}</p>
-    <p>Kiegészítők:</p>
-    <ul>
-      <li v-for="extra in selectedCar.extras" :key="extra.name">{{ extra.name }} ({{ extra.price }} Ft)</li>
-    </ul>
+    <h1>Összegzés</h1>
+    <p>Kiválasztott autó: {{ kiválasztottAuto }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    selectedCar: {
-      type: Object,
-      required: true
+  data() {
+    return {
+      kiválasztottAuto: null
+    }
+  },
+  created() {
+    const selectedCar = this.$route?.params?.selectedCar
+    if (selectedCar) {
+      this.kiválasztottAuto = JSON.parse(selectedCar)
     }
   }
 }
