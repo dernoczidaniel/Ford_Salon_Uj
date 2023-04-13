@@ -40,38 +40,26 @@ export default {
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
         },
-        CarSelect() {
+        selectAndSendCar() {
             if (this.kivalasztottszin && this.kivalasztottszinkulso) {
                 const selectedCar = {
                     color: this.kivalasztottszin.color,
                     interiorcolor: this.interiorcolor,
                     modelIndex: this.index,
-                    extras: [] // az extra-kat tartalmazó tömb inicializálása
+                    extras: []
                 };
-                if (this.selectedExtra !== null) {
-                    const extra = this.extras.find(extra => extra.price === this.selectedExtra);
-                    selectedCar.extras.push({ name: extra.name, price: extra.price });
-                    // a kiválasztott extra hozzáadása az extras tömbhöz
-                }
-                this.SelectedCar = selectedCar;
-
-                this.price = this.models[this.index].price;
                 for (const extra of this.extras) {
                     if (extra.selected) {
+                        selectedCar.extras.push({ name: extra.name, price: extra.price });
                         this.price += extra.price;
                     }
                 }
+                this.SelectedCar = selectedCar;
+                this.$emit('carSelected', this.SelectedCar);
             } else {
                 alert('Kérlek válaszd ki mindkét színt!');
             }
-        },
-        sendSelectedCar() {
-            if (this.SelectedCar && this.SelectedCar.length > 0 && this.SelectedCar[0].id) {
-                console.log("Selected car: ", this.SelectedCar[0].id);
-                // do something with the selected car
-            } else {
-                console.log("No car selected");
-            }
+
         }
     },
 
@@ -157,15 +145,7 @@ export default {
                                                 :alt="models[index].img_interior2" width="650" height="400">
                                         </td>
 
-                                        <td class="col-lg-6 ConfigTd mx-auto">
-                                            <h3 class="m-1 text-center">Extra</h3>
-                                            <div class="form-check" v-for="extra in extras">
-                                                <input class="form-check-input" type="checkbox" :name="extra" :id="extra">
-                                                <label class="form-check-label" :for="extra">
-                                                    {{ extra.name }} - {{ extra.price }} Ft
-                                                </label>
-                                            </div>
-                                        </td>
+                                     
                                     </tr>
                                 </table>
                             </div>
@@ -225,11 +205,9 @@ export default {
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
-                            <button @click="CarSelect">Kész</button>
                             {{ SelectedCar }}
-                            <router-link
-                                :to="{ path: '/summary/:selectedCar', query: { selectedCar: JSON.stringify(SelectedCar) } }">
-                                <button @click="sendSelectedCar">Tovább a Summary oldalra</button>
+                            <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
+                                <button @click="selectAndSendCar">Kész</button>
                             </router-link>
                         </div>
                     </div>
@@ -247,7 +225,6 @@ export default {
             </div>
         </div>
     </div>
-
     <h2 class="m-2">Leírás</h2>
     <p class="m-2">{{ description }}</p>
     <div class="container-fluid mt-0 p-5">

@@ -13,6 +13,7 @@ import SummaryView from "../views/summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -69,11 +70,6 @@ const router = createRouter({
       props: true,
     },
     {
-      path: "/summary/:selectedCar",
-      name: "summary",
-      component: SummaryView,
-    },
-    {
       path: "/Done",
       name: "Done",
       component: DonePageView,
@@ -82,6 +78,11 @@ const router = createRouter({
       path: "/test",
       name: "test",
       component: TestView,
+    },
+    {
+      path: "/summary/:selectedCar",
+      name: "summary",
+      component: SummaryView,
     },
   ],
 });
