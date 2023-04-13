@@ -56,9 +56,11 @@ export default {
                 }
                 this.$emit('carSelected', selectedCar);
                 this.$router.push({ name: 'summary', state: { selectedCar } })
+                console.log(selectedCar)
 
             } else {
                 alert('Kérlek válaszd ki mindkét színt!');
+                console.log("üres")
             }
         },
 
@@ -82,13 +84,13 @@ export default {
             .then((resp) => {
                 this.models = resp;
                 console.log(this.models);
-                fetch(this.models[index].description)
+                fetch(this.models[this.index].description)
                     .then((response) => response.text())
                     .then((data) => {
                         this.description = data;
                     });
                 // add models[1].price to price
-                this.price += this.models[index].price;
+                this.price += this.models[this.index].price;
             })
             .catch((err) => {
                 console.log(err);
@@ -203,8 +205,7 @@ export default {
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
                             {{ SelectedCar }}
-
-                            <router-link :to="{ name: 'summary', state: { selectedCar: JSON.stringify(selectedCar) } }">
+                            <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
                                 <button @click="selectAndSendCar">Kész</button>
                             </router-link>
                         </div>
