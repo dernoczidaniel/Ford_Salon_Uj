@@ -16,33 +16,62 @@
       <p v-else-if="success">Login successful!</p>
     </div>
   </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        email: '',
-        password: '',
-        error: '',
-        success: false
+
+<script>
+import axios from 'axios';
+
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+    
+    };
+  },
+  methods: {
+    async login() {
+  try {
+    await this.$store.dispatch('login', {
+      email: this.email,
+      password: this.password,
+      telefon: this.telefon,
+      address: this.address,
+      city: this.city,
+      id: this.id,
+      postalcode:this.postalcode,
+      birthdate: this.birthdate,
+      name: this.name,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+},
+    async signup() {
+      try {
+        const response = await axios.post('/signup', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_match: this.password_match,
+          citizenship: this.citizenship,
+          gender: this.gender,
+          birthday: this.birthday
+        });
+        console.log(response.data);
+
+      } catch (error) {
+        console.error(error);
       }
     },
-    methods: {
-      submitForm() {
-        this.$http.post('/api/login', {
-          email: this.email,
-          password: this.password
-        }).then(response => {
-          if (response.data.success) {
-            this.success = true
-          } else {
-            this.error = 'Invalid email or password'
-          }
-        }).catch(error => {
-          this.error = 'An error occurred'
-        })
-      }
-    }
+
+    
+  },
+
+  
+  mounted() {
+    this.citizenship = this.nationality[0];
   }
-  </script>
+};
+</script>
 
