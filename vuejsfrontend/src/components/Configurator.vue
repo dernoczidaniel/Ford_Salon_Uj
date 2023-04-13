@@ -214,7 +214,7 @@ export default {
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
                             {{ SelectedCar }}
-                            <router-link :to="{ name: 'Summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
+                            <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
                                 <button @click="selectAndSendCar">Kész</button>
                             </router-link>
                         </div>
