@@ -80,11 +80,15 @@ const router = createRouter({
       component: TestView,
     },
     {
-      path: "/summary/:selectedCar",
+      path: "/summary",
       name: "summary",
       component: SummaryView,
     },
   ],
+
+  created() {
+    this.selectedCar = JSON.parse(this.$route.params.selectedCar);
+  }
 });
 
 export default router;

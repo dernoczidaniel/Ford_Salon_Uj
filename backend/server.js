@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const corsOptions = {
 
-   origin: 'http://127.0.0.1:5173' // VUE projeckt címe //http://localhost:5173
+   origin: 'http://localhost:5173' // VUE projeckt címe //http://127.0.0.1:5173
 
 }
 const app = express();
