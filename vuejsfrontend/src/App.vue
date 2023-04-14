@@ -182,9 +182,7 @@ export default {
                                     <a href="https://twitter.com/Ford" class="fa fa-twitter m-1"></a>
                                 </td>
                                 <td></td>
-                                <td><a href="#oldalteto">
-                                        <button class="">Vissza az oldal tetejére</button>
-                                    </a> </td>
+
                             </tr>
 
                         </table>

@@ -1,9 +1,8 @@
 <script setup>
-import test from '../components/Configurator.vue';
+import registration from "../components/registration.vue"
 </script>
 
 
 <template >
-    <test></test>
-
+    <registration></registration>
 </template>
