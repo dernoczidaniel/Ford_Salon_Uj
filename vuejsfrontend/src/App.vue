@@ -12,7 +12,7 @@ export default {
 
     setup() {
         const models = ref([]);
-    
+
         DataService.getModels()
             .then((resp) => {
                 models.value = resp;
@@ -22,87 +22,99 @@ export default {
                 console.log(err);
             });
 
-        return { models};
+        return { models };
     },
 };
 </script>
 
 <template>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div class="container-fluid bg-dark px-0" id="oldalteto">
-        <div class="row gx-0">
-            <div class="col-lg-3 bg-dark d-none d-lg-block">
-                <a href="/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                    <img src="../src/assets/img/Logo/Ford_Motor_Company_Logo.svg.png" alt="Logo" width="120" height="60">
-                </a>
-            </div>
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="/" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">Ford</h1>
-                    </a>
-
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-
-
-
-                            <router-link class="nav-link " to="/">Kezdőlap</router-link>
-
-                          
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Modellválaszték</a>
-                                <div class="dropdown-menu rounded-0 m-0 align-items-center">
-                                    
-                                    <div v-for="car in models" :value="car">
-                                        <img :src="car.img_url" :alt="car.img_url" width="190" height="120">
-                                        <router-link to="/Cars"><button class="btn  py-1 px-0">{{ car.name }}</button> </router-link>
-                                    </div>
-
-                                    <div style="background-color: #1351d8;">
-                                        <router-link class="nav-link" to="/Cars">Minden modell</router-link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <router-link class="nav-link" to="/Profile">Ford fiók</router-link>
-                            <router-link class="nav-link" to="/Service">Szervíz</router-link>
-
-                            <a href="#kapcsolat" class="nav-link">Kapcsolat</a>
-
-
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Továbbiak</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-
-                                    <router-link class="dropdown-item" to="/History">Története</router-link>
-                                    <router-link class="dropdown-item" to="/About">Rólunk</router-link>
-                                    <router-link class="dropdown-item" to="/News">Hírek</router-link>
-                                    <router-link class="dropdown-item" to="/Boiling">Források</router-link>
-                                    <router-link class="dropdown-item" to="/LoginRegistration">Regisztráció</router-link>
-
-
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <router-link to="/LoginRegistration"
-                            class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Bejelenkezés/regisztráció</router-link>
+    <div class="col-lg-12">
+        <div class="row gx-5" >
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <div class="container-fluid bg-dark px-0" id="oldalteto">
+                <div class="row gx-0">
+                    <div class="col-lg-3 bg-dark d-none d-lg-block">
+                        <a href="/"
+                            class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                            <img src="../src/assets/img/Logo/Ford_Motor_Company_Logo.svg.png" alt="Logo" width="120"
+                                height="60">
+                        </a>
                     </div>
-                </nav>
+                    <div class="col-lg-9">
+                        <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                            <a href="/" class="navbar-brand d-block d-lg-none">
+                                <h1 class="m-0 display-4 text-primary text-uppercase">Ford</h1>
+                            </a>
+
+                            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                                data-bs-target="#navbarCollapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                <div class="navbar-nav mr-auto py-0">
+
+
+
+                                    <router-link class="nav-link " to="/">Kezdőlap</router-link>
+
+
+                                    <div class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle"
+                                            data-bs-toggle="dropdown">Modellválaszték</a>
+                                        <div class="dropdown-menu rounded-0 m-0 align-items-center">
+
+                                            <div v-for="car in models" :value="car">
+                                                <img :src="car.img_url" :alt="car.img_url" width="190" height="120">
+                                                <router-link to="/Cars"><button class="btn  py-1 px-0">{{ car.name
+                                                }}</button> </router-link>
+                                            </div>
+
+                                            <div style="background-color: #1351d8;">
+                                                <router-link class="nav-link" to="/Cars">Minden modell</router-link>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <router-link class="nav-link" to="/Profile">Ford fiók</router-link>
+                                    <router-link class="nav-link" to="/Service">Szervíz</router-link>
+
+                                    <a href="#kapcsolat" class="nav-link">Kapcsolat</a>
+
+
+                                    <div class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Továbbiak</a>
+                                        <div class="dropdown-menu rounded-0 m-0">
+
+                                            <router-link class="dropdown-item" to="/History">Története</router-link>
+                                            <router-link class="dropdown-item" to="/About">Rólunk</router-link>
+                                            <router-link class="dropdown-item" to="/News">Hírek</router-link>
+                                            <router-link class="dropdown-item" to="/Boiling">Források</router-link>
+                                            <router-link class="dropdown-item"
+                                                to="/LoginRegistration">Regisztráció</router-link>
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <router-link to="/LoginRegistration"
+                                    class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Bejelenkezés/regisztráció</router-link>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
-
-
-    <router-view />
-
+    <div class="col-lg-12">
+        <div class="row gx-5">
+            <router-view />
+        </div>
+    </div>
 
 
 
@@ -214,5 +226,22 @@ td {
     padding-bottom: 5px;
     padding-left: 0px;
     padding-right: 250px;
+}
+
+
+/* kisebb képernyők esetén */
+@media (max-width: 767px) {
+    .navbar-brand img {
+        width: 100px;
+        height: auto;
+    }
+}
+
+/* közepes és nagyobb képernyők esetén */
+@media (min-width: 768px) {
+    .navbar-brand img {
+        width: 120px;
+        height: 60px;
+    }
 }
 </style>
