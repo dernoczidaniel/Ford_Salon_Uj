@@ -7,7 +7,7 @@ CREATE TABLE ford_salon.users (
   id INT(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   address VARCHAR(50) NOT NULL,
   telefon VARCHAR(50) NOT NULL,
   city VARCHAR(50) NOT NULL,

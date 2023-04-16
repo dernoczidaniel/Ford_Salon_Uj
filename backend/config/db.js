@@ -7,5 +7,7 @@ const connection = mysql.createPool({
     database: 'ford_salon'
 });
 
+
+
 module.exports = connection;
 
