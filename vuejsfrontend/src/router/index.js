@@ -12,6 +12,8 @@ import ConfiguratorView from "../views/Configurator.vue";
 import SummaryView from "../views/summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
+import login from "../components/login.vue";
+
 
 
 const router = createRouter({
@@ -83,6 +85,11 @@ const router = createRouter({
       path: "/summary",
       name: "summary",
       component: SummaryView,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: login,
     },
   ],
 

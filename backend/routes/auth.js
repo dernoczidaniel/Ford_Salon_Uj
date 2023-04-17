@@ -25,23 +25,22 @@ router.post('/login', (req, res) => {
         if (error) throw error;
 
         if (results.length == 0) {
-            req.session.message = 'Invalid email or password';
-            res.redirect('/login');
+            res.status(400).json({ message: 'Invalid email or password' });
         } else {
             const user = results[0];
 
             bcrypt.compare(password, user.password, (error, result) => {
                 if (result === true) {
                     req.session.userId = user.id;
-                    res.redirect('/dashboard');
+                    res.json({ message: 'Login successful' });
                 } else {
-                    req.session.message = 'Invalid email or password';
-                    res.redirect('/login');
+                    res.status(400).json({ message: 'Invalid email or password' });
                 }
             });
         }
     });
 });
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy((error) => {

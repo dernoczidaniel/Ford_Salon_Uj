@@ -30,19 +30,30 @@ router.post('/register', (req, res) => {
   const city = req.body.city;
   const birthdate = req.body.birthdate;
 
-  bcrypt.hash(password, 10, (error, hash) => {
-      if (error) throw error;
+  const query = 'SELECT * FROM users WHERE email = ?';
 
-      const query = 'INSERT INTO users (name, email, password, telefon, address, postalcode, city, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  connection.query(query, [email], (error, results) => {
+    if (error) throw error;
 
-      connection.query(query, [name, email, hash, telefon, address, postalcode, city, birthdate], (error, results) => {
+    if (results.length > 0) {
+      res.status(409).json({ message: 'A user with this email already exists.' });
+    } else {
+      bcrypt.hash(password, 10, (error, hash) => {
+        if (error) throw error;
+
+        const insertQuery = 'INSERT INTO users (name, email, password, telefon, address, postalcode, city, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+
+        connection.query(insertQuery, [name, email, hash, telefon, address, postalcode, city, birthdate], (error, results) => {
           if (error) throw error;
 
           req.session.message = 'Registration successful. Please login.';
-          res.redirect('/login');
+          res.status(200).json({ message: 'Registration successful. Please login.' });
+        });
       });
+    }
   });
 });
+
 
 router.get('/dashboard', (req, res) => {
     if (!req.session.userId) {
