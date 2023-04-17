@@ -5,7 +5,16 @@ import carsList from '../components/carsList.vue';
 import { useRoute } from 'vue-router';
 
 export default {
-
+    props: {
+        selectedCar: {
+            type: Object,
+            default: null
+        },
+        modelId: {
+            type: String,
+            default: ''
+        }
+    },
     mounted() {
         const modelId = this.$route.params.modelId;
         this.index = parseInt(modelId) - 1;
@@ -14,18 +23,19 @@ export default {
 
     data() {
         return {
+            name: '',
             models: [],
             cars: [],
             extras: [],
             price: 0,
-            description: '',
             kivalasztottszin: null,
             kivalasztottszinkulso: null,
             color: 'fehér',
             interiorcolor: 'fehér',
             colors: [],
             index: 0,
-            SelectedCar: [],
+            selectedCar: [], // change the property name to "selectedCar"
+            description: [],
         }
     },
 
@@ -54,9 +64,8 @@ export default {
                         this.price += extra.price;
                     }
                 }
-                this.$emit('carSelected', selectedCar);
-                this.$router.push({ name: 'summary', state: { selectedCar } })
-                console.log(selectedCar)
+                this.$emit('carSelected', this.selectedCar);
+                console.log(selectedCar);
 
             } else {
                 alert('Kérlek válaszd ki mindkét színt!');
@@ -70,40 +79,50 @@ export default {
     created() {
         DataService.getCars()
             .then((resp) => {
-                this.cars = resp;
+                if (typeof resp === 'string') {
+                    this.cars = JSON.parse(resp);
+                } else {
+                    this.cars = resp;
+                }
                 console.log(this.cars);
-
-                // colors list
                 this.colors = this.cars.map((car) => ({ color: car.color, interiorcolor: car.interiorcolor }));
             })
             .catch((err) => {
-                console.log(err);
+                console.log('Error while fetching cars:', err);
             });
 
         DataService.getModels()
             .then((resp) => {
-                this.models = resp;
+                if (typeof resp === 'string') {
+                    this.models = JSON.parse(resp);
+                } else {
+                    this.models = resp;
+                }
                 console.log(this.models);
                 fetch(this.models[this.index].description)
                     .then((response) => response.text())
                     .then((data) => {
                         this.description = data;
                     });
-                // add models[1].price to price
                 this.price += this.models[this.index].price;
             })
             .catch((err) => {
-                console.log(err);
+                console.log('Error while fetching models:', err);
             });
 
         DataService.getExtras()
             .then((resp) => {
-                this.extras = resp;
+                if (typeof resp === 'string') {
+                    this.extras = JSON.parse(resp);
+                } else {
+                    this.extras = resp;
+                }
                 console.log(this.extras);
             })
             .catch((err) => {
-                console.log(err);
+                console.log('Error while fetching extras:', err);
             });
+
     },
     watch: {
         index() {
@@ -204,7 +223,7 @@ export default {
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
-                            {{ SelectedCar }}
+                            {{ selectedCar }}
                             <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
                                 <button @click="selectAndSendCar">Kész</button>
                             </router-link>

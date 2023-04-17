@@ -1,14 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import GiffComponts from '../components/GiffComponts.vue';
-
 </script>
-
     <!-- Rendezés = Shift + alt + f -->
-
 <template>
     <GiffComponts></GiffComponts>
-
     <!-- Bemutatkozás -->
     <div class="col-lg-12">  
     <div class="container-fluid">
@@ -19,40 +15,24 @@ import GiffComponts from '../components/GiffComponts.vue';
                         style="object-fit: cover;">
                 </div>
             </div>
-
-
             <div class="col-lg-12">
                 <div class="mb-4">
                     <h1 class="display-3 text-uppercase mb-0">Üdv a Ford Motor Company oldalán </h1>
                 </div>
-
-
-
                 <h4 class="text-body mb-4">Autók minden életstílushoz!</h4>
-
-
                 <p class="mb-4">
                     Nézze meg modellkínálatunkat, és találja meg, melyik illik Önhöz a leginkább!
                 </p>
-
-
                 <h4 class="text-body mb-4">Az új Ford Focus</h4>
-
-
                 <p class="mb-4">Feltűnő új dizájnjával és új generációs intelligens megoldásaival a Ford Focus minden
                     korábbinál jobb vezetési élményt kínál.
                 </p>
-
                 <a href="/cars" class="btn btn-primary py-2 px-5">Aktuális ajánlataink</a>
-
             </div>
         </div>
     </div>
 </div>
     <!-- Bemutatkozás vége -->
-
-
-
     <!-- Legújabb autó leirás -->
     <div class="col-lg-12">
         <div class="container-fluid p-0 my-5">
@@ -77,18 +57,13 @@ import GiffComponts from '../components/GiffComponts.vue';
                             </p>
 
                             <a href="" class="btn btn-primary py-2 px-5">Érdekel</a>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Legújabb autó leirás vége -->
-
-
-
     <!-- Reklám -->
     <div class="container-fluid p-5 col-lg-12">
         <div class="row g-0">
@@ -102,9 +77,6 @@ import GiffComponts from '../components/GiffComponts.vue';
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                     </div>
-
-
-
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="/cars"><img src="../assets/img/Ad/1.jpeg" class="d-block w-100" alt="1ad"
@@ -112,23 +84,16 @@ import GiffComponts from '../components/GiffComponts.vue';
                             <h3 class=" text-uppercase m-4">Ismerje meg a Ford Mustang Mach-E teljesen elektromos autót!
                             </h3>
                         </div>
-
-
                         <div class="carousel-item">
                             <a href="/Service"><img src="../assets/img/Ad/2.jpeg" class="d-block w-100" alt="2ad"
                                     style="width:40%; height: 520px;" herf=""></a>
                             <h3 class=" text-uppercase m-4">Probálja ki a gyors szervizelésünket!</h3>
                         </div>
-
-
                         <div class="carousel-item">
                             <a href="/cars"><img src="../assets/img/Ad/3.jpg" class="d-block w-100" alt="3ad"
                                     style="width:40%;  height: 520px;" herf=""></a>
                             <h3 class=" text-uppercase m-4">Sport autót keres? Ford Mustang Gt!</h3>
                         </div>
-
-
-
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">
@@ -144,11 +109,7 @@ import GiffComponts from '../components/GiffComponts.vue';
             </div>
         </div>
     </div>
-
     <!-- Reklám vége -->
-
-
-
     <!-- Ajánlatok -->
     <div class="container-fluid p-5 col-lg-12">
         <div class="mb-5 text-center">
@@ -162,7 +123,6 @@ import GiffComponts from '../components/GiffComponts.vue';
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light rounded-circle mx-1" href="/cars">Érdekel</a>
-
                             </div>
                         </div>
                     </div>
@@ -179,7 +139,6 @@ import GiffComponts from '../components/GiffComponts.vue';
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light rounded-circle mx-1" href="/cars">Érdekel</a>
-
                             </div>
                         </div>
                     </div>
@@ -196,7 +155,6 @@ import GiffComponts from '../components/GiffComponts.vue';
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light rounded-circle mx-1" href="/cars">Érdekel</a>
-
                             </div>
                         </div>
                     </div>
@@ -209,5 +167,4 @@ import GiffComponts from '../components/GiffComponts.vue';
         </div>
     </div>
     <!-- Ajánlatok vége -->
-    <!-- Add icon library -->
 </template>

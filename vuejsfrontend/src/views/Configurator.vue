@@ -4,5 +4,6 @@ import Configurator from '../components/Configurator.vue';
 </script>
 
 <template>
-  <Configurator/>
+  <Configurator :selectedCar="selectedCar"/>
+  {{ selectedCar }}
 </template>
