@@ -1,74 +1,70 @@
 <template>
-    <div>
-      <h1>Regisztráció</h1>
-      <form @submit.prevent="submitForm" ref="formRef">
-        <div>
-          <label for="name">Név:</label>
-          <input type="text" id="name" v-model="name" required>
-        </div>
-        <div>
-          <label for="email">Email cím:</label>
-          <input type="email" id="email" v-model="email" required>
-        </div>
-        <div>
-          <label for="password">Jelszó:</label>
-          <input type="password" id="password" v-model="password" minlength="8" required>
-        </div>
-        <div v-if="password && !isStrongPassword(password)">
-          <p>A jelszónak legalább 8 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy kisbetűt, egy
-            nagybetűt, egy számot és egy speciális karaktert.</p>
-        </div>
-        <div>
-          <label for="city">Település:</label>
-          <input type="text" id="city" v-model="city" required>
-        </div>
-        <div>
-          <button type="submit">Regisztráció</button>
-        </div>
-        <div v-if="error">
-          <p>{{ error }}</p>
-        </div>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        name: '',
-        email: '',
-        password: '',
-        city: '',
-        error: ''
-      }
-    },
-    methods: {
-      submitForm() {
-        if (this.$refs.formRef.checkValidity() && this.isStrongPassword(this.password)) {
-          axios.post('/register', {
+  <div class="container">
+    <form @submit.prevent="register">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" v-model="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" v-model="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" v-model="password" required>
+      </div>
+      <!-- To be completed -->
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      telefon: '',
+      address: '',
+      postalcode: '',
+      city: '',
+      birthdate: ''
+    }
+  },
+  methods: {
+    async register() {
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
             name: this.name,
             email: this.email,
             password: this.password,
-            city: this.city
+            telefon: this.telefon,
+            address: this.address,
+            postalcode: this.postalcode,
+            city: this.city,
+            birthdate: this.birthdate
           })
-          .then(response => {
-            console.log(response.data);
-            // A sikeres regisztráció után a felhasználót átirányítjuk a köszönetoldalra
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          // Handle successful registration, e.g. redirect to a "success" page
         } else {
-          console.log('Hibás adatok');
+          const errorData = await response.json();
+          console.log(errorData);
+          // Handle registration error, e.g. display error message to user
         }
-      },
-      isStrongPassword(password) {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return regex.test(password);
-      }
-    }
+      } catch (error) {
+        console.error(error);
+        // Handle unexpected errors, e.g. display
+      }}
   }
-  </script>
+}
+</script>
