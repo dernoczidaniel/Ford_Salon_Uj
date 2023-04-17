@@ -11,19 +11,38 @@ export default {
     },
 
     setup() {
-        const models = ref([]);
+  const models = ref([]);
+  const isLoggedIn = ref(false);
 
-        DataService.getModels()
-            .then((resp) => {
-                models.value = resp;
-                console.log(models.value);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+  DataService.getModels()
+    .then((resp) => {
+      models.value = resp;
+      console.log(models.value);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-        return { models };
-    },
+  const checkLogin = () => {
+    const userToken = localStorage.getItem('token');
+    if (userToken) {
+      // TODO: validate user token on server
+      isLoggedIn.value = true;
+    }
+  };
+  checkLogin();
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    isLoggedIn.value = false;
+    router.push('/');
+  };
+
+  return { models, isLoggedIn, logout };
+},
+
+    
+    
 };
 </script>
 
@@ -102,6 +121,9 @@ export default {
                                 </div>
                                 <router-link to="/LoginRegistration"
                                     class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Bejelenkezés/regisztráció</router-link>
+                            </div>
+                            <div>      
+                                <button class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" @click="logout" v-if="isLoggedIn">Logout</button>
                             </div>
                         </nav>
                     </div>

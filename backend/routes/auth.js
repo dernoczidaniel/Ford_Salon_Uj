@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -9,13 +11,15 @@ const connection = mysql.createConnection({
     database: 'ford_salon'
 });
 
+// Login page
 router.get('/login', (req, res) => {
     res.render('login', {
         title: 'Login Page',
         message: req.session.message
-   
-})});
+    });
+});
 
+// Login endpoint
 router.post('/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -31,8 +35,11 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(password, user.password, (error, result) => {
                 if (result === true) {
-                    req.session.userId = user.id;
-                    res.json({ message: 'Login successful' });
+                    // Generate a JWT token
+                    const token = jwt.sign({ userId: user.id }, 'secret_key');
+
+                    // Send the token in the response
+                    res.json({ message: 'Login successful', token: token });
                 } else {
                     res.status(400).json({ message: 'Invalid email or password' });
                 }
@@ -41,7 +48,7 @@ router.post('/login', (req, res) => {
     });
 });
 
-
+// Logout endpoint
 router.get('/logout', (req, res) => {
     req.session.destroy((error) => {
         if (error) throw error;

@@ -23,7 +23,15 @@ app.get('/', (req, res) => {
   });
 });
 
-
+app.use(session({
+  secret: 'secret', // titkos kulcs a session adatok titkosításához
+  resave: false, // ha true, akkor minden requestnél újra menti a sessiont a szerver
+  saveUninitialized: true, // ha true, akkor ha az adott request nem módosítja a sessiont, akkor sem menti el
+  cookie: { // a session cookie beállításai
+    maxAge: 1000 * 60 * 60 * 24, // a session érvényessége 1 nap
+    sameSite: 'strict' // csak az azonos eredetű kérésekkel küldi el a cookie-t
+  }
+}));
 
 // Az EJS sablonmotor beállítása
 app.set('view engine', 'ejs');

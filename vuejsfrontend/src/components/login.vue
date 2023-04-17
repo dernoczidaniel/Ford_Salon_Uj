@@ -19,6 +19,9 @@
 <script>
 
 import router from '../router'
+import jwt_decode from 'jwt-decode';
+
+
 
 export default {
   data() {
@@ -45,6 +48,12 @@ export default {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
+
+          const token = data.token;
+          localStorage.setItem('token', token);
+          const decoded = jwt_decode(token);
+          console.log(decoded);
+
           router.push('/summary'); // navigálás a /dashboard oldalra
 
           // Handle successful login, e.g. redirect to the user dashboard
@@ -58,8 +67,26 @@ export default {
         console.error(error);
         // Handle unexpected errors, e.g. display
       }
+    },
+    logout() {
+      localStorage.removeItem('token');
+      router.push('/');
+    }
+  },
+  created() {
+    const userToken = localStorage.getItem('token');
+    if (userToken) {
+      try {
+        const decoded = jwt_decode(userToken);
+        console.log(decoded);
+        // TODO: validate user token on server
+        router.push('/summary');
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
+
 }
 
 </script>
