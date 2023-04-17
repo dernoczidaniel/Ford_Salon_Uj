@@ -13,6 +13,35 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" v-model="password" required>
       </div>
+
+
+
+      <div class="mb-3">
+        <label for="telefon" class="form-label">Telefon</label>
+        <input type="text" class="form-control" id="telefon" name="telefon" required>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required>
+      </div>
+      <div class="mb-3">
+        <label for="postalcode" class="form-label">Postal Code</label>
+        <input type="text" class="form-control" id="postalcode" name="postalcode" required>
+      </div>
+      <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" name="city" required>
+      </div>
+      <div class="mb-3">
+        <label for="birthdate" class="form-label">Birthdate</label>
+        <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+      </div>
+
+
+
+
+
+
       <!-- To be completed -->
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
@@ -36,10 +65,10 @@ export default {
   methods: {
     async register() {
       try {
-        const response = await fetch('/register', {
+        const response = await fetch('http://localhost:3000/register', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'register/json'
           },
           body: JSON.stringify({
             name: this.name,
@@ -64,7 +93,8 @@ export default {
       } catch (error) {
         console.error(error);
         // Handle unexpected errors, e.g. display
-      }}
+      }
+    }
   }
 }
 </script>
