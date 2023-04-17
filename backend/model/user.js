@@ -26,6 +26,8 @@ const User = {
         callback(null, result[0]);
       }
     });
-  }
+  },
+  
+
 };
 

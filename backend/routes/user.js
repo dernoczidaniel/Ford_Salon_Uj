@@ -20,35 +20,29 @@ router.get('/register', (req, res) => {
     });
 });
 
-router.post('/register', async (req, res) => {
-    try {
-      const { name, email, password,telefon,address,postalcode,city,birthdate } = req.body;
-  
-      // ellenőrizzük, hogy az email cím még nem lett-e regisztrálva
-      const existingUser = await User.findOne({ email });
-      if (existingUser) {
-        return res.status(400).json({ message: 'Ez az e-mail cím már regisztrálva van' });
-      }
-  
-      // ellenőrizzük, hogy a jelszó nem üres vagy null
-      if (!password) {
-        return res.status(400).json({ message: 'A jelszó nem lehet üres' });
-      }
-  
-      // létrehozzuk a sót és hash-eljük a jelszót
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-  
-      // létrehozzuk az új felhasználót az adatbázisban
-      const newUser = new User({ name, email, password: hashedPassword,telefon,address,postalcode,city,birthdate  });
-      const savedUser = await newUser.save();
-  
-      res.status(201).json({ message: 'Sikeres regisztráció' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Hiba történt a regisztráció során' });
-    }
+router.post('/register', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+  const telefon = req.body.telefon;
+  const address = req.body.address;
+  const postalcode = req.body.postalcode;
+  const city = req.body.city;
+  const birthdate = req.body.birthdate;
+
+  bcrypt.hash(password, 10, (error, hash) => {
+      if (error) throw error;
+
+      const query = 'INSERT INTO users (name, email, password, telefon, address, postalcode, city, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+
+      connection.query(query, [name, email, hash, telefon, address, postalcode, city, birthdate], (error, results) => {
+          if (error) throw error;
+
+          req.session.message = 'Registration successful. Please login.';
+          res.redirect('/login');
+      });
   });
+});
 
 router.get('/dashboard', (req, res) => {
     if (!req.session.userId) {
