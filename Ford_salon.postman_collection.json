@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "5592214a-1db4-4774-ac26-aa58778fdd45",
+		"name": "Ford_salon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26448110"
+	},
+	"item": [
+		{
+			"name": "Cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getCars",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getCars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Models",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getModels",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getModels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getUsers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getExtras",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getExtras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getPayment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Salons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ford/getSalons",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ford",
+						"getSalons"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
