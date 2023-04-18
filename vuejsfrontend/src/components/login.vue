@@ -54,7 +54,7 @@ export default {
           const decoded = jwt_decode(token);
           console.log(decoded);
 
-          router.push('/summary'); // navigálás a /dashboard oldalra
+          router.push('/'); // navigálás a /dashboard oldalra
 
           // Handle successful login, e.g. redirect to the user dashboard
         } else if (response.status === 401) {
