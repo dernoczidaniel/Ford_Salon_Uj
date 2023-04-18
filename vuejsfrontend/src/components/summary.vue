@@ -1,22 +1,15 @@
-<template>
-  <div>
-    ok
-    <h2>{{ selectedCar }}</h2>
-    <!-- további elemek -->
-  </div>
-</template>
+<script setup>
+//stores kell hozzá !!!!
 
-<script>
-export default {
-  name: "Summary",
-  props: {
-    selectedCar: {
-      type: String,
-      required: true
-    }
-    
-  },
+import dataservice from '../services/dataservice.js'
+import { ref } from 'vue'
+import { useAutoSend } from '../stores' //be kell importalni
 
-  
-};
+const kivAuto = useAutoSend() //majd hasznalni
+
+
 </script>
+<template>
+  ok
+  {{ kivAuto }}
+</template>
