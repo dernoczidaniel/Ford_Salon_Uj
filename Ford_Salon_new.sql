@@ -1,9 +1,7 @@
-﻿CREATE DATABASE ford_salon
-	CHARACTER SET utf8mb4
-	COLLATE utf8mb4_hungarian_ci;
+﻿USE fordszalon
 
 
-CREATE TABLE ford_salon.users (
+CREATE TABLE fordszalon.users (
   id INT(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -21,7 +19,7 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-CREATE TABLE ford_salon.payment (
+CREATE TABLE fordszalon.payment (
   id INT(11) NOT NULL AUTO_INCREMENT,
   price INT(11) NOT NULL,
   payment_method VARCHAR(50) NOT NULL,
@@ -32,7 +30,7 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-CREATE TABLE ford_salon.extras (
+CREATE TABLE fordszalon.extras (
   id INT(11) NOT NULL AUTO_INCREMENT,
   price INT(11) NOT NULL,
   name VARCHAR(50) NOT NULL,
@@ -43,7 +41,7 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-CREATE TABLE ford_salon.cars (
+CREATE TABLE fordszalon.cars (
   id INT(11) NOT NULL AUTO_INCREMENT,
   color VARCHAR(50) NOT NULL,
   interiorcolor VARCHAR(50) NOT NULL,
@@ -56,7 +54,7 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-CREATE TABLE ford_salon.salons (
+CREATE TABLE fordszalon.salons (
   id INT(11) NOT NULL AUTO_INCREMENT,
   admin VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -67,7 +65,7 @@ ENGINE = INNODB,
 CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
-CREATE TABLE ford_salon.models (
+CREATE TABLE fordszalon.models (
   id INT(11) NOT NULL AUTO_INCREMENT,
   price INT(11) NOT NULL,
   name VARCHAR(50) NOT NULL,
@@ -89,17 +87,17 @@ ENGINE = INNODB,
 CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
-ALTER TABLE ford_salon.cars 
+ALTER TABLE fordszalon.cars 
   ADD CONSTRAINT FK_cars_modelid FOREIGN KEY (modelid)
-    REFERENCES ford_salon.models(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.models(id) ON DELETE NO ACTION;
 
 
-ALTER TABLE ford_salon.cars 
+ALTER TABLE fordszalon.cars 
   ADD CONSTRAINT FK_cars_userid FOREIGN KEY (userid)
-    REFERENCES ford_salon.users(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.users(id) ON DELETE NO ACTION;
 
 
-CREATE TABLE ford_salon.users_payment (
+CREATE TABLE fordszalon.users_payment (
   userid INT(11) NOT NULL,
   paymentid INT(11) NOT NULL,
   PRIMARY KEY (userid, paymentid)
@@ -108,15 +106,15 @@ ENGINE = INNODB,
 CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
-ALTER TABLE ford_salon.users_payment 
+ALTER TABLE fordszalon.users_payment 
   ADD CONSTRAINT FK_users_payment_paymentid FOREIGN KEY (paymentid)
-    REFERENCES ford_salon.payment(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.payment(id) ON DELETE NO ACTION;
 
-ALTER TABLE ford_salon.users_payment 
+ALTER TABLE fordszalon.users_payment 
   ADD CONSTRAINT FK_users_payment_userid FOREIGN KEY (userid)
-    REFERENCES ford_salon.users(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.users(id) ON DELETE NO ACTION;
 
-CREATE TABLE ford_salon.cars_extras (
+CREATE TABLE fordszalon.cars_extras (
   carid INT(11) NOT NULL,
   extraid INT(11) NOT NULL,
   PRIMARY KEY (carid, extraid)
@@ -126,16 +124,16 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-ALTER TABLE ford_salon.cars_extras 
+ALTER TABLE fordszalon.cars_extras 
   ADD CONSTRAINT FK_cars_extras_carid FOREIGN KEY (carid)
-    REFERENCES ford_salon.cars(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.cars(id) ON DELETE NO ACTION;
 
-ALTER TABLE ford_salon.cars_extras 
+ALTER TABLE fordszalon.cars_extras 
   ADD CONSTRAINT FK_cars_extras_extraid FOREIGN KEY (extraid)
-    REFERENCES ford_salon.extras(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.extras(id) ON DELETE NO ACTION;
 
 
-CREATE TABLE ford_salon.cars_salons (
+CREATE TABLE fordszalon.cars_salons (
   carid INT(11) NOT NULL,
   salonid INT(11) NOT NULL,
   PRIMARY KEY (carid, salonid)
@@ -145,21 +143,20 @@ CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
 
-ALTER TABLE ford_salon.cars_salons 
+ALTER TABLE fordszalon.cars_salons 
   ADD CONSTRAINT FK_cars_salons_carid FOREIGN KEY (carid)
-    REFERENCES ford_salon.cars(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.cars(id) ON DELETE NO ACTION;
 
-ALTER TABLE ford_salon.cars_salons 
+ALTER TABLE fordszalon.cars_salons 
   ADD CONSTRAINT FK_cars_salons_salonid FOREIGN KEY (salonid)
-    REFERENCES ford_salon.salons(id) ON DELETE NO ACTION;
+    REFERENCES fordszalon.salons(id) ON DELETE NO ACTION;
 
 SET FOREIGN_KEY_CHECKS=0;
 
-USE ford_salon
 
-INSERT INTO cars (color, interiorcolor) VALUES ('piros', 'piros'), ('fekete', 'fekete'), ('fehér', 'fehér');
 
-INSERT INTO ford_salon.models(id, price, name, img_url, img_interior1, img_interior2, img_color1, img_color2, img_color3, description, motor, fuel, species) VALUES
+
+INSERT INTO fordszalon.models(id, price, name, img_url, img_interior1, img_interior2, img_color1, img_color2, img_color3, description, motor, fuel, species) VALUES
 (1, 10410000, 'FORD FOCUS TITANIUM', '../src/assets/img/Cars/Focus/Icon.png', '../src/assets/img/Cars/Focus/interior/black/black.jpg', '../src/assets/img/Cars/Focus/interior/white/white.jpg', '../src/assets/img/Cars/Focus/colors/black/black.png', '../src/assets/img/Cars/Focus/colors/white/white.png', '../src/assets/img/Cars/Focus/colors/red/red.png', '../description/Focus.txt','1.0l EcoBoost 125LE M6','Mild Hibrid', 'Családi'),
 (2, 27850000, 'FORD MUSTANG MACH-E', '../src/assets/img/Cars/Mustang Mach-E/Icon.png', '../src/assets/img/Cars/Mustang Mach-E/interior/black/black.jpeg', '../src/assets/img/Cars/Mustang Mach-E/interior/white/white.jpeg', '../src/assets/img/Cars/Mustang Mach-E/colors/black/black.png', '../src/assets/img/Cars/Mustang Mach-E/colors/white/white.png', '../src/assets/img/Cars/Mustang Mach-E/colors/red/red.png', '../description/Mach-E.txt','Standard range (75kWh) 269LE RWD Automata sebességváltó Zéró károsanyag kibocsátás','Elektromos', 'Családi'),
 (3, 22500000, 'FORD MUSTANG GT', '../src/assets/img/Cars/Mustang/Icon.png', '../src/assets/img/Cars/Mustang/interior/black/black.png', '../src/assets/img/Cars/Mustang/interior/white/white.png', '../src/assets/img/Cars/Mustang/colors/black/black.png', '../src/assets/img/Cars/Mustang/colors/white/white.png', '../src/assets/img/Cars/Mustang/colors/red/red.png', '../description/Mustang.txt','5.0l V8 450 LE 6 sebességes manuális','Benzin', 'Sport'),
@@ -179,3 +176,4 @@ INSERT INTO extras(id, price, name) VALUES
 INSERT INTO users(id, name, email, password, address, telefon, city, postalcode, birthdate) VALUES
 (1,'Teszt Elek','teszt@gmail.com','jelszo','tó út 21', '06302003042','Győr','9000', '2000.01.01');
 
+INSERT INTO cars (color, interiorcolor,modelid, userid) VALUES ('piros', 'piros',1,1), ('fekete', 'fekete',1,1), ('fehér', 'fehér',1,1);

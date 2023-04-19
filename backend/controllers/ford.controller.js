@@ -23,6 +23,19 @@ const Ford = {
             }
         })
     },
+    getCarsById(req,res){
+        let sql= 'SELECT * FROM cars WHERE id';
+        connection.query(sql, (err,data) => {
+            if (err){
+                res.status(500).send({
+                    message: err.message || "Database error"
+                });
+            } else {
+                res.send(data);
+                // res.send(data.map(x => x.fnev))
+            }
+        })
+    },
     getModels(req,res){
         let sql= 'SELECT * FROM models';
         connection.query(sql, (err,data) => {

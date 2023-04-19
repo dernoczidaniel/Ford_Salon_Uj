@@ -7,10 +7,10 @@ const User = require('../model/user');
 
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'ford_salon'
+  host: 'bgs.jedlik.eu',
+  user: 'fordszalon',
+  password: 'Fsz2023',
+  database: 'fordszalon'
 });
 
 router.get('/register', (req, res) => {
