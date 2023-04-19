@@ -110,7 +110,7 @@ export default {
                                             <router-link class="dropdown-item" to="/News">Hírek</router-link>
                                             <router-link class="dropdown-item" to="/Boiling">Források</router-link>
                                             <router-link class="dropdown-item"
-                                                to="/registration">Bejelenkezés</router-link>
+                                                to="/login">Bejelenkezés</router-link>
 
 
 
@@ -119,9 +119,11 @@ export default {
 
 
                                 </div>
-                                <router-link to="/registration"
-                                    class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Bejelenkezés</router-link>
-                                    <button class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" @click="logout" v-if="isLoggedIn">Logout</button>
+                                <router-link to="/login"
+                                    class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" v-if="isLoggedIn == false" >Bejelenkezés</router-link>
+
+
+                                    <button class="btn btn-danger py-md-3 px-md-5 d-none d-lg-block" @click="logout" v-if="isLoggedIn">Logout</button>
 
                             </div>
                         </nav>
