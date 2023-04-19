@@ -273,11 +273,13 @@ h6,
     background-repeat: no-repeat;
     background-size: 2000px 2000px;
 }
+
 .ServiceWalpapper {
     background-image: url("../img/Service/walpapper.jpg");
     background-repeat: no-repeat;
     background-size: 1910px 2000px;
 }
+
 .ServiceWalpapperColor {
     background-color: #1b1c1dfd;
 }
@@ -286,10 +288,12 @@ h6,
     display: flex;
     justify-content: center;
 }
+
 .right {
     display: flex;
     justify-content: right;
 }
+
 .left {
     display: flex;
     justify-content: left;
@@ -326,16 +330,16 @@ h6,
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
+}
+
 .Table2 {
     padding: 20px;
-  }
+}
 
 
 .tableConfig2 {
     border-spacing: 50px;
-  }
+}
 
 
 /* Iconok */
@@ -347,68 +351,71 @@ h6,
     width: 50px;
     text-align: center;
     text-decoration: none;
-  }
-  
+}
 
 
 
-  
-  /* Add a hover effect if you want */
-  .fa:hover {
+
+
+/* Add a hover effect if you want */
+.fa:hover {
     opacity: 0.7;
-  }
+}
 
 
 
-  /* Set a specific color for each brand */
-  
-  /* Facebook */
-  .fa-facebook {
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
     background: #3B5998;
     color: white;
-  }
-  
-  /* Twitter */
-  .fa-twitter {
+}
+
+/* Twitter */
+.fa-twitter {
     background: #55ACEE;
     color: white;
-  }
+}
 
-  .fa-google {
+.fa-google {
     background: #dd4b39;
     color: white;
-  }
+}
 
-  .fa-youtube {
+.fa-youtube {
     background: #bb0000;
     color: white;
-  }
+}
 
 
-  .fa-instagram {
+.fa-instagram {
     background: #125688;
     color: white;
-  }
+}
 
 /* /Iconok */
 
 
-.BodySize{
-    min-height: 690px;;
+.BodySize {
+    min-height: 690px;
+    ;
 }
 
 .Config {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .ConfigTd {
-    flex-basis: calc(100% / 3 - 10px); /* Az oszlopok szélessége a táblázat három részre bontása esetén */
+}
+
+.ConfigTd {
+    flex-basis: calc(100% / 3 - 10px);
+    /* Az oszlopok szélessége a táblázat három részre bontása esetén */
     margin: 5px;
-  }
+}
 
 .Register {
     padding-left: 60px;
     padding-right: 60px;
-  }
+}
+
