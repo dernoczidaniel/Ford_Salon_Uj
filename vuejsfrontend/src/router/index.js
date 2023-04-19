@@ -6,13 +6,13 @@ import HistoryView from "../views/History.vue";
 import AboutView from "../views/About.vue";
 import CarsView from "../views/Cars.vue";
 import BoilingView from "../views/Boiling.vue";
-import LoginRegistrationView from "../views/LoginRegistration.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
 import SummaryView from "../views/summary.vue";
 import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
-import login from "../components/login.vue";
+import login from "../views/login.vue";
+import registration from "../views/registration.vue";
 
 
 
@@ -51,11 +51,6 @@ const router = createRouter({
       component: BoilingView,
     },
     {
-      path: "/LoginRegistration",
-      name: "LoginRegistration",
-      component: LoginRegistrationView,
-    },
-    {
       path: "/Service",
       name: "Service",
       component: ServiceView,
@@ -90,6 +85,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: login,
+    },
+    {
+      path: "/registration",
+      name: "registration",
+      component: registration,
     },
   ],
 
