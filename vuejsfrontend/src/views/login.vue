@@ -1,13 +1,13 @@
 <template>
-  <body class="LoginRegistrationbackground BodySize">
-    <div class="">
+  <body class="LoginRegistrationbackground BodySize ">
+    <div class="center">
       <div class="container-fluid p-0 mt-0 center ">
-        <div class="position-relative">
+        <div class="position-relative ">
           <div class="row gx-5 mb-5">
             <div class="col-lg-12 mb-3 ">
 
-              <div class="LoginRegistrationbackgroundMenu">
-                <div class="m-4 p-4">
+              <div class="LoginRegistrationbackgroundMenu ">
+                <div class="m-4 p-4 ">
 
                   <div class="mb-4 ">
                     <h3 class="display-6 text-uppercase mb-0 text-light">Bejelenkezés</h3>
@@ -53,6 +53,7 @@
                   </form>
 
 
+                  <hr>
 
                   <div class="mb-3 m-5">
                     <router-link to="registration">
