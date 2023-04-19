@@ -6,60 +6,59 @@
           <div class="row gx-5 mb-5">
             <div class="col-lg-12 mb-5">
 
-              <div class="LoginRegistrationbackgroundMenu  text-light">
-                <div class="m-4 p-4">
+              <div class="LoginRegistrationbackgroundMenu Register text-light">
+                <div class="mt-3 p-4 " >
+                    <div class="mb-4 ">
+                      <h3 class="display-6 text-uppercase mb-3 text-light">Regiszráció</h3>
+                    </div>
 
-                  <div class="mb-4 ">
-                    <h3 class="display-6 text-uppercase mb-0 text-light">Regiszráció</h3>
+                    <form @submit.prevent="register">
+                      <div class="mb-3 ">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" v-model="name" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" v-model="email" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" v-model="password" required>
+                      </div>
+
+
+
+                      <div class="mb-3">
+                        <label for="telefon" class="form-label">Telefon</label>
+                        <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" v-model="address" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="postalcode" class="form-label">Postal Code</label>
+                        <input type="text" class="form-control" id="postalcode" name="postalcode" v-model="postalcode"
+                          required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" v-model="city" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="birthdate" class="form-label">Birthdate</label>
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate"
+                          required>
+                      </div>
+                      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+
+
+
+                      <!-- To be completed -->
+                      <button type="submit" class="btn btn-outline-secondary m-5 center">Register</button>
+                    </form>
                   </div>
-
-                  <form @submit.prevent="register">
-                    <div class="mb-3">
-                      <label for="name" class="form-label">Name</label>
-                      <input type="text" class="form-control" id="name" v-model="name" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="email" v-model="email" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" v-model="password" required>
-                    </div>
-
-
-
-                    <div class="mb-3">
-                      <label for="telefon" class="form-label">Telefon</label>
-                      <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="address" class="form-label">Address</label>
-                      <input type="text" class="form-control" id="address" name="address" v-model="address" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="postalcode" class="form-label">Postal Code</label>
-                      <input type="text" class="form-control" id="postalcode" name="postalcode" v-model="postalcode"
-                        required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="city" class="form-label">City</label>
-                      <input type="text" class="form-control" id="city" name="city" v-model="city" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="birthdate" class="form-label">Birthdate</label>
-                      <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate"
-                        required>
-                    </div>
-                    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
-
-
-
-
-                    <!-- To be completed -->
-                    <button type="submit" class="btn btn-primary">Register</button>
-                  </form>
-                </div>
               </div>
             </div>
           </div>

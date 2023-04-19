@@ -407,3 +407,8 @@ h6,
     flex-basis: calc(100% / 3 - 10px); /* Az oszlopok szélessége a táblázat három részre bontása esetén */
     margin: 5px;
   }
+
+.Register {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
