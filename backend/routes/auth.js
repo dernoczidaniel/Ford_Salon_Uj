@@ -38,8 +38,14 @@ router.post('/login', (req, res) => {
                     // Generate a JWT token
                     const token = jwt.sign({ userId: user.id }, 'secret_key');
 
-                    // Send the token in the response
-                    res.json({ message: 'Login successful', token: token });
+                    // Get user details from the database
+                    const userDetailsQuery = 'SELECT name, email, telefon, city, postalcode, address FROM users WHERE id = ?';
+                    connection.query(userDetailsQuery, [user.id], (error, userDetailsResults) => {
+                        if (error) throw error;
+
+                        // Send the token and user details in the response
+                        res.json({ message: 'Login successful', token: token, user: userDetailsResults[0] });
+                    });
                 } else {
                     res.status(400).json({ message: 'Invalid email or password' });
                 }
@@ -47,6 +53,7 @@ router.post('/login', (req, res) => {
         }
     });
 });
+
 
 // Logout endpoint
 router.get('/logout', (req, res) => {

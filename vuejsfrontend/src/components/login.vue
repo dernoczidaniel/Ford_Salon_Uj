@@ -20,15 +20,18 @@
 
 import router from '../router'
 import jwt_decode from 'jwt-decode';
-
-
+import store from '../stores/index';
+import { mapGetters } from 'vuex';
 
 export default {
+  computed: {
+    ...mapGetters(['user'])
+  },
   data() {
     return {
       email: '',
       password: '',
-      errorMessage: ''
+      errorMessage: '',
     }
   },
   methods: {
@@ -54,22 +57,30 @@ export default {
           const decoded = jwt_decode(token);
           console.log(decoded);
 
-          router.push('/'); // navigálás a /dashboard oldalra
+          const user = {
+            id: decoded.id,
+            name: decoded.name,
+            email: decoded.email
+          };
+          localStorage.setItem('user', JSON.stringify(user));
 
-          // Handle successful login, e.g. redirect to the user dashboard
+          // Set user object in store
+          this.$store.dispatch('setUser', user);
+
+          router.push('/');
         } else if (response.status === 401) {
           const errorData = await response.json();
           this.errorMessage = errorData.message;
           console.log(errorData);
-          // Handle login error, e.g. display error message to user
         }
       } catch (error) {
         console.error(error);
-        // Handle unexpected errors, e.g. display
       }
     },
     logout() {
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      this.$store.dispatch('setUser', {});
       router.push('/');
     }
   },
@@ -79,14 +90,17 @@ export default {
       try {
         const decoded = jwt_decode(userToken);
         console.log(decoded);
-        // TODO: validate user token on server
+
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.$store.dispatch('setUser', user);
+
         router.push('/summary');
       } catch (error) {
         console.error(error);
       }
     }
   }
-
 }
+
 
 </script>

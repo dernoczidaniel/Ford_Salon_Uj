@@ -1,20 +1,23 @@
-import { defineStore } from "pinia";
+import { createStore } from 'vuex';
 
-export const useAutoSend = defineStore({
-  id: 'useAutoSend',
-  state: ()=>({ 
-      kivAuto: []
 
-   }),
-  getters:{
-      getAuto(state){
-          
-          return state.kivalasztottAuto;
-      },
+const store = createStore({
+  state: {
+    user: {}
   },
-  actions:{
-      autoKivalasztas(kivalasztottAuto){
-          this.kivAuto = kivalasztottAuto
-      }
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+    }
+  },
+  actions: {
+    setUser({ commit }, user) {
+      commit('setUser', user);
+    }
+  },
+  getters: {
+    user: state => state.user
   }
 });
+
+export default store;

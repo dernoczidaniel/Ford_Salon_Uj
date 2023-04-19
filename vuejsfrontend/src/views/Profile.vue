@@ -1,6 +1,14 @@
 
 
+<script>
+import { mapState } from 'vuex';
 
+export default {
+  computed: {
+    ...mapState(['user'])
+  }
+}
+</script>
 
 
 
@@ -11,7 +19,11 @@
 
 
 
-
+<div>
+    <p>User ID: {{ user.id }}</p>
+    <p>User Name: {{ user.name }}</p>
+    <p>User Email: {{ user.email }}</p>
+  </div>
 
 
 

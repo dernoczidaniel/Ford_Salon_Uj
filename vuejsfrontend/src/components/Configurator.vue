@@ -3,7 +3,7 @@ import DataService from "../services/dataservice"
 import { ref, watch, reactive } from 'vue'
 import carsList from '../components/carsList.vue';
 import { useRoute } from 'vue-router';
-import { useAutoSend } from '../stores';
+// import { useAutoSend } from '../stores';
 import { onMounted } from 'vue';
 
 export default {
