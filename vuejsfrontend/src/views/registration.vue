@@ -9,7 +9,7 @@
               <div class="LoginRegistrationbackgroundMenu Register text-light">
                 <div class="mt-3 p-4 " >
                     <div class="mb-4 ">
-                      <h3 class="display-6 text-uppercase mb-3 text-light">Regiszráció</h3>
+                      <h3 class="display-6 text-uppercase mb-3 text-light">Regisztráció</h3>
                     </div>
 
                     <form @submit.prevent="register">
