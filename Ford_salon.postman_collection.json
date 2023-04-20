@@ -12,11 +12,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getCars",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getCars",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
@@ -32,11 +34,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getModels",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getModels",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
@@ -52,11 +56,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getUsers",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getUsers",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
@@ -72,11 +78,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getExtras",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getExtras",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
@@ -92,11 +100,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getPayment",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getPayment",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
@@ -112,15 +122,117 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/ford/getSalons",
+					"raw": "https://weary-tick-miniskirt.cyclic.app/api/ford/getSalons",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"ford",
 						"getSalons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "asd@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "igen",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://weary-tick-miniskirt.cyclic.app/login",
+					"protocol": "https",
+					"host": [
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Daniel",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "asd@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "igen",
+							"type": "text"
+						},
+						{
+							"key": "postalcode",
+							"value": "8600",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "ablak u 34",
+							"type": "text"
+						},
+						{
+							"key": "telefon",
+							"value": "07838264",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "pápa",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "2023.02.31",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://weary-tick-miniskirt.cyclic.app/register",
+					"protocol": "https",
+					"host": [
+						"weary-tick-miniskirt",
+						"cyclic",
+						"app"
+					],
+					"path": [
+						"register"
 					]
 				}
 			},
