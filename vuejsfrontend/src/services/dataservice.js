@@ -1,5 +1,5 @@
 import Axios from 'axios';
-Axios.defaults.baseURL = 'http://localhost:3000/api/ford';
+Axios.defaults.baseURL = 'https://weary-tick-miniskirt.cyclic.app/api/ford';
 
 export default {
     getCars(){
