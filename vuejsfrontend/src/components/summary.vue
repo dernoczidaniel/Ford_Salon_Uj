@@ -1,15 +1,34 @@
-<script setup>
+<script >
 //stores kell hozzá !!!!
 
 import dataservice from '../services/dataservice.js'
 import { ref } from 'vue'
-// import { useAutoSend } from '../stores' //be kell importalni
+import { useRouter } from 'vue-router'
+export default {
+    setup() {
+        const salons = ref([]);
 
-const kivAuto = useAutoSend() //majd hasznalni
+        // const router = useRouter();
+        dataservice.getSalons()
+            .then((resp) => {
+                salons.value = resp;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+            return { salons };
+    }
+  }
+
+
 
 
 </script>
 <template>
-  ok
-  {{ kivAuto }}
+       <div>
+        <select>
+          <option class="selected" v-for="salon in salons" :value="address">{{ salon.address }}
+          </option>
+        </select>
+       </div>
 </template>
