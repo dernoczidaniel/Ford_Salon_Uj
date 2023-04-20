@@ -1,10 +1,10 @@
 <template>
   <body class="LoginRegistrationbackground BodySize ">
     <div class="center">
-      <div class="container-fluid p-0 mt-0 center ">
+      <div class="container-fluid p-0 mt-5 center ">
         <div class="position-relative ">
           <div class="row gx-5 mb-5">
-            <div class="col-lg-12 mb-3 ">
+            <div class="col-lg-12 m-5 ">
 
               <div class="LoginRegistrationbackgroundMenu ">
                 <div class="m-4 p-4 ">
