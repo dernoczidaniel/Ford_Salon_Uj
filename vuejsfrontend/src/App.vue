@@ -118,7 +118,7 @@ export default {
                                                 <router-link class="dropdown-item" to="/About">Rólunk</router-link>
                                                 <router-link class="dropdown-item" to="/News">Hírek</router-link>
                                                 <router-link class="dropdown-item" to="/Boiling">Források</router-link>
-                                                <router-link class="dropdown-item" to="/login">Bejelenkezés</router-link>
+                                                <router-link class="dropdown-item" to="/login">bejelentkezés</router-link>
 
 
 
