@@ -7,20 +7,20 @@ import { useRoute } from 'vue-router';
 import { onMounted } from 'vue';
 
 export default {
+
     props: {
-        selectedCar: {
-            type: Object,
-            default: null
-        },
         modelId: {
             type: String,
             default: ''
-        }
+        },
+        kivalasztottszin: Object,
+        kivalasztottszinkulso: Object,
     },
     mounted() {
         const modelId = this.$route.params.modelId;
-        this.index = parseInt(modelId) - 1;
-        // Do something with the modelId parameter
+        if (modelId) {
+            this.index = parseInt(modelId) - 1;
+        }
     },
 
     data() {
@@ -35,15 +35,16 @@ export default {
             color: 'fehér',
             interiorcolor: 'fehér',
             colors: [],
-            index: 0,
+            index: 0, // default value is 0
             selectedCar: [], // change the property name to "selectedCar"
-            description: [],
+            description: '',
         }
     },
 
     components: {
         carsList
     },
+
 
     methods: {
         SzinValaszto() {
@@ -52,30 +53,16 @@ export default {
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
         },
-        selectAndSendCar() {
-            if (this.kivalasztottszin && this.kivalasztottszinkulso) {
-                const selectedCar = {
-                    color: this.kivalasztottszin.color,
-                    interiorcolor: this.interiorcolor,
-                    modelIndex: this.index,
-                    extras: []
-                };
-                for (const extra of this.extras) {
-                    if (extra.selected) {
-                        selectedCar.extras.push({ name: extra.name, price: extra.price });
-                        this.price += extra.price;
-                    }
+
+        goToSummary() {
+            this.$router.push({
+                name: 'summary',
+                props: {
+                    kivalasztottszin: this.kivalasztottszin,
+                    kivalasztottszinkulso: this.kivalasztottszinkulso
                 }
-                this.$emit('carSelected', this.selectedCar);
-                console.log(selectedCar);
-
-            } else {
-                alert('Kérlek válaszd ki mindkét színt!');
-                console.log("üres")
-            }
+            })
         },
-
-
     },
 
     created() {
@@ -226,9 +213,7 @@ export default {
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
                             {{ selectedCar }}
-                            <router-link :to="{ name: 'summary', params: { selectedCar: JSON.stringify(selectedCar) } }">
-                                <button @click="selectAndSendCar">Kész</button>
-                            </router-link>
+                            <button @click="goToSummary">Go to Summary</button>
                         </div>
                     </div>
                 </div>

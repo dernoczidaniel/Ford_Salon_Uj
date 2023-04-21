@@ -13,7 +13,22 @@ import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
 import login from "../views/login.vue";
 import registration from "../views/registration.vue";
+// import Summary from './components/Summary.vue'
 
+// const routes = [
+//   // other routes
+//   {
+//     path: '/summary',
+//     name: 'summary',
+//     component: Summary,
+//     props: true
+//   }
+// ]
+
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes
+// })
 
 
 const router = createRouter({

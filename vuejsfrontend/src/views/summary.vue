@@ -1,9 +1,16 @@
-<script setup>
-import Summary from '../components/summary.vue';
+import Summary from './components/Summary.vue'
 
-</script>
+const routes = [
+  // other routes
+  {
+    path: '/summary',
+    name: 'summary',
+    component: Summary,
+    props: true
+  }
+]
 
-<template>
-  ok
-  <Summary/>
-</template>
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
