@@ -68,6 +68,17 @@ export default {
                 return Promise.reject(err);
             })
     },
+    getOrders(){
+        return Axios.get('/getOrders')
+            .then(resp => {
+                console.log(resp.data);
+                return resp.data;
+            })
+            .catch(err =>{
+                console.log(err);
+                return Promise.reject(err);
+            })
+    },
 
 
 }

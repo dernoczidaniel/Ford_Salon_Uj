@@ -87,6 +87,26 @@ ENGINE = INNODB,
 CHARACTER SET utf8mb4,
 COLLATE utf8mb4_hungarian_ci;
 
+CREATE TABLE fordszalon.orders (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  user_id INT(11) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  model VARCHAR(255) NOT NULL,
+  price DECIMAL(19, 2) NOT NULL,
+  color VARCHAR(255) NOT NULL,
+  interiorcolor VARCHAR(255) NOT NULL,
+  extra VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+)
+ENGINE = INNODB,
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_general_ci;
+
+ALTER TABLE fordszalon.orders 
+  ADD CONSTRAINT FK_orders_user_id FOREIGN KEY (user_id)
+    REFERENCES fordszalon.users(id) ON DELETE NO ACTION;
+
 ALTER TABLE fordszalon.cars 
   ADD CONSTRAINT FK_cars_modelid FOREIGN KEY (modelid)
     REFERENCES fordszalon.models(id) ON DELETE NO ACTION;
