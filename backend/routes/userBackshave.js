@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const User = require('../model/user');
 
 
@@ -15,10 +14,10 @@ const connection = mysql.createConnection({
 });
 
 router.get('/register', (req, res) => {
-  res.render('register', {
-    title: 'Register Page',
-    message: req.session.message
-  });
+    res.render('register', {
+        title: 'Register Page',
+        message: req.session.message
+    });
 });
 
 router.post('/register', (req, res) => {
@@ -47,29 +46,6 @@ router.post('/register', (req, res) => {
         connection.query(insertQuery, [name, email, hash, telefon, address, postalcode, city, birthdate], (error, results) => {
           if (error) throw error;
 
-          const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'fordsalonjedlik@gmail.com', // Az email feladója
-              pass: 'Jedlik2023' // Az email fiók jelszava
-            }
-          });
-          
-          const mailOptions = {
-            from: 'fordsalonjedlik@gmail.com',
-            to: email,
-            subject: 'Registration successful',
-            text: `Dear ${name},\n\nThank you for registering with us. We look forward to seeing you soon.\n\nBest regards,\nYour Company`
-          };
-
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          });
-
           req.session.message = 'Registration successful. Please login.';
           res.status(200).json({ message: 'Registration successful. Please login.' });
         });
@@ -79,23 +55,22 @@ router.post('/register', (req, res) => {
 });
 
 
-
 router.get('/dashboard', (req, res) => {
-  if (!req.session.userId) {
-    res.redirect('/login');
-  } else {
-    const query = 'SELECT * FROM users WHERE id = ?';
+    if (!req.session.userId) {
+        res.redirect('/login');
+    } else {
+        const query = 'SELECT * FROM users WHERE id = ?';
 
-    connection.query(query, [req.session.userId], (error, results) => {
-      if (error) throw error;
+        connection.query(query, [req.session.userId], (error, results) => {
+            if (error) throw error;
 
-      const user = results[0];
-      res.render('dashboard', {
-        title: 'Dashboard',
-        user: user
-      });
-    });
-  }
+            const user = results[0];
+            res.render('dashboard', {
+                title: 'Dashboard',
+                user: user
+            });
+        });
+    }
 });
 
 module.exports = router;
