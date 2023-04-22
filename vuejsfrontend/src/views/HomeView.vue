@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import GiffComponts from '../components/GiffComponts.vue';
 </script>
-    <!-- Rendezés = Shift + alt + f -->
 <template>
     <GiffComponts></GiffComponts>
     <!-- Bemutatkozás -->

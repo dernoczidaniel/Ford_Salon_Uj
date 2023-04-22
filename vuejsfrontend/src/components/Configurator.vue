@@ -1,20 +1,17 @@
 <script>
 import DataService from "../services/dataservice"
-import { ref, watch, reactive } from 'vue'
 import carsList from '../components/carsList.vue';
-import { useRoute } from 'vue-router';
-// import { useAutoSend } from '../stores';
-import { onMounted } from 'vue';
-
+import { mapMutations, mapGetters } from 'vuex';
 export default {
-
     props: {
         modelId: {
             type: String,
             default: ''
         },
-        kivalasztottszin: Object,
-        kivalasztottszinkulso: Object,
+        selectedCar: {
+            type: Array,
+            default: () => []
+        },
     },
     mounted() {
         const modelId = this.$route.params.modelId;
@@ -36,7 +33,7 @@ export default {
             interiorcolor: 'fehér',
             colors: [],
             index: 0, // default value is 0
-            selectedCar: [], // change the property name to "selectedCar"
+            selectedCars: [], // change the property name to "selectedCar"
             description: '',
         }
     },
@@ -44,25 +41,21 @@ export default {
     components: {
         carsList
     },
-
+    computed: {
+        ...mapGetters(['color'])
+    },
 
     methods: {
+        ...mapMutations(['setColor']),
         SzinValaszto() {
             this.color = this.kivalasztottszin.color;
         },
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
         },
-
-        goToSummary() {
-            this.$router.push({
-                name: 'summary',
-                props: {
-                    kivalasztottszin: this.kivalasztottszin,
-                    kivalasztottszinkulso: this.kivalasztottszinkulso
-                }
-            })
-        },
+        Send(){
+            this.$store.commit('setColor', this.color);
+        }
     },
 
     created() {
@@ -128,7 +121,9 @@ export default {
 </script>
 
 <template>
+ 
     {{ index }}
+
     <div class="container-fluid mt-0 center  ">
         <div class="position-relative">
             <div class="row gx-5">
@@ -212,8 +207,8 @@ export default {
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
-                            {{ selectedCar }}
-                            <button @click="goToSummary">Go to Summary</button>
+                            <button @button="Send">Color to Summary</button>
+                            <router-link to="/summary">kezs</router-link>
                         </div>
                     </div>
                 </div>
@@ -233,5 +228,11 @@ export default {
     <h2 class="m-2">Leírás</h2>
     <p class="m-2">{{ description }}</p>
     <div class="container-fluid mt-0 p-5">
+    </div>
+    <div v-if="selectedCars.length != 0">
+        <h2>Rendelés</h2>
+        Kiválasztott autó: {{ models.name }}
+
+        <button @click="vissza">Vissza</button>
     </div>
 </template>

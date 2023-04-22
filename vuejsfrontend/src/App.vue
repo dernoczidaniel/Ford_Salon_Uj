@@ -14,6 +14,9 @@ export default {
     components: {
         carsId: carsComponent
     },
+    selectedCars() {
+    return this.$store.state.selectedCars;
+  },
 
     setup() {
         const models = ref([]);

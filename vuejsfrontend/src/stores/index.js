@@ -1,22 +1,32 @@
-import { createStore } from 'vuex';
+import Vuex from 'vuex';
 
-
-const store = createStore({
+export const store = new Vuex.Store({
   state: {
-    user: {}
+    id: '0',
+    model: 'Mustang',
+    color: 'fehér',
+    interiorcolor: 'fehér',
+    extras: ['nincs'],
+    Price: '0',
   },
   mutations: {
-    setUser(state, user) {
-      state.user = user;
-    }
-  },
-  actions: {
-    setUser({ commit }, user) {
-      commit('setUser', user);
+    setColor(state, color) {
+      state.color = color;
     }
   },
   getters: {
-    user: state => state.user
+    color: state => state.color,
+    interiorcolor: state => state.interiorcolor,
+    model: state => state.model,
+    extras: state => state.extras,
+    Price: state => state.Price,
+
+  },
+  actions: {
+    setColor(context, color) {
+      console.log('New color:', color); // logoljuk az új színt
+      context.commit('setColor', color);
+    }
   }
 });
 

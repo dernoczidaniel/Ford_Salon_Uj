@@ -1,16 +1,26 @@
-import Summary from './components/Summary.vue'
+<template>
+  <body class="BodySize">
 
-const routes = [
-  // other routes
-  {
-    path: '/summary',
-    name: 'summary',
-    component: Summary,
-    props: true
+    <div class="container">
+      <div class="m-5">
+        <h1 class="text-center m-5">Rendelés összegzése</h1>
+      </div>
+
+      <div class="m-5">
+
+        <Summary></Summary>
+      </div>
+    </div>
+
+  </body>
+</template>
+
+<script>
+import Summary from '../components/summary.vue';
+
+export default {
+  components: {
+    Summary
   }
-]
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
+};
+</script>

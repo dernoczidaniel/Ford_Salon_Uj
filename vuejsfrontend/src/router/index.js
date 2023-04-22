@@ -13,7 +13,6 @@ import DonePageView from "../views/Done.vue";
 import TestView from "../views/test.vue";
 import login from "../views/login.vue";
 import registration from "../views/registration.vue";
-// import Summary from './components/Summary.vue'
 
 // const routes = [
 //   // other routes
@@ -95,6 +94,7 @@ const router = createRouter({
       path: "/summary",
       name: "summary",
       component: SummaryView,
+      props: true
     },
     {
       path: "/login",
