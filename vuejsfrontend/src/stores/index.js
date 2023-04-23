@@ -1,3 +1,4 @@
+
 import Vuex from 'vuex';
 
 export const store = new Vuex.Store({
@@ -8,10 +9,15 @@ export const store = new Vuex.Store({
     interiorcolor: 'fehér',
     extras: ['nincs'],
     Price: '0',
+    user: {}
+
   },
   mutations: {
     setColor(state, color) {
       state.color = color;
+    },
+    setUser(state, user) {
+      state.user = user;
     }
   },
   getters: {
@@ -26,6 +32,9 @@ export const store = new Vuex.Store({
     setColor(context, color) {
       console.log('New color:', color); // logoljuk az új színt
       context.commit('setColor', color);
+    },
+    setUser({ commit }, user) {
+      commit('setUser', user);
     }
   }
 });

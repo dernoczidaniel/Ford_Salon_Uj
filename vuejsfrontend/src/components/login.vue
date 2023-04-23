@@ -21,17 +21,18 @@
 import router from '../router'
 import jwt_decode from 'jwt-decode';
 import store from '../stores/index';
-import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['user'])
+    user() {
+      return this.$store.getters.user;
+    }
   },
   data() {
     return {
       email: '',
       password: '',
-      errorMessage: '',
+      errorMessage: ''
     }
   },
   methods: {
@@ -47,7 +48,7 @@ export default {
             password: this.password
           })
         });
-        
+
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -58,14 +59,13 @@ export default {
           console.log(decoded);
 
           const user = {
-            id: decoded.id,
-            name: decoded.name,
-            email: decoded.email
+            id: decoded.userId,
+            name: data.user.name,
+            email: data.user.email
           };
-          localStorage.setItem('user', JSON.stringify(user));
 
           // Set user object in store
-          this.$store.dispatch('setUser', user);
+          store.dispatch('setUser', user);
 
           router.push('/');
         } else if (response.status === 401) {
@@ -80,7 +80,7 @@ export default {
     logout() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      this.$store.dispatch('setUser', {});
+      store.dispatch('setUser', {});
       router.push('/');
     }
   },
@@ -92,7 +92,7 @@ export default {
         console.log(decoded);
 
         const user = JSON.parse(localStorage.getItem('user'));
-        this.$store.dispatch('setUser', user);
+        store.dispatch('setUser', user);
 
         router.push('/summary');
       } catch (error) {
