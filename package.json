@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "easy-log": "^0.1.2",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
     "nodemon": "^2.0.20"
   }
 }
