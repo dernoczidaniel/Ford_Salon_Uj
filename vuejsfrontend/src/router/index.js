@@ -9,8 +9,6 @@ import BoilingView from "../views/Boiling.vue";
 import ProfileView from "../views/Profile.vue";
 import ConfiguratorView from "../views/Configurator.vue";
 import SummaryView from "../views/summary.vue";
-import DonePageView from "../views/Done.vue";
-import TestView from "../views/test.vue";
 import login from "../views/login.vue";
 import registration from "../views/registration.vue";
 
@@ -79,16 +77,6 @@ const router = createRouter({
       name: "Configurator",
       component: ConfiguratorView,
       props: true,
-    },
-    {
-      path: "/Done",
-      name: "Done",
-      component: DonePageView,
-    },
-    {
-      path: "/test",
-      name: "test",
-      component: TestView,
     },
     {
       path: "/summary",
