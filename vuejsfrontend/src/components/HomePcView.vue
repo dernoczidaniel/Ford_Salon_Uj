@@ -1,40 +1,40 @@
 <template>
- <!-- Reklám videó -->
- <div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img style="width:100%; height: 500px;" src="../assets/img/Header/bodyGif.gif" alt="FordHeaderGif">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 800px;">
-                        <h1 class="display-2 text-white text-uppercase mb-md-4">Ford motor company</h1>
+    <!-- Reklám videó -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img style="width:100%; height: 500px;" src="../assets/img/Header/bodyGif.gif" alt="FordHeaderGif">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 800px;">
+                            <h1 class="display-2 text-white text-uppercase mb-md-4">Ford motor company</h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- video -->
-<div class="col-lg-12">  
-    <div class="container-fluid">
-        <div class="row gx-5">
-            <div class="col-lg-12">
-                <div class="mb-4">
-                    <h1 class="display-3 text-uppercase mb-0">Üdv a Ford Motor Company oldalán </h1>
+    <!-- video -->
+    <div class="col-lg-12">
+        <div class="container-fluid">
+            <div class="row gx-5">
+                <div class="col-lg-12">
+                    <div class="mb-4">
+                        <h1 class="display-3 text-uppercase mb-0">Üdv a Ford Motor Company oldalán </h1>
+                    </div>
+                    <h4 class="text-body mb-4">Autók minden életstílushoz!</h4>
+                    <p class="mb-4">
+                        Nézze meg modellkínálatunkat, és találja meg, melyik illik Önhöz a leginkább!
+                    </p>
+                    <h4 class="text-body mb-4">Az új Ford Focus</h4>
+                    <p class="mb-4">Feltűnő új dizájnjával és új generációs intelligens megoldásaival a Ford Focus minden
+                        korábbinál jobb vezetési élményt kínál.
+                    </p>
+                    <a href="/cars" class="btn btn-primary py-2 px-5">Aktuális ajánlataink</a>
                 </div>
-                <h4 class="text-body mb-4">Autók minden életstílushoz!</h4>
-                <p class="mb-4">
-                    Nézze meg modellkínálatunkat, és találja meg, melyik illik Önhöz a leginkább!
-                </p>
-                <h4 class="text-body mb-4">Az új Ford Focus</h4>
-                <p class="mb-4">Feltűnő új dizájnjával és új generációs intelligens megoldásaival a Ford Focus minden
-                    korábbinál jobb vezetési élményt kínál.
-                </p>
-                <a href="/cars" class="btn btn-primary py-2 px-5">Aktuális ajánlataink</a>
             </div>
         </div>
     </div>
-</div>
     <!-- Bemutatkozás vége -->
     <!-- Legújabb autó leirás -->
     <div class="col-lg-12">
@@ -42,7 +42,7 @@
             <div class="row g-0">
                 <div class="col-lg-6" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="../assets/img/Home/X-MAX.jpg"
+                        <img class="position-absolute w-100 h-100 animate-on-scroll" src="../assets/img/Home/X-MAX.jpg"
                             style="object-fit: cover; width: auto; height: auto;">
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                                 holmijuk számára.
                             </p>
 
-                            <a href="" class="btn btn-primary py-2 px-5">Érdekel</a>
+                            <a href="" class="btn btn-primary py-2 px-5 animate-on-scroll">Érdekel</a>
                         </div>
                     </div>
                 </div>
@@ -171,4 +171,6 @@
     </div>
     <!-- Ajánlatok vége -->
 </template>
-<script></script>
+<script>
+
+</script>

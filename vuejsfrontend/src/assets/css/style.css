@@ -271,7 +271,7 @@ h6,
 .LoginRegistrationbackground {
     background-image: url("../img/Login_Registration_Account/walpapper.jpg");
     background-repeat: no-repeat;
-    background-size: 2000px 2000px;
+    background-size: 2600px 2000px;
 }
 
 .ServiceWalpapper {
@@ -398,7 +398,7 @@ h6,
 
 
 .BodySize {
-    min-height: 900px;
+    min-height: 970px;
     ;
 }
 
@@ -425,3 +425,4 @@ h6,
   .fa-home {
     font-size: 24px;
   }
+

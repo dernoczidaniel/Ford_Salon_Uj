@@ -6,9 +6,6 @@ import { ref, computed } from "vue";
 
 
 
-
-
-
 export default {
     name: 'cars',
     components: {
@@ -47,6 +44,15 @@ export default {
         };
 
         return { models, isLoggedIn, logout };
+    },
+    methods: {
+        isMobile() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                return true
+            } else {
+                return false
+            }
+        }
     },
 
 
@@ -129,77 +135,92 @@ export default {
         </div>
 
 
-
-
-
-
-
-
-        <!-- Elérhetőség stb... -->
-        <div class="container-fluid bg-dark text-secondary px-5 mt-0 ">
+        <div class="container-fluid bg-dark text-light px-5 mt-0">
             <div class="row gx-5">
-                <div class="col-lg-12 col-md-0">
-                    <div class="row gx-12">
-                        <div class="col-lg-12 col-md-12 pt-3 mb-0">
-                            <table class="">
-                                <tr>
-                                    <th>
-                                        <h4 class="text-uppercase text-light m-0 " id="kapcsolat">Kapcsolat és elérhetőség
-                                        </h4>
-                                    </th>
-                                    <th>
-                                        <h4 class="text-uppercase text-light m-0  " id="kapcsolat">Közösségi média
-                                        </h4>
-                                    </th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex mb-1 ">
-                                            <!--cím-->
-                                            <div class="icon-container">
-                                                <i class="fa fa-home"></i>
-                                            </div>
-                                            <p class="mb-0">123 Út, Budapest, HUN</p>
-                                        </div>
-                                        <div class="d-flex mb-1">
-                                            <div class="icon-container">
-                                                <!--email-->
-                                                <i class="far fa-envelope"></i>
-                                            </div>
-                                            <p class="mb-0">Ford@example.com</p>
-                                        </div>
-                                        <div class="d-flex mb-1 ">
-                                            <div class="icon-container">
-                                                <i class="fas fa-phone"></i>
-                                            </div>
-                                            <!--telefon-->
-                                            <p class="mb-0">+012 345 67890</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="https://hu-hu.facebook.com/fordmagyarorszag/"
-                                            class="fa fa-facebook m-1 "></a>
-
-                                        <a href="https://www.youtube.com/channel/UCKA96UxTdgFBwGZMGZ-135w"
-                                            class="fa fa-youtube m-1"></a>
-                                        <a href="https://www.instagram.com/ford/" class="fa fa-instagram m-1"></a>
-                                        <a href="https://twitter.com/Ford" class="fa fa-twitter m-1"></a>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="d-flex align-items-center m-3 ">
+                        <p class="mb-0 fs-4 ">Elérhetőség</p>
+                    </div>
+                    <div class="d-flex align-items-center m-3 ">
+                        <i class="fas fa-map-marker-alt fa-1x me-2"></i>
+                        <p class="mb-0 ">123 Út, Budapest, HUN</p>
+                    </div>
+                    <div class="d-flex align-items-center m-3">
+                        <i class="far fa-envelope fa-1x me-2"></i>
+                        <p class="mb-0">Ford@example.com</p>
+                    </div>
+                    <div class="d-flex align-items-center m-3">
+                        <i class="fas fa-phone fa-1x me-2"></i>
+                        <p class="mb-0">+012 345 67890</p>
                     </div>
                 </div>
+
+
+                <div v-if="!isMobile()" class="col-lg-6 col-md-6">
+                    <desktop>
+
+
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="mx-2">
+                                <p class="mb-0 fs-4 ">Közösségi Média:</p>
+                            </div>
+                            <div class="mx-2"><a href="https://hu-hu.facebook.com/fordmagyarorszag/"><i
+                                        class="fab fa-facebook-f fa-3x"></i></a></div>
+                            <div class="mx-2"><a href="https://www.youtube.com/channel/UCKA96UxTdgFBwGZMGZ-135w"><i
+                                        class="fab fa-youtube fa-3x"></i></a></div>
+                            <div class="mx-2"><a href="https://www.instagram.com/ford/"><i
+                                        class="fab fa-instagram fa-3x"></i></a></div>
+                            <div class="mx-2"><a href="https://twitter.com/Ford"><i class="fab fa-twitter fa-3x"></i></a>
+                            </div>
+                        </div>
+
+
+
+
+                    </desktop>
+                </div>
+                <div v-else>
+                    <mobile>
+
+
+
+                        <div class="dropdown m-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="social-media-dropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Közösségi Média
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="social-media-dropdown">
+                                <li><a class="dropdown-item" href="https://hu-hu.facebook.com/fordmagyarorszag/"><i
+                                            class="fab fa-facebook-f me-2"></i>Facebook</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://www.youtube.com/channel/UCKA96UxTdgFBwGZMGZ-135w"><i
+                                            class="fab fa-youtube me-2"></i>YouTube</a></li>
+                                <li><a class="dropdown-item" href="https://www.instagram.com/ford/"><i
+                                            class="fab fa-instagram me-2"></i>Instagram</a></li>
+                                <li><a class="dropdown-item" href="https://twitter.com/Ford"><i
+                                            class="fab fa-twitter me-2"></i>Twitter</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </mobile>
+                </div>
+
+
+
+
             </div>
         </div>
+
+
+
         <div class="container-fluid py-1 py-lg-0 px-5" style="background: #111111;">
             <div class="row gx-5">
                 <div class="col-lg-6">
                     <div class="py-lg-2 ">
-                        <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="">Ford Motor Company</a>
+                        <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="">Ford Motor
+                                Company</a>
                         </p>
                     </div>
                 </div>
@@ -269,5 +290,4 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-}
-</style>
+}</style>

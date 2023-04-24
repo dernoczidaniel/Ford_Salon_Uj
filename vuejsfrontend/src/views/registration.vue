@@ -1,55 +1,55 @@
 <template>
   <body class="LoginRegistrationbackground BodySize ">
-    <div class="container-fluid p-0 m-5 ">
-      <div class="row gx-0 ">
-        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
-          <div class="LoginRegistrationbackgroundMenu Register text-light">
-            <div class="mt-3 p-4">
-              <div class="mb-4">
-                <h3 class="display-6 text-uppercase mb-3 text-light">Regisztráció</h3>
+      <div class="container-fluid p-0 ">
+        <div class="row justify-content-center ">
+          <div class="col-lg-6 col-md-8 col-sm-10 ">
+            <div class="card LoginRegistrationbackgroundMenu my-5 text-light">
+              <div class="card-body ">
+                <h3 class="card-title text-center mb-4">Regisztráció</h3>
+                <form @submit.prevent="register">
+                  <div class="form-group">
+                    <label for="name">Név</label>
+                    <input type="text" class="form-control" id="name" v-model="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" v-model="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Jelszó</label>
+                    <input type="password" class="form-control" id="password" v-model="password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Lakcím</label>
+                    <input type="text" class="form-control" id="address" name="address" v-model="address" required>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 form-group">
+                      <label for="postalcode">Irányító szám</label>
+                      <input type="text" class="form-control" id="postalcode" name="postalcode" v-model="postalcode"
+                        required>
+                    </div>
+                    <div class="col-md-8 form-group">
+                      <label for="city">Település</label>
+                      <input type="text" class="form-control" id="city" name="city" v-model="city" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="birthdate">Születésnap</label>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate" required>
+                  </div>
+                  <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+                  <button type="submit" class="btn btn-primary btn-block mt-4">Regisztráció</button>
+                </form>
               </div>
-
-              <form @submit.prevent="register">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Név</label>
-                  <input type="text" class="form-control" id="name" v-model="name" required>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" v-model="email" required>
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Jelszó</label>
-                  <input type="password" class="form-control" id="password" v-model="password" required>
-                </div>
-                <div class="mb-3">
-                  <label for="telefon" class="form-label">Telefon</label>
-                  <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon" required>
-                </div>
-                <div class="mb-3">
-                  <label for="address" class="form-label">Lakcím</label>
-                  <input type="text" class="form-control" id="address" name="address" v-model="address" required>
-                </div>
-                <div class="mb-3">
-                  <label for="postalcode" class="form-label">Irányító szám</label>
-                  <input type="text" class="form-control" id="postalcode" name="postalcode" v-model="postalcode" required>
-                </div>
-                <div class="mb-3">
-                  <label for="city" class="form-label">Település</label>
-                  <input type="text" class="form-control" id="city" name="city" v-model="city" required>
-                </div>
-                <div class="mb-3">
-                  <label for="birthdate" class="form-label">Születésnap</label>
-                  <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate" required>
-                </div>
-                <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
-                <button type="submit" class="btn btn-outline-secondary m-5 center d-block d-sm-inline">Regisztráció</button>
-              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </body>
 </template>
 <script>
