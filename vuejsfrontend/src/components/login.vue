@@ -18,9 +18,9 @@
 
 <script>
 
-import router from '../router'
+import router from '@/router';
 import jwt_decode from 'jwt-decode';
-import store from '../stores/index';
+import store from '@/stores';
 
 export default {
   computed: {
@@ -101,6 +101,5 @@ export default {
     }
   }
 }
-
 
 </script>

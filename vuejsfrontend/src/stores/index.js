@@ -1,5 +1,7 @@
 
+import { createStore } from 'vuex'
 import Vuex from 'vuex';
+
 
 export const store = new Vuex.Store({
   state: {
@@ -9,8 +11,7 @@ export const store = new Vuex.Store({
     interiorcolor: 'fehér',
     extras: ['nincs'],
     Price: '0',
-    user: {}
-
+    user: []
   },
   mutations: {
     setColor(state, color) {
@@ -26,17 +27,24 @@ export const store = new Vuex.Store({
     model: state => state.model,
     extras: state => state.extras,
     Price: state => state.Price,
-
+    user: state => state.user // adja hozzá a user objektumot a getterekhez
   },
   actions: {
     setColor(context, color) {
-      console.log('New color:', color); // logoljuk az új színt
+      console.log('New color:', color);
       context.commit('setColor', color);
     },
     setUser({ commit }, user) {
       commit('setUser', user);
     }
   }
+});
+
+// hozzáadás a state-hez
+store.dispatch('setUser', { 
+  name: 'John Doe', 
+  email: 'johndoe@example.com', 
+  age: 30 
 });
 
 export default store;
