@@ -51,7 +51,7 @@
                                 <p class="fs-4 fw-normal text-light mb-4">A Ford S-MAX modellt izgalmas kirándulásokra
                                     terveztük. És mivel a kalandok sokkal szórakoztatóbbak, ha megosztjuk másokkal, ez a
                                     modell bőséges helyet biztosít az utasok és holmijuk számára.</p>
-                                <a href="" class="btn btn-primary py-2 px-5">Érdekel</a>
+                                <a href="/cars" class="btn btn-primary py-2 px-5">Érdekel</a>
                             </div>
                         </div>
                     </div>

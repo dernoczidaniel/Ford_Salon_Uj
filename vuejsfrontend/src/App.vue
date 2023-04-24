@@ -92,30 +92,39 @@ export default {
                                     <div class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle"
                                             data-bs-toggle="dropdown">Modellválaszték</a>
-                                        <div class="dropdown-menu rounded-0 m-0 align-items-center">
-                                            <div v-for="car in models" :value="car">
-                                                <img :src="car.img_url" :alt="car.img_url" width="190" height="120">
-                                                <router-link to="/Cars"><button class="btn  py-1 px-0">{{ car.name
-                                                }}</button></router-link>
-                                            </div>
-                                            <div style="background-color: #1351d8;">
-                                                <router-link class="nav-link" to="/Cars">Minden modell</router-link>
-                                            </div>
-                                        </div>
+                                        <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                                            <li v-for="car in models">
+                                                <a class="dropdown-item" href="#">
+                                                    <img :src="car.img_url" :alt="car.img_url" width="190" height="120">
+                                                    {{ car.name }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <router-link class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" to="/Cars">Minden modell</router-link>
+
+
+                                            </li>
+                                        </ul>
                                     </div>
                                     <router-link class="nav-link" to="/Service">Szervíz</router-link>
+                                    <router-link class="nav-link" to="/About">Rólunk</router-link>
+
                                     <a href="#kapcsolat" class="nav-link">Kapcsolat</a>
                                     <div class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Továbbiak</a>
                                         <div class="dropdown-menu rounded-0 m-0">
                                             <router-link class="dropdown-item" to="/History">Története</router-link>
-                                            <router-link class="dropdown-item" to="/About">Rólunk</router-link>
                                             <router-link class="dropdown-item" to="/News">Hírek</router-link>
                                             <router-link class="dropdown-item" to="/Boiling">Források</router-link>
-                                            <router-link class="dropdown-item" to="/login"  v-if="isLoggedIn == false">Bejelentkezés</router-link>
+                                            <router-link class="dropdown-item" to="/login"
+                                                v-if="isLoggedIn == false">Bejelentkezés</router-link>
 
-                                            <router-link class="dropdown-item" to="/Profile "  v-if="isLoggedIn "> <i class="fas fa-user"></i>
+                                            <router-link class="dropdown-item" to="/Profile " v-if="isLoggedIn"> <i
+                                                    class="fas fa-user"></i>
                                                 Profil</router-link>
+                                            <router-link to="/" class="dropdown-item" v-if="isLoggedIn" style="color: red;">
+                                                <a @click="logout">Kijelentkezés</a>
+                                            </router-link>
 
                                         </div>
                                     </div>
@@ -182,7 +191,7 @@ export default {
 
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <div class="mx-2">
-                                <p class="mb-0 fs-4 ">Közösségi Média:</p>
+                                <p class="mb-0 fs-4 " id="kapcsolat">Közösségi Média:</p>
                             </div>
                             <div class="mx-2"><a href="https://hu-hu.facebook.com/fordmagyarorszag/"><i
                                         class="fab fa-facebook-f fa-3x"></i></a></div>
@@ -253,6 +262,12 @@ export default {
 </template>
 
 <style scoped>
+
+.dropdown-menu {
+  max-height: 500px; /* A maximális magasság beállítása */
+  overflow-y: scroll; /* A görgetősáv beállítása */
+}
+
 .margintop {
     margin-top: 100px;
 }
