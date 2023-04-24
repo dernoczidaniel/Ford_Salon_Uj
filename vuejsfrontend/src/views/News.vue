@@ -1,4 +1,6 @@
 <template>
+        <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
+
     <div class="col-lg-12">
         <div class="m-5">
             <h1 class="display-3 text-uppercase mb-0"> Hírek </h1>
@@ -84,8 +86,10 @@
             <a href="" class="btn btn-primary btn-block py-2 px-5">Kezdőlap</a>
         </div>
 
+ 
 
 
+</div>
 </div></template>
   
 <style>@media (max-width: 767px) {

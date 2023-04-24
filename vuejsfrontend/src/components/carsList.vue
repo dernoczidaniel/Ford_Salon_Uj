@@ -35,39 +35,48 @@ export default {
 };
 </script>
 <template >
-<div class="container-fluid p-0 mb-5 ">
-    <div class="mb-0 text-center p-5 CarsHeader">
-            <h1 class="display-3 text-uppercase mb-0 text-light">Modellek</h1> <!-- cím -->
-            <div class="container">
-                <div class="row">
-                    <div class="center">
-                        <div class="col-6 ">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Keresés az autók között..."
-                                    v-model="searchQuery" />
+    <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.3s' }">
+
+        <div class="container-fluid p-0 mb-5 ">
+            <div class="mb-0 text-center p-5 CarsHeader">
+                <h1 class="display-3 text-uppercase mb-0 text-light">Modellek</h1> <!-- cím -->
+                <div class="container">
+                    <div class="row">
+                        <div class="center">
+                            <div class="col-6 ">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Keresés az autók között..."
+                                        v-model="searchQuery" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
     <body class="BodySize">
-        <div class="row">
-            <div class="col-12 col-md-6 col-xl-4 mb-4" v-for="model in filteredModels" :key="model.id">
-                <div class="card w-100">
-                    <div class="card-body" >
-                        <h2>{{ model.name }}</h2>
-                        <hr>
-                        {{ model.fuel }} - {{ model.species }}      
-                        <img :src="model.img_url" :alt="model.img_url" width="500" height="300">
-                        <p>Ár: {{ model.price }} Ft-tól </p>
-                        <router-link :to="{ name: 'Configurator', params: { modelId: model.id.toString() } }">
-                            <button  :id="model.id" class="btn btn-primary"  @click="() => IndexValaszto(model.id)"> Konfigurator </button>
-                        </router-link>
+        <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.7s' }">
+
+            <div class="row">
+                <div class="col-12 col-md-6 col-xl-4 mb-4" v-for="model in filteredModels" :key="model.id">
+                    <div class="card w-100">
+                        <div class="card-body">
+                            <h2>{{ model.name }}</h2>
+                            <hr>
+                            {{ model.fuel }} - {{ model.species }}
+                            <img :src="model.img_url" :alt="model.img_url" width="500" height="300">
+                            <p>Ár: {{ model.price }} Ft-tól </p>
+                            <router-link :to="{ name: 'Configurator', params: { modelId: model.id.toString() } }">
+                                <button :id="model.id" class="btn btn-primary" @click="() => IndexValaszto(model.id)">
+                                    Konfigurator </button>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
-    </body>
-</template>
+
+</body></template>

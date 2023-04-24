@@ -55,7 +55,6 @@ export default {
         }
     },
 
-
 };
 
 
@@ -64,9 +63,11 @@ export default {
 <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <div class="scrollable-container">
+    <div class="scrollable-container ">
 
-        <div class="container-fluid bg-dark px-0" id="oldalteto">
+        <div class="container-fluid bg-dark px-0 menu" id="oldalteto">
+            <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.3s' }">
+
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
                     <a href="/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -126,14 +127,19 @@ export default {
                     </nav>
                 </div>
             </div>
-        </div>
-
-        <div class="col-lg-12">
-            <div class="row gx-5">
-                <router-view />
             </div>
         </div>
 
+        <div class="mb-5">Ford</div>
+
+        <div class="mt-5 margintop">
+            <div class="col-lg-12 mt-5">
+                <div class="row gx-5">
+
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
 
         <div class="container-fluid bg-dark text-light px-5 mt-0">
             <div class="row gx-5">
@@ -233,6 +239,10 @@ export default {
 </template>
 
 <style scoped>
+.margintop {
+    margin-top: 100px;
+}
+
 .fa-home {
     font-size: 24px;
 }
@@ -290,4 +300,15 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-}</style>
+}
+
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.5s;
+}
+
+.page-enter,
+.page-leave-to {
+    opacity: 0;
+}
+</style>

@@ -1,12 +1,12 @@
 <template>
-        <Config></Config> 
+  <Config></Config>
 
   <div>
     <div v-if="!isMobile()">
       <desktop>
-        <Config></Config> 
 
-    </desktop>
+          <Config></Config>
+      </desktop>
     </div>
     <div v-else>
       <mobile>

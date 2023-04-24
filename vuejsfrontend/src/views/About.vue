@@ -1,4 +1,6 @@
 <template>
+      <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
+
   <div class="container-fluid p-5">
     <div class="row gx-5">
 
@@ -62,6 +64,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <!-- rólunk vége -->
 </template>

@@ -3,6 +3,8 @@
 </script>
 
 <template>
+    <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
+
     <div class="container-fluid p-0 mb-5">
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -70,5 +72,6 @@
 
             </div>
         </div>
-    </div>
+    </div>  </div>
+
 </template>

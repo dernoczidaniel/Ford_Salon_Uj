@@ -1,8 +1,10 @@
 <template>
   <body class="LoginRegistrationbackground BodySize ">
-      <div class="container-fluid p-0 ">
-        <div class="row justify-content-center ">
-          <div class="col-lg-6 col-md-8 col-sm-10 ">
+    <div class="container-fluid p-0 ">
+      <div class="row justify-content-center ">
+        <div class="col-lg-6 col-md-8 col-sm-10 ">
+          <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
+
             <div class="card LoginRegistrationbackgroundMenu my-5 text-light">
               <div class="card-body ">
                 <h3 class="card-title text-center mb-4">Regisztráció</h3>
@@ -50,6 +52,7 @@
           </div>
         </div>
       </div>
+    </div>
   </body>
 </template>
 <script>

@@ -1,6 +1,7 @@
 <template>
+        <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
+
     <div class="container-fluid p-5 BodySize">
-        <transition name="fade">
             <div class="row gx-5 mt-0">
                 <div class="col-lg-12">
                     <div class="mb-4">
@@ -28,6 +29,6 @@
                     <a href="/" class="btn btn-primary py-2 px-5">Kezdőlap</a>
                 </div>
             </div>
-        </transition>
-    </div>
+    </div>  </div>
+
 </template>
