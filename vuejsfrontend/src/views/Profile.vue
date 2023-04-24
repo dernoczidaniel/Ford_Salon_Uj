@@ -1,13 +1,13 @@
 
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   computed: {
-    ...mapGetters(['user'])
+    user() {
+      return this.$store.getters.user;
+    }
   }
-}//valamit kell it irni
+};
 </script>
 
 
