@@ -56,6 +56,8 @@ export default {
 </script>
 
 <template>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <div class="scrollable-container">
 
         <div class="container-fluid bg-dark px-0" id="oldalteto">
@@ -134,16 +136,11 @@ export default {
 
 
         <!-- Elérhetőség stb... -->
-
-
-
         <div class="container-fluid bg-dark text-secondary px-5 mt-0 ">
             <div class="row gx-5">
                 <div class="col-lg-12 col-md-0">
                     <div class="row gx-12">
                         <div class="col-lg-12 col-md-12 pt-3 mb-0">
-
-
                             <table class="">
                                 <tr>
                                     <th>
@@ -158,42 +155,29 @@ export default {
                                     <th></th>
                                 </tr>
                                 <tr>
-
-
-
                                     <td>
                                         <div class="d-flex mb-1 ">
-                                            <i class="bi bi-geo-alt text-primary me-2"></i>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-house m-1" viewBox="0 0 16 16">
-                                                <!--cím-->
-                                            </svg>
+                                            <!--cím-->
+                                            <div class="icon-container">
+                                                <i class="fa fa-home"></i>
+                                            </div>
                                             <p class="mb-0">123 Út, Budapest, HUN</p>
                                         </div>
                                         <div class="d-flex mb-1">
-                                            <i class="bi bi-envelope-open text-primary me-2"></i>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-envelope m-1" viewBox="0 0 16 16">
-                                            </svg>
-                                            <!--email-->
-
+                                            <div class="icon-container">
+                                                <!--email-->
+                                                <i class="far fa-envelope"></i>
+                                            </div>
                                             <p class="mb-0">Ford@example.com</p>
                                         </div>
                                         <div class="d-flex mb-1 ">
-                                            <i class="bi bi-telephone text-primary me-2"></i>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-telephone m-1" viewBox="0 0 16 16">
-                                            </svg>
+                                            <div class="icon-container">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
                                             <!--telefon-->
-
                                             <p class="mb-0">+012 345 67890</p>
                                         </div>
                                     </td>
-
-
-
-
-
                                     <td>
                                         <a href="https://hu-hu.facebook.com/fordmagyarorszag/"
                                             class="fa fa-facebook m-1 "></a>
@@ -204,18 +188,13 @@ export default {
                                         <a href="https://twitter.com/Ford" class="fa fa-twitter m-1"></a>
                                     </td>
                                     <td></td>
-
                                 </tr>
-
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
         <div class="container-fluid py-1 py-lg-0 px-5" style="background: #111111;">
             <div class="row gx-5">
                 <div class="col-lg-6">
@@ -233,6 +212,15 @@ export default {
 </template>
 
 <style scoped>
+.fa-home {
+    font-size: 24px;
+}
+
+.icon-container i {
+    font-size: 16px;
+    /* vagy más méret, amely megfelelő a designodhoz */
+}
+
 th,
 td {
     padding-top: 5px;

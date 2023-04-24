@@ -1,9 +1,38 @@
-<script setup>
-import Configurator from '../components/Configurator.vue';
-
-</script>
-
 <template>
-  <Configurator :selectedCar="selectedCar"/>
-  {{ selectedCar }}
+        <Config></Config> 
+
+  <div>
+    <div v-if="!isMobile()">
+      <desktop>
+        <Config></Config> 
+
+    </desktop>
+    </div>
+    <div v-else>
+      <mobile>
+      </mobile>
+    </div>
+  </div>
 </template>
+  
+<script>
+import Config from '../components/Configurator.vue';
+import Mobile from '../MobileViews/Configurator.vue';
+
+
+export default {
+  methods: {
+    isMobile() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
+  components: {
+    Config,
+    Mobile
+  }
+}
+</script>
