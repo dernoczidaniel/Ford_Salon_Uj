@@ -57,7 +57,6 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import store from '../stores/index';
 
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';

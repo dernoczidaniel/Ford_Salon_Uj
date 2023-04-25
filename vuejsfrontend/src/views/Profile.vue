@@ -1,7 +1,6 @@
 
-
 <script>
-import store from '../stores/index';
+// import store from '../stores/index';
 const STORAGE_KEY = 'ford_salon_uj'
 
 export default {

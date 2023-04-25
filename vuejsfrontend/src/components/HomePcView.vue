@@ -238,4 +238,8 @@
     bottom: 0;
     padding: 20px;
 }
+body {
+    transition: all 0.3s ease-in-out;
+}
+
 </style>

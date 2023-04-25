@@ -1,23 +1,24 @@
 <template>
-  <Config></Config>
+          <Config></Config> 
 
   <div>
     <div v-if="!isMobile()">
       <desktop>
-
-          <Config></Config>
-      </desktop>
+          <Config></Config> 
+        </desktop>
     </div>
     <div v-else>
       <mobile>
-      </mobile>
+        <ConfiguratorMobile>
+      </ConfiguratorMobile>
+    </mobile>
     </div>
   </div>
 </template>
   
 <script>
 import Config from '../components/Configurator.vue';
-import Mobile from '../MobileViews/Configurator.vue';
+import ConfiguratorMobile from '../MobileViews/ConfiguratorMobile.vue';
 
 
 export default {
@@ -32,7 +33,7 @@ export default {
   },
   components: {
     Config,
-    Mobile
+    ConfiguratorMobile
   }
 }
 </script>

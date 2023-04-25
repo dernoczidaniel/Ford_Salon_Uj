@@ -94,7 +94,7 @@ export default {
                                             data-bs-toggle="dropdown">Modellválaszték</a>
                                         <ul class="dropdown-menu" aria-labelledby="modelDropdown">
                                             <li v-for="car in models">
-                                                <a class="dropdown-item" href="#">
+                                                <a class="dropdown-item" href="/cars">
                                                     <img :src="car.img_url" :alt="car.img_url" width="190" height="120">
                                                     {{ car.name }}
                                                 </a>
@@ -340,4 +340,9 @@ body {
 .page-leave-to {
     opacity: 0;
 }
+body {
+    transition: all 0.3s ease-in-out;
+}
+
+
 </style>
