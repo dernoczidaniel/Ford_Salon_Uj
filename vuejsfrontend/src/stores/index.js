@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createStore } from 'vuex'
 import Vuex from 'vuex';
 
@@ -14,8 +13,7 @@ export const store = new Vuex.Store({
       state.selectedCar.color = selectedCar.color;
       state.selectedCar.interiorColor = selectedCar.interiorcolor;
     },
-<<<<<<< HEAD
-=======
+
     setUser(state, user) {
       state.user = user;
       // localStorage.setItem('user', JSON.stringify(user));
@@ -36,7 +34,6 @@ export const store = new Vuex.Store({
     // user(state) {
     //   return state.user;
     // } // adja hozzá a user objektumot a getterekhez
->>>>>>> 88d66d8825736fc64c1681c0b67f8fe8e5bccdae
   },
   actions: {
     initializeStore({ commit }) {
@@ -46,11 +43,10 @@ export const store = new Vuex.Store({
         commit('setSelectedCar', selectedCar);
       }
     },
-<<<<<<< HEAD
   },
 });
 
-=======
+
     setUser({ commit }, user) {
       commit('setUser', user);
     },
@@ -59,7 +55,7 @@ export const store = new Vuex.Store({
     // }
   }
 });
-=======
+
 
 // import { createStore } from 'vuex'
 // import Vuex from 'vuex';
@@ -112,17 +108,13 @@ export const store = new Vuex.Store({
 //     // }
 //   }
 // });
->>>>>>> 23af2fccca0a9cf4693b5241d82efa31ebd0b3e6
 
 // // Az alkalmazás betöltésekor inicializáljuk a store-t a localStorage-ból
 // // store.dispatch('initializeStore');
 
-<<<<<<< HEAD
->>>>>>> 88d66d8825736fc64c1681c0b67f8fe8e5bccdae
 export default store;
 
 // Az alkalmazás betöltésekor inicializáljuk a store-t a localStorage-ból
 store.dispatch('initializeStore');
-=======
+
 // export default store;
->>>>>>> 23af2fccca0a9cf4693b5241d82efa31ebd0b3e6
