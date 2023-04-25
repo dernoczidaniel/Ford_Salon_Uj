@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script >
+<script>
 
 import router from '@/router';
 import jwt_decode from 'jwt-decode';

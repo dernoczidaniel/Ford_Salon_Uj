@@ -53,8 +53,14 @@ export default {
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
         },
-        Send(){
+        Send() {
             this.$store.commit('setColor', this.color);
+        },
+        cancelOrder() {
+            const confirmed = window.confirm('Biztos benne, hogy mégsem szeretné megrendelni a járművet?');
+            if (confirmed) {
+                this.$router.push('/cars');
+            }
         }
     },
 
@@ -121,7 +127,6 @@ export default {
 </script>
 
 <template>
- 
     {{ index }}
 
     <div class="container-fluid mt-0 center  ">
@@ -207,8 +212,11 @@ export default {
                 <div class="input-group mb-3 right">
                     <div class="input-group mb-3 right">
                         <div class="input-group mb-3 right">
-                            <button @button="Send">Color to Summary</button>
-                            <router-link to="/summary">kezs</router-link>
+                            <button class="btn btn-danger m-1" @click="cancelOrder">
+                                Mégsem
+                            </button>
+                            <router-link to="/summary"><button @click="Send"
+                                    class="btn btn-primary m-1">Kész</button></router-link>
                         </div>
                     </div>
                 </div>
