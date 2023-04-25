@@ -2,7 +2,6 @@
 import { createStore } from 'vuex'
 import Vuex from 'vuex';
 
-
 export const store = new Vuex.Store({
   state: {
     id: '0',
@@ -11,7 +10,7 @@ export const store = new Vuex.Store({
     interiorcolor: 'fehér',
     extras: ['nincs'],
     Price: '0',
-    user: []
+    user: {}
   },
   mutations: {
     setColor(state, color) {
@@ -19,6 +18,13 @@ export const store = new Vuex.Store({
     },
     setUser(state, user) {
       state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+    },
+    initializeStore(state) {
+      const user = localStorage.getItem('user');
+      if (user) {
+        state.user = JSON.parse(user);
+      }
     }
   },
   getters: {
@@ -27,7 +33,9 @@ export const store = new Vuex.Store({
     model: state => state.model,
     extras: state => state.extras,
     Price: state => state.Price,
-    user: state => state.user // adja hozzá a user objektumot a getterekhez
+    user(state) {
+      return state.user;
+    } // adja hozzá a user objektumot a getterekhez
   },
   actions: {
     setColor(context, color) {
@@ -36,15 +44,14 @@ export const store = new Vuex.Store({
     },
     setUser({ commit }, user) {
       commit('setUser', user);
+    },
+    initializeStore(context) {
+      context.commit('initializeStore');
     }
   }
 });
 
-// hozzáadás a state-hez
-store.dispatch('setUser', { 
-  name: 'John Doe', 
-  email: 'johndoe@example.com', 
-  age: 30 
-});
+// Az alkalmazás betöltésekor inicializáljuk a store-t a localStorage-ból
+store.dispatch('initializeStore');
 
 export default store;

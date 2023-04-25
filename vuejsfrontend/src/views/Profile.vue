@@ -1,13 +1,18 @@
 
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   computed: {
-    user() {
-      return this.$store.getters.user;
-    }
+    ...mapGetters(['user'])
+  },
+  created() {
+    console.log(this.user);
+    this.$store.commit('initializeStore');
   }
 };
+
 </script>
 
 
@@ -20,9 +25,9 @@ export default {
 
 
 <div>
-    <p>User ID: {{ user.id }}</p>
-    <p>User Name: {{ user.name }}</p>
-    <p>User Email: {{ user.email }}</p>
+    <h2>{{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Age: {{ $store.getters.user.age }}</p>
   </div>
 
 

@@ -65,7 +65,7 @@ export default {
           };
 
           // Set user object in store
-          store.dispatch('setUser', user);
+          store.commit('setUser', user);
 
           router.push('/');
         } else if (response.status === 401) {
@@ -80,19 +80,24 @@ export default {
     logout() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      store.dispatch('setUser', {});
+      store.commit('setUser', {});
       router.push('/');
     }
   },
-  created() {
+  mounted() {
     const userToken = localStorage.getItem('token');
     if (userToken) {
       try {
         const decoded = jwt_decode(userToken);
         console.log(decoded);
 
-        const user = JSON.parse(localStorage.getItem('user'));
-        store.dispatch('setUser', user);
+        const user = {
+          id: decoded.userId,
+          name: decoded.name,
+          email: decoded.email
+        };
+
+        store.commit('setUser', user);
 
         router.push('/summary');
       } catch (error) {
