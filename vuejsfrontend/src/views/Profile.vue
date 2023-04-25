@@ -1,16 +1,28 @@
 
 
 <script>
-import { mapGetters } from 'vuex';
+import store from '../stores/index';
+const STORAGE_KEY = 'ford_salon_uj'
 
 export default {
   computed: {
-    ...mapGetters(['user'])
+    user(){
+        return store.state.user
+    }
   },
-  created() {
-    console.log(this.user);
-    this.$store.commit('initializeStore');
-  }
+  watch:{
+    user:{
+			handler(user){
+				localStorage.setItem(STORAGE_KEY,JSON.stringify(user))
+				console.log(user);
+			},
+			
+		}
+	},
+    created(){
+		store.commit('setUser',JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'),)
+	},
+
 };
 
 </script>
@@ -25,9 +37,8 @@ export default {
 
 
 <div>
-    <h2>{{ user.name }}</h2>
-    <p>Email: {{ user.email }}</p>
-    <p>Age: {{ $store.getters.user.age }}</p>
+    <h2>{{ user }}</h2>
+    <p>Email: {{ user }}</p>
   </div>
 
 
