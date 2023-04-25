@@ -25,7 +25,7 @@ import store from '@/stores';
 export default {
   computed: {
     user() {
-      return this.$store.getters.user;
+      // return this.$store.getters.user;
     }
   },
   data() {
