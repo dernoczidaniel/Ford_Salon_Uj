@@ -1,7 +1,7 @@
 <script>
 import DataService from "../services/dataservice"
 import carsList from '../components/carsList.vue';
-import { mapMutations, mapGetters } from 'vuex';
+import store from '../stores/index';
 export default {
     props: {
         modelId: {
@@ -41,27 +41,22 @@ export default {
     components: {
         carsList
     },
-    computed: {
-        ...mapGetters(['color'])
-    },
 
     methods: {
-        ...mapMutations(['setColor']),
         SzinValaszto() {
             this.color = this.kivalasztottszin.color;
+            store.commit('setSelectedCar', { color: this.color });
         },
         SzinValasztoKulso() {
             this.interiorcolor = this.kivalasztottszinkulso.interiorcolor;
-        },
-        Send() {
-            this.$store.commit('setColor', this.color);
+            store.commit('setSelectedCar', { interiorcolor: this.interiorcolor });
         },
         cancelOrder() {
             const confirmed = window.confirm('Biztos benne, hogy mégsem szeretné megrendelni a járművet?');
             if (confirmed) {
                 this.$router.push('/cars');
             }
-        }
+        },
     },
 
     created() {
@@ -110,6 +105,7 @@ export default {
             .catch((err) => {
                 console.log('Error while fetching extras:', err);
             });
+        store.commit('setSelectedCar', this.selectedCar);
 
     },
     watch: {
@@ -121,7 +117,23 @@ export default {
                 });
             // add models[this.index].price to price
             this.price += this.models[this.index].price;
-        }
+        },
+        color: {
+            handler(color) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(color))
+                //	console.log(todos);
+            },
+            deep: true
+        },
+        color: {
+            handler(color) {
+                localStorage.setItem('selectedColor', JSON.stringify(color))
+            },
+            deep: true
+        },
+        created() {
+            store.commit('setcolor', JSON.parse(localStorage.getItem('selectedColor') || '[]'))
+        },
     },
 }
 </script>
