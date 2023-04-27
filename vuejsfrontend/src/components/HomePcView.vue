@@ -6,9 +6,9 @@
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img style="width:100%; height: 500px;" src="../assets/img/Header/bodyGif.gif" alt="FordHeaderGif">
+                        <img style="width:100%; height: 60%;" src="../assets/img/Header/bodyGif.gif" alt="FordHeaderGif">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3" style="max-width: 800px;">
+                            <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-2 text-white text-uppercase mb-md-4">Ford motor company</h1>
                             </div>
                         </div>
@@ -48,11 +48,11 @@
                 <div class="col-lg-12">
                     <div class="container-fluid p-0 my-5">
                         <div class="row g-0">
-                            <div class="col-lg-6" style="min-height: 500px;">
+                            <div class="col-lg-6" style="min-height: 430px;">
                                 <div class="position-relative h-100">
                                     <img class="position-absolute w-100 h-100 animate-on-scroll"
                                         src="../assets/img/Home/X-MAX.jpg"
-                                        style="object-fit: cover; width: auto; height: auto;">
+                                        style="object-fit: cover; width: 50%; height: 50%;">
                                 </div>
                             </div>
                             <div class="col-lg-6 bg-dark p-5">
@@ -97,19 +97,19 @@
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <a href="/cars"><img src="../assets/img/Ad/1.jpeg" class="d-block w-100" alt="1ad"
-                                            style="width:40%;  height: 520px;" herf=""></a>
+                                            style="width:40%;  height: 10%;" herf=""></a>
                                     <h3 class=" text-uppercase m-4">Ismerje meg a Ford Mustang Mach-E teljesen elektromos
                                         autót!
                                     </h3>
                                 </div>
                                 <div class="carousel-item">
                                     <a href="/Service"><img src="../assets/img/Ad/2.jpeg" class="d-block w-100" alt="2ad"
-                                            style="width:40%; height: 520px;" herf=""></a>
+                                            style="width:40%; height: 10%;" herf=""></a>
                                     <h3 class=" text-uppercase m-4">Probálja ki a gyors szervizelésünket!</h3>
                                 </div>
                                 <div class="carousel-item">
                                     <a href="/cars"><img src="../assets/img/Ad/3.jpg" class="d-block w-100" alt="3ad"
-                                            style="width:40%;  height: 520px;" herf=""></a>
+                                            style="width:40%;  height: 10%;" herf=""></a>
                                     <h3 class=" text-uppercase m-4">Sport autót keres? Ford Mustang Gt!</h3>
                                 </div>
                             </div>
