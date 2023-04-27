@@ -68,7 +68,7 @@
 
 <script>
 import emailjs from 'emailjs-com';
-emailjs.init('MReYI3B7lH7');
+
 
 export default {
   data() {
@@ -107,16 +107,8 @@ export default {
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-
-          // Küldj egy e-mailt a felhasználónak a sikeres regisztrációról
-          emailjs.send(service_8fr53gd, template_vwllzon, name,email, cOycMK78ZVmGWF_FPWjJn)
-            .then((response) => {
-              console.log('Email sikeresen elküldve!', response.status, response.text);
-            }, (error) => {
-              console.error('Email küldése sikertelen.', error);
-            });
-
           this.$router.push('/login');
+
         } else if (response.status === 409) {
           const errorData = await response.json();
           this.errorMessage = errorData.message;
