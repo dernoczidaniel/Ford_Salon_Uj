@@ -1,83 +1,82 @@
 
 
 <template>
+    <div class="m-3 mb-0">
+        <h3 class="display-6 text-uppercase mb-2 mt-4">Konfigurátor</h3>
+        <p class=" mb-2">Egyszerűsített mobile nézet</p>
 
-        <div class="m-3 mb-0">
-            <h3 class="display-6 text-uppercase mb-2 mt-4">Konfigurátor</h3>
-            <p class=" mb-2">Egyszerűsített mobile nézet</p>
-
-            <h5 class="display-6 text-uppercase mb-2">{{ this.models[this.index].name }}</h5>
-        </div>
+        <h5 class="display-6 text-uppercase mb-2">{{ this.models[this.index].name }}</h5>
+    </div>
 
 
-        <div class="Config" style="width: 140%; max-width: 1200px; margin: 0 auto;">
-            <div class="row">
-                <div class="col-12 col-lg-6 ConfigTd">
-                    <img v-if="color == 'fekete'" :src="models[index].img_color1" :alt="models[index].img_url1"
-                        class="img-fluid">
-                    <img v-if="color == 'fehér'" :src="models[index].img_color2" :alt="models[index].img_url2"
-                        class="img-fluid">
-                    <img v-if="color == 'piros'" :src="models[index].img_color3" :alt="models[index].img_url3"
-                        class="img-fluid">
-                </div>
-                <div class="col-12 col-lg-6 ConfigTd">
-                    <img v-if="interiorcolor == 'fekete'" :src="models[index].img_interior1"
-                        :alt="models[index].img_interior1" class="img-fluid">
-                    <img v-if="interiorcolor == 'fehér'" :src="models[index].img_interior2"
-                        :alt="models[index].img_interior2" class="img-fluid">
-                </div>
+    <div class="Config" style="width: 140%; max-width: 1200px; margin: 0 auto;">
+        <div class="row">
+            <div class="col-12 col-lg-6 ConfigTd">
+                <img v-if="color == 'fekete'" :src="models[index].img_color1" :alt="models[index].img_url1"
+                    class="img-fluid">
+                <img v-if="color == 'fehér'" :src="models[index].img_color2" :alt="models[index].img_url2"
+                    class="img-fluid">
+                <img v-if="color == 'piros'" :src="models[index].img_color3" :alt="models[index].img_url3"
+                    class="img-fluid">
+            </div>
+            <div class="col-12 col-lg-6 ConfigTd">
+                <img v-if="interiorcolor == 'fekete'" :src="models[index].img_interior1" :alt="models[index].img_interior1"
+                    class="img-fluid">
+                <img v-if="interiorcolor == 'fehér'" :src="models[index].img_interior2" :alt="models[index].img_interior2"
+                    class="img-fluid">
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table tableColor">
-                <thead>
-                    <tr>
-                        <th>Szín</th>
-                        <th>Kárpit</th>
-                        <th>Tulajdonságok</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select v-model="kivalasztottszin" @change="SzinValaszto()">
-                                <option v-for="szin in colors" :value="szin">{{ szin.color }}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select v-model="kivalasztottszinkulso" @change="SzinValasztoKulso()">
-                                <option class="selected" v-for="szin in colors" :value="szin">{{ szin.interiorcolor }}
-                                </option>
-                            </select>
-                        </td>
-                        <td>
-                            <p><strong>Motor:</strong> {{ models[this.index].motor }}</p>
-                            <p><strong>Üzemanyag:</strong> {{ models[this.index].fuel }}</p>
-                            <p><strong>Tag:</strong> {{ models[this.index].species }}</p>
-                            <p><strong>Ár:</strong> {{ price }} Ft</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table tableColor">
+            <thead>
+                <tr>
+                    <th>Szín</th>
+                    <th>Kárpit</th>
+                    <th>Tulajdonságok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select v-model="kivalasztottszin" @change="SzinValaszto()">
+                            <option v-for="szin in colors" :value="szin">{{ szin.color }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select v-model="kivalasztottszinkulso" @change="SzinValasztoKulso()">
+                            <option class="selected" v-for="szin in colors" :value="szin">{{ szin.interiorcolor }}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <p><strong>Motor:</strong> {{ models[this.index].motor }}</p>
+                        <p><strong>Üzemanyag:</strong> {{ models[this.index].fuel }}</p>
+                        <p><strong>Tag:</strong> {{ models[this.index].species }}</p>
+                        <p><strong>Ár:</strong> {{ price }} Ft</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 
-        <div class="m-2 form-check form-switch" v-for="(extra, index) in        extras       " :key="index">
-            <div class="d-flex align-items-center">
-                <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name" :value="extra.price"
-                    v-model="selectedExtras" :checked="selectedExtras.includes(extra.price)"
-                    @change="extra.selected = selectedExtras.includes(extra.price); addToSelectedExtras(extra)">
-                <label class="label mb-0" :for=" extra.name ">
-                    {{ extra.name }} - {{ extra.price }} Ft
-                </label>
-            </div>
+    <div class="m-2 form-check form-switch" v-for="(extra, index) in         extras        " :key="index">
+        <div class="d-flex align-items-center">
+            <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name" :value="extra.price"
+                v-model="selectedExtras" :checked="selectedExtras.includes(extra.price)"
+                @change="extra.selected = selectedExtras.includes(extra.price); addToSelectedExtras(extra)">
+            <label class="label mb-0" :for=" extra.name ">
+                {{ extra.name }} - {{ extra.price }} Ft
+            </label>
         </div>
-        <div class="d-flex justify-content-center">
-            <button class="btn btn-danger btn-lg m-2" @click=" cancelOrder ">Mégsem</button>
-            <button class="btn btn-primary btn-lg m-2" @click=" selectCar ">Kész</button>
-        </div>
-        <h2 class="m-2">Leírás</h2>
-        <p class="m-2">{{ description }}</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-danger btn-lg m-2" @click=" cancelOrder ">Mégsem</button>
+        <button class="btn btn-primary btn-lg m-2" @click=" selectCar ">Kész</button>
+    </div>
+    <h2 class="m-2">Leírás</h2>
+    <p class="m-2">{{ description }}</p>
 
 
 
@@ -154,10 +153,6 @@
         </div>
     </div>
 </template>
-
-
-
-
 
 
 <script>
@@ -261,10 +256,14 @@ export default {
         downloadPDF() {
             const doc = new jsPDF();
             const tableRows = [];
-
-            const tableColumns = ["Model", "Szín", "Belsöszin", "Extrák", "Motor", "Üzemanyag", "Tag", "Ár", "Rendelés azonosító"];
-            const data = [[this.selectedCars.name, this.selectedCars.color, this.selectedCars.interiorcolor, this.selectedCars.extras,
-            this.selectedCars.motor, this.selectedCars.fuel, this.selectedCars.species, this.selectedCars.price + " Ft", this.orderID]];
+            const tableColumns = ["Model", "Szín", "Belsöszin", "Extrák", "Motor", "Üzemanyag", "Tag", "Ár (Az ár csak az autó árára vonatkozik)", "Rendelés azonosító"];
+            const data = [[this.selectedCars.name, this.selectedCars.color, this.selectedCars.interiorcolor, this.selectedCars.extras, this.selectedCars.motor, this.selectedCars.fuel, this.selectedCars.species, this.selectedCars.price + " Ft", this.orderID]];
+            const imgData = '../src/assets/img/logo/Ford_Motor_Company_Logo.svg.png';
+            const pdfWidth = doc.internal.pageSize.getWidth();
+            const imgWidth = 40;
+            const imgHeight = 20;
+            const imgX = (pdfWidth - imgWidth) / 2;
+            const imgY = 70;
 
 
             doc.autoTable({
@@ -272,34 +271,79 @@ export default {
                 body: data,
             });
 
+
+
+
+            doc.addImage(imgData, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+
+
+
+            // Betűméret beállítása
+            doc.setFontSize(14);
+
+            // Ford Szalon felirat elhelyezése
+            doc.text("Ford Szalon", doc.internal.pageSize.width / 2, 100, { align: "center" });
+
+            // Több soros szöveg elhelyezése
+            // Szöveg elhelyezése
+            doc.setFont("Helvetica", "normal");
+            doc.text("Név:    ____________________", 20, 130);
+            doc.text("Email cím:    ____________________", 20, 140);
+            doc.text("Ezzel szeretném jelezni, hogy az autó vásárlását elfogadom.", 20, 150);
+            doc.text("A fent említett összeg már rendezésre került, és az árut átvehetem.", 20, 160);
+            doc.text("A vásárlás után a temékre 3 év jótállás vonatkozik.", 20, 180);
+            doc.text("Tudomásul veszem, és elfogadom a feltételeket.", 20, 170);
+            doc.text("Jogszabály: https://hu.wikipedia.org/wiki/Ad%C3%A1sv%C3%A9tel", 20, 190);
+
+
+
+
+            doc.setFont("Helvetica", "bold");
+            doc.text(`Vásárlás dátuma: ${new Date().toLocaleDateString()}`, 20, doc.internal.pageSize.height - 20, { align: "left" });
+
+            doc.text("Eladó aláírás:", doc.internal.pageSize.width - 70, doc.internal.pageSize.height - 40, { align: "right" });
+            doc.setLineWidth(0.5);
+            doc.line(doc.internal.pageSize.width - 60, doc.internal.pageSize.height - 37, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 37);
+
+            doc.text("Vásárló aláírás:", doc.internal.pageSize.width - 70, doc.internal.pageSize.height - 50, { align: "right" });
+            doc.line(doc.internal.pageSize.width - 60, doc.internal.pageSize.height - 47, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 47);
+
             doc.save("Számla.pdf");
         },
 
         // Rendelés
-        order() {
+        async order() {
             this.LetoltesEllenorzes = true;
-
-            const orderData = {
-                model: this.selectedCars.name,
-                color: this.selectedCars.color,
-                interiorcolor: this.selectedCars.interiorcolor,
-                extras: this.selectedCars.extras,
-                price: this.selectedCars.price,
-
-            };
-            axios.post('/api/order', orderData)
-                .then(response => {
-                    // handle successful response
-                    console.log(response);
-                })
-                .catch(error => {
-                    // handle error
-                    console.error(error);
-                    this.ellenorzes = true;
-
+            try {
+                const response = await fetch('https://weary-tick-miniskirt.cyclic.app/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: this.selectedCars.name,
+                        color: this.selectedCars.color,
+                        interiorcolor: this.selectedCars.interiorcolor,
+                        extras: this.selectedCars.extras,
+                        price: this.selectedCars.price,
+                        orderID: this.orderID,
+                    })
                 });
-        },
-
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    // Handle successful registration, e.g. redirect to a "success" page
+                } else if (response.status === 409) {
+                    const errorData = await response.json();
+                    this.errorMessage = errorData.message;
+                    console.log(errorData);
+                    // Handle registration error, e.g. display error message to user
+                }
+            } catch (error) {
+                console.error(error);
+                // Handle unexpected errors, e.g. display
+            }
+        }
     },
 
     created() {
@@ -364,7 +408,6 @@ export default {
 }
 
 </script>
-
 <style>
 /* Mobil nézet */
 @media only screen and (max-width: 768px) {

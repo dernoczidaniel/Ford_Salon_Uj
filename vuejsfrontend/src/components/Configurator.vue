@@ -130,11 +130,13 @@ export default {
             // Több soros szöveg elhelyezése
             // Szöveg elhelyezése
             doc.setFont("Helvetica", "normal");
-            doc.text("Ezzel szeretném jelezni, hogy az autó vásárlását elfogadom.", 20, 130);
-            doc.text("A fent említett összeg már rendezésre került, és az árut átvehetem.", 20, 140);
-            doc.text("Tudomásul veszem, és elfogadom a feltételeket..", 20, 150);
-            doc.text("A vásárlás után a temékre 3 év jótállás vonatkozik.", 20, 160);
-            doc.text("Jogszabály: https://hu.wikipedia.org/wiki/Ad%C3%A1sv%C3%A9tel", 20, 170);
+            doc.text("Név:    ____________________", 20, 130);
+            doc.text("Email cím:    ____________________", 20, 140);
+            doc.text("Ezzel szeretném jelezni, hogy az autó vásárlását elfogadom.", 20, 150);
+            doc.text("A fent említett összeg már rendezésre került, és az árut átvehetem.", 20, 160);
+            doc.text("A vásárlás után a temékre 3 év jótállás vonatkozik.", 20, 180);
+            doc.text("Tudomásul veszem, és elfogadom a feltételeket.", 20, 170);
+            doc.text("Jogszabály: https://hu.wikipedia.org/wiki/Ad%C3%A1sv%C3%A9tel", 20, 190);
 
 
 
