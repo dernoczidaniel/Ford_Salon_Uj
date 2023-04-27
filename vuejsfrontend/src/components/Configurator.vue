@@ -39,8 +39,32 @@ export default {
             LetoltesEllenorzes: false,
             selectedExtra: null,
             selectedExtras: [],
+            selectedSalon: null,
+            salons: [
+                {
+                    name: "Budapest Ford Szalon",
+                    address: "Budapest, Károly körút 1.",
+                    city: "Budapest",
+                    postalCode: "1052",
+                    phone: "+36 1 555 5555"
+                },
+                {
+                    name: "Debrecen Ford Szalon",
+                    address: "Debrecen, Piac utca 23.",
+                    city: "Debrecen",
+                    postalCode: "4025",
+                    phone: "+36 52 555 555"
+                },
+                {
+                    name: "Szeged Ford Szalon",
+                    address: "Szeged, Kossuth Lajos sugárút 9.",
+                    city: "Szeged",
+                    postalCode: "6720",
+                    phone: "+36 62 555 555"
+                }
+            ],
+        };
 
-        }
     },
 
     components: {
@@ -170,6 +194,7 @@ export default {
                         extras: this.selectedCars.extras,
                         price: this.selectedCars.price,
                         orderID: this.orderID,
+                        salon: selectedSalon.name,
                     })
                 });
                 if (response.ok) {
@@ -309,8 +334,8 @@ export default {
                             <table class="table tableColor">
                                 <thead>
                                     <tr>
-                                        <th>Színe</th>
-                                        <th>Kárpit színe</th>
+                                        <th>Szín</th>
+                                        <th>Kárpit szín</th>
                                         <th>Motor</th>
                                         <th>Üzemanyag</th>
                                         <th>Tag</th>
@@ -351,7 +376,7 @@ export default {
                         </div>
                         <div class="left text-light">
                             <div class="m-2 form-check d-flex flex-wrap form-switch"
-                                v-for="(extra, index) in                          extras                         "
+                                v-for="(extra, index) in                             extras                            "
                                 :key="index">
                                 <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name"
                                     :value="extra.price" v-model="selectedExtras"
@@ -438,6 +463,21 @@ export default {
                         </tfoot>
                     </table>
                 </div>
+            </div>
+
+            <div class="mt-5 center">
+                <h4 class="m-1">Válaszon szalont, ahová rendelt járműve:</h4>
+                <select v-model=" selectedSalon ">
+                    <option v-for="(   salon, index   ) in    salons   " :key=" index " :value=" salon ">{{ salon.name }}
+                    </option>
+                </select>
+
+            </div>
+            <div v-if=" selectedSalon " class="mt-5 text-center">
+                <h2 class="m-2">{{ selectedSalon.name }}</h2>
+                <p class="m-2">{{ selectedSalon.address }}</p>
+                <p class="m-2">{{ selectedSalon.city }}, {{ selectedSalon.postalCode }}</p>
+                <p class="m-2">{{ selectedSalon.phone }}</p>
             </div>
         </div>
     </body>
