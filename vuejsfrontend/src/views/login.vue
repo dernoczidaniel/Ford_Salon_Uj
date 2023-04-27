@@ -10,7 +10,6 @@
               <div class="mb-4">
                 <h3 class="display-6 text-uppercase mb-0 text-light">Bejelenkezés</h3>
               </div>
-
               <form @submit.prevent="login">
 
                 <div class="input-group mb-3">
@@ -54,7 +53,7 @@
               <hr>
 
               <div class="mb-3 m-5">
-                <router-link to="registration" >
+                <router-link to="registration">
                   <button class="btn btn-outline-secondary">Még nem
                     regisztráltam.</button>
                 </router-link>
@@ -69,7 +68,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import router from '../router'
 import jwt_decode from 'jwt-decode';
 
@@ -80,8 +79,19 @@ export default {
     return {
       email: '',
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      userId: 0,
+      userData: {},
     }
+  },
+  mounted() {
+    axios.get(`/api/user/${this.userId}`)
+      .then(response => {
+        this.userData = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     async login() {
@@ -106,6 +116,8 @@ export default {
           const decoded = jwt_decode(token);
           console.log(decoded);
 
+          this.userId = decoded.userId; // Set the userId property with the actual user ID
+          router.push({ name: 'Profile', params: { id: this.userId } });
           router.push('/'); // navigálás a /dashboard oldalra
 
           // Handle successful login, e.g. redirect to the user dashboard
@@ -120,6 +132,7 @@ export default {
         // Handle unexpected errors, e.g. display
       }
     },
+    // ...
     logout() {
       localStorage.removeItem('token');
       router.push('/');
