@@ -116,13 +116,13 @@ export default {
         // Rendelés
         async order() {
             try {
-                const response = await fetch('http://localhost:3000/order', {
+                const response = await fetch('https://weary-tick-miniskirt.cyclic.app/order', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        name: this.selectedCars.name,
+                        model: this.selectedCars.name,
                         color: this.selectedCars.color,
                         interiorcolor: this.selectedCars.interiorcolor,
                         extras: this.selectedCars.extras,
@@ -309,7 +309,7 @@ export default {
                         </div>
                         <div class="left text-light">
                             <div class="m-2 form-check d-flex flex-wrap form-switch"
-                                v-for="(extra, index) in      extras     " :key="index">
+                                v-for="(extra, index) in       extras      " :key="index">
                                 <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name"
                                     :value="extra.price" v-model="selectedExtras"
                                     :checked="selectedExtras.includes(extra.price)"
