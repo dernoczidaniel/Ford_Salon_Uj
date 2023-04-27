@@ -114,30 +114,37 @@ export default {
         },
 
         // Rendelés
-        order() {
-            this.LetoltesEllenorzes = true;
-
-            const orderData = {
-                model: this.selectedCars.name,
-                color: this.selectedCars.color,
-                interiorcolor: this.selectedCars.interiorcolor,
-                extras: this.selectedCars.extras,
-                price: this.selectedCars.price,
-
-            };
-            axios.post('/api/order', orderData)
-                .then(response => {
-                    // handle successful response
-                    console.log(response);
-                })
-                .catch(error => {
-                    // handle error
-                    console.error(error);
-                    this.ellenorzes = true;
-
+        async order() {
+            try {
+                const response = await fetch('http://localhost:3000/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: this.selectedCars.name,
+                        color: this.selectedCars.color,
+                        interiorcolor: this.selectedCars.interiorcolor,
+                        extras: this.selectedCars.extras,
+                        price: this.selectedCars.price,
+                        orderID: this.orderID,
+                    })
                 });
-        },
-
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    // Handle successful registration, e.g. redirect to a "success" page
+                } else if (response.status === 409) {
+                    const errorData = await response.json();
+                    this.errorMessage = errorData.message;
+                    console.log(errorData);
+                    // Handle registration error, e.g. display error message to user
+                }
+            } catch (error) {
+                console.error(error);
+                // Handle unexpected errors, e.g. display
+            }
+        }
     },
 
     created() {
@@ -262,10 +269,10 @@ export default {
                                     <tr>
                                         <th>Színe</th>
                                         <th>Kárpit színe</th>
-                                        <th>motor</th>
-                                        <th>üzemanyag</th>
+                                        <th>Motor</th>
+                                        <th>Üzemanyag</th>
                                         <th>Tag</th>
-                                        <th>ár</th>
+                                        <th>Ár</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -301,8 +308,8 @@ export default {
                             </div>
                         </div>
                         <div class="left text-light">
-                            <div class="m-2 form-check d-flex flex-wrap form-switch" v-for="(extra, index) in   extras  "
-                                :key="index">
+                            <div class="m-2 form-check d-flex flex-wrap form-switch"
+                                v-for="(extra, index) in      extras     " :key="index">
                                 <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name"
                                     :value="extra.price" v-model="selectedExtras"
                                     :checked="selectedExtras.includes(extra.price)"
@@ -458,6 +465,4 @@ body {
     margin-right: 5px;
     border: 1px solid #2b2a2a;
 }
-
-
 </style>
