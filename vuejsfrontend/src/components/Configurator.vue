@@ -99,10 +99,14 @@ export default {
         downloadPDF() {
             const doc = new jsPDF();
             const tableRows = [];
-
-            const tableColumns = ["Model", "Szín", "Belsöszin", "Extrák", "Motor", "Üzemanyag", "Tag", "Ár", "Rendelés azonosító"];
-            const data = [[this.selectedCars.name, this.selectedCars.color, this.selectedCars.interiorcolor, this.selectedCars.extras,
-            this.selectedCars.motor, this.selectedCars.fuel, this.selectedCars.species, this.selectedCars.price + " Ft", this.orderID]];
+            const tableColumns = ["Model", "Szín", "Belsöszin", "Extrák", "Motor", "Üzemanyag", "Tag", "Ár (Az ár csak az autó árára vonatkozik)", "Rendelés azonosító"];
+            const data = [[this.selectedCars.name, this.selectedCars.color, this.selectedCars.interiorcolor, this.selectedCars.extras, this.selectedCars.motor, this.selectedCars.fuel, this.selectedCars.species, this.selectedCars.price + " Ft", this.orderID]];
+            const imgData = '../src/assets/img/logo/Ford_Motor_Company_Logo.svg.png';
+            const pdfWidth = doc.internal.pageSize.getWidth();
+            const imgWidth = 40;
+            const imgHeight = 20;
+            const imgX = (pdfWidth - imgWidth) / 2;
+            const imgY = 70;
 
 
             doc.autoTable({
@@ -110,11 +114,47 @@ export default {
                 body: data,
             });
 
+
+
+
+            doc.addImage(imgData, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+
+
+
+            // Betűméret beállítása
+            doc.setFontSize(14);
+
+            // Ford Szalon felirat elhelyezése
+            doc.text("Ford Szalon", doc.internal.pageSize.width / 2, 100, { align: "center" });
+
+            // Több soros szöveg elhelyezése
+            // Szöveg elhelyezése
+            doc.setFont("Helvetica", "normal");
+            doc.text("Ezzel szeretném jelezni, hogy az autó vásárlását elfogadom.", 20, 130);
+            doc.text("A fent említett összeg már rendezésre került, és az árut átvehetem.", 20, 140);
+            doc.text("Tudomásul veszem, és elfogadom a feltételeket..", 20, 150);
+            doc.text("A vásárlás után a temékre 3 év jótállás vonatkozik.", 20, 160);
+            doc.text("Jogszabály: https://hu.wikipedia.org/wiki/Ad%C3%A1sv%C3%A9tel", 20, 170);
+
+
+
+
+            doc.setFont("Helvetica", "bold");
+            doc.text(`Vásárlás dátuma: ${new Date().toLocaleDateString()}`, 20, doc.internal.pageSize.height - 20, { align: "left" });
+
+            doc.text("Eladó aláírás:", doc.internal.pageSize.width - 70, doc.internal.pageSize.height - 40, { align: "right" });
+            doc.setLineWidth(0.5);
+            doc.line(doc.internal.pageSize.width - 60, doc.internal.pageSize.height - 37, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 37);
+
+            doc.text("Vásárló aláírás:", doc.internal.pageSize.width - 70, doc.internal.pageSize.height - 50, { align: "right" });
+            doc.line(doc.internal.pageSize.width - 60, doc.internal.pageSize.height - 47, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 47);
+
             doc.save("Számla.pdf");
         },
 
         // Rendelés
         async order() {
+            this.LetoltesEllenorzes = true;
             try {
                 const response = await fetch('https://weary-tick-miniskirt.cyclic.app/order', {
                     method: 'POST',
@@ -272,7 +312,7 @@ export default {
                                         <th>Motor</th>
                                         <th>Üzemanyag</th>
                                         <th>Tag</th>
-                                        <th>Ár</th>
+                                        <th>Ár </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -309,7 +349,8 @@ export default {
                         </div>
                         <div class="left text-light">
                             <div class="m-2 form-check d-flex flex-wrap form-switch"
-                                v-for="(extra, index) in       extras      " :key="index">
+                                v-for="(extra, index) in                          extras                         "
+                                :key="index">
                                 <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name"
                                     :value="extra.price" v-model="selectedExtras"
                                     :checked="selectedExtras.includes(extra.price)"
@@ -346,7 +387,7 @@ export default {
                                 <th>Motor</th>
                                 <th>Üzemanyag</th>
                                 <th>Tag</th>
-                                <th>Ár</th>
+                                <th>Ár (Az ár csak az autó árára vonatkozik)</th>
                                 <th>Rendelés azonosító</th>
                                 <th class="text-center">PDF Számla</th>
                             </tr>
