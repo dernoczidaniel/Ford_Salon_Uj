@@ -14,7 +14,16 @@ export default {
     selectedCars() {
         return this.$store.state.selectedCars;
     },
-
+    data() {
+        return {
+            userId: null, // kezdetben nincs ID
+            // további adatok...
+        }
+    },
+    created() {
+        this.userId = this.$route.params.id; // beállítjuk az ID-t a URL-ből
+        // további adatok betöltése...
+    },
     setup() {
         const models = ref([]);
         const isLoggedIn = ref(false);
@@ -81,7 +90,6 @@ export default {
                             <a href="/" class="navbar-brand d-block d-lg-none">
                                 <h1 class="m-0 display-4 text-primary text-uppercase">Ford</h1>
                             </a>
-
                             <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                                 data-bs-target="#navbarCollapse">
                                 <span class="navbar-toggler-icon"></span>
@@ -137,8 +145,8 @@ export default {
                                     <i class="fas fa-user"></i>
                                     Profil
                                 </router-link>
-                                <router-link class="btn btn-danger py-md-3 px-md-5 d-none d-lg-block m-1" @click="logout" to="/"
-                                    v-if="isLoggedIn" >
+                                <router-link class="btn btn-danger py-md-3 px-md-5 d-none d-lg-block m-1" @click="logout"
+                                    to="/" v-if="isLoggedIn">
                                     Kijelentkezés
                                 </router-link>
 

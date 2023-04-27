@@ -1,5 +1,4 @@
-
-                // <!-- <div class="row ">
+// <!-- <div class="row ">
                 //                     <div class="col-lg-12 position-relative">
                 //                     <div class="mb-2 p-5 ">
                 //                         <a class="btn btn-light m-1" style="color: black;">Szűrő:</a>
@@ -17,23 +16,43 @@
 
 
 
+// // import store from '../stores/index';
+// const STORAGE_KEY = 'ford_salon_uj'
+
+// export default {
+// computed: {
+// user(){
+// return store.state.user
+// }
+// },
+// watch:{
+// user:{
+// handler(user){
+// localStorage.setItem(STORAGE_KEY,JSON.stringify(user))
+// console.log(user);
+// },
+
+// }
+// },
+// created(){
+// store.commit('setUser',JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'),)
+// },
+
+// };
 
 
-
-                            
 
 
 // const carsComponent = defineComponent({
-    //   name: 'carsComponent',
-    //   components: { carsList },
-    //   data() {
-    //     return {
-    //       selectedIndex: 0,
-    //     }
-    //   },
-    // })
-    // const index = ref(carsComponent.selectedIndex);
-    // watch(carsComponent, 'selectedIndex', (newValue) => {
-    //   index.value = newValue;
-    // });
-    
+// name: 'carsComponent',
+// components: { carsList },
+// data() {
+// return {
+// selectedIndex: 0,
+// }
+// },
+// })
+// const index = ref(carsComponent.selectedIndex);
+// watch(carsComponent, 'selectedIndex', (newValue) => {
+// index.value = newValue;
+// });

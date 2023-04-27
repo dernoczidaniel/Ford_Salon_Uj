@@ -24,6 +24,7 @@ export default {
 <template>
     <div v-if="!isMobile()">
         <desktop>
+            
             <HomePcView></HomePcView>
         </desktop>
     </div>

@@ -228,6 +228,13 @@ export default {
             .catch((err) => {
                 console.log('Error while fetching cars:', err);
             });
+        DataService.getSalons()
+            .then((resp) => {
+                models.value = resp;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
 
         DataService.getModels()
             .then((resp) => {
@@ -376,7 +383,7 @@ export default {
                         </div>
                         <div class="left text-light">
                             <div class="m-2 form-check d-flex flex-wrap form-switch"
-                                v-for="(extra, index) in                             extras                            "
+                                v-for="(extra, index) in                              extras                             "
                                 :key="index">
                                 <input class="checkbox mr-2" type="checkbox" :name="extra.name" :id="extra.name"
                                     :value="extra.price" v-model="selectedExtras"
@@ -468,7 +475,7 @@ export default {
             <div class="mt-5 center">
                 <h4 class="m-1">Válaszon szalont, ahová rendelt járműve:</h4>
                 <select v-model=" selectedSalon ">
-                    <option v-for="(   salon, index   ) in    salons   " :key=" index " :value=" salon ">{{ salon.name }}
+                    <option v-for="(    salon, index    ) in     salons    " :key=" index " :value=" salon ">{{ salon.name }}
                     </option>
                 </select>
 
