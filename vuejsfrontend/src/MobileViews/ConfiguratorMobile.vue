@@ -315,7 +315,7 @@ export default {
         async order() {
             this.LetoltesEllenorzes = true;
             try {
-                const response = await fetch('https://weary-tick-miniskirt.cyclic.app/order', {
+                const response = await fetch('https://weary-tick-miniskirt.cyclic.app/orders', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -324,9 +324,10 @@ export default {
                         model: this.selectedCars.name,
                         color: this.selectedCars.color,
                         interiorcolor: this.selectedCars.interiorcolor,
-                        extras: this.selectedCars.extras,
+                        extra: this.selectedCars.extras,
                         price: this.selectedCars.price,
-                        orderID: this.orderID,
+                        id: this.orderID,
+                        // salon: selectedSalon.name,
                     })
                 });
                 if (response.ok) {

@@ -97,6 +97,8 @@ CREATE TABLE fordszalon.orders (
   color VARCHAR(255) NOT NULL,
   interiorcolor VARCHAR(255) NOT NULL,
   extra VARCHAR(255) DEFAULT NULL,
+  salon VARCHAR(50) NOT NULL,
+
   PRIMARY KEY (id)
 )
 ENGINE = INNODB,
