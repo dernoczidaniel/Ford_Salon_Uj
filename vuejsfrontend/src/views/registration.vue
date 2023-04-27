@@ -1,6 +1,6 @@
 <template>
   <body class="LoginRegistrationbackground BodySize ">
-    <div class="container-fluid p-0 ">
+    <div class="container-fluid p-0 mx-auto" style="max-width: 800px;">
       <div class="row justify-content-center ">
         <div class="col-lg-6 col-md-8 col-sm-10 ">
           <div class="my-element animate__animated animate__fadeIn" :style="{ 'animation-delay': '0.5s' }">
@@ -11,7 +11,9 @@
                 <form @submit.prevent="register">
                   <div class="form-group">
                     <label for="name">Név</label>
-                    <input type="text" class="form-control" id="name" v-model="name" required>
+                    <input type="text" class="form-control" id="name" name="name" v-model="name" pattern="^[A-Za-z ]+$"
+                      title="A név csak betűket és szóközöket tartalmazhat, és legalább két szótagból kell állnia"
+                      required>
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
@@ -19,11 +21,15 @@
                   </div>
                   <div class="form-group">
                     <label for="password">Jelszó</label>
-                    <input type="password" class="form-control" id="password" v-model="password" required>
+                    <input type="password" class="form-control" id="password" v-model="password"
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      title="Legalább 8 karakter, tartalmaz egy kis és nagy betűt, valamint egy számot." required>
                   </div>
                   <div class="form-group">
                     <label for="telefon">Telefon</label>
-                    <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon" required>
+                    <input type="text" class="form-control" id="telefon" name="telefon" v-model="telefon"
+                      pattern="^\+?[0-9]{1,3}[ -]?\(?[0-9]{1,3}\)?([ -]?[0-9]){7,}$"
+                      title="Kérem valós telefonszámot adjon meg!" required>
                   </div>
                   <div class="form-group">
                     <label for="address">Lakcím</label>
@@ -31,18 +37,22 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4 form-group">
-                      <label for="postalcode">Irányító szám</label>
+                      <label for="postalcode">Irányítószám</label>
                       <input type="text" class="form-control" id="postalcode" name="postalcode" v-model="postalcode"
-                        required>
+                        pattern="[0-9]{4}" title="Kérem valós Irányítószámot adjon meg!" required>
                     </div>
                     <div class="col-md-8 form-group">
                       <label for="city">Település</label>
-                      <input type="text" class="form-control" id="city" name="city" v-model="city" required>
+                      <input type="text" class="form-control" id="city" name="city" v-model="city"
+                        pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s-]{2,}" title="Kérem valós településnevet adjon meg!"
+                        required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="birthdate">Születésnap</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate" required>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate"
+                      pattern="\d{4}-\d{2}-\d{2}" title="Kérem adjon meg valós dátumot az éééé-hh-nn formátumban!"
+                      required>
                   </div>
                   <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
                   <button type="submit" class="btn btn-primary btn-block mt-4">Regisztráció</button>
@@ -55,7 +65,11 @@
     </div>
   </body>
 </template>
+
 <script>
+import emailjs from 'emailjs-com';
+emailjs.init('MReYI3B7lH7');
+
 export default {
   data() {
     return {
@@ -87,15 +101,22 @@ export default {
             postalcode: this.postalcode,
             city: this.city,
             birthdate: this.birthdate,
-
-
           })
         });
 
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          // Handle successful registration, e.g. redirect to a "success" page
+
+          // Küldj egy e-mailt a felhasználónak a sikeres regisztrációról
+          emailjs.send(service_8fr53gd, template_vwllzon, name,email, cOycMK78ZVmGWF_FPWjJn)
+            .then((response) => {
+              console.log('Email sikeresen elküldve!', response.status, response.text);
+            }, (error) => {
+              console.error('Email küldése sikertelen.', error);
+            });
+
+          this.$router.push('/login');
         } else if (response.status === 409) {
           const errorData = await response.json();
           this.errorMessage = errorData.message;
