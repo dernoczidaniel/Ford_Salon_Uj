@@ -54,7 +54,7 @@
               <hr>
 
               <div class="mb-3 m-5">
-                <router-link to="registration">
+                <router-link to="registration" >
                   <button class="btn btn-outline-secondary">Még nem
                     regisztráltam.</button>
                 </router-link>
@@ -132,7 +132,7 @@ export default {
         const decoded = jwt_decode(userToken);
         console.log(decoded);
         // TODO: validate user token on server
-        router.push('/summary');
+        router.push('/Configurator'); //Summary lecserelve
       } catch (error) {
         console.error(error);
       }

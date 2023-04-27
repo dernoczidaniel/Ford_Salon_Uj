@@ -15,7 +15,8 @@ export default {
     components: {
         HomePcView,
         HomeMobile
-    }
+    },
+
 }
 
 </script>

@@ -100,7 +100,8 @@ export default {
                                                 </a>
                                             </li>
                                             <li>
-                                                <router-link class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block" to="/Cars">Minden modell</router-link>
+                                                <router-link class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block"
+                                                    to="/Cars">Minden modell</router-link>
 
 
                                             </li>
@@ -131,18 +132,15 @@ export default {
                                 </div>
                                 <router-link to="/login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block"
                                     v-if="isLoggedIn == false">Bejelenkezés</router-link>
-
-                                <button
-                                    class=" col-lg-2 col-md-2 col-2 btn btn-primary py-md-3 px-md-5 d-none d-lg-block m-1"
-                                    href="/Profile" v-if="isLoggedIn">
+                                <router-link to="/profile" v-if="isLoggedIn"
+                                    class=" col-lg-2 col-md-2 col-2 btn btn-primary py-md-3 px-md-5 d-none d-lg-block m-1">
                                     <i class="fas fa-user"></i>
                                     Profil
-                                </button>
-
-                                <button class="btn btn-danger py-md-3 px-md-5 d-none d-lg-block m-1" @click="logout"
-                                    v-if="isLoggedIn">
+                                </router-link>
+                                <router-link class="btn btn-danger py-md-3 px-md-5 d-none d-lg-block m-1" @click="logout" to="/"
+                                    v-if="isLoggedIn" >
                                     Kijelentkezés
-                                </button>
+                                </router-link>
 
 
 
@@ -262,10 +260,11 @@ export default {
 </template>
 
 <style scoped>
-
 .dropdown-menu {
-  max-height: 500px; /* A maximális magasság beállítása */
-  overflow-y: scroll; /* A görgetősáv beállítása */
+    max-height: 500px;
+    /* A maximális magasság beállítása */
+    overflow-y: scroll;
+    /* A görgetősáv beállítása */
 }
 
 .margintop {
@@ -340,9 +339,8 @@ body {
 .page-leave-to {
     opacity: 0;
 }
+
 body {
     transition: all 0.3s ease-in-out;
 }
-
-
 </style>
