@@ -1,12 +1,14 @@
 <script>
 import Axios from 'axios';
+import Vuex, { mapGetters } from 'vuex';
 
 export default {
+
     name: 'MyComponent',
     data() {
         return {
             users: [],
-            index: 0,
+            index: '',
         }
     },
     created() {
@@ -14,7 +16,10 @@ export default {
             this.users = data;
             // this.index = this.users.findIndex(user => user.id === this.userId);
         });
+        this.index = localStorage.getItem('userId')
+
     },
+
     methods: {
         getUsers() {
             return Axios.get('/getUsers')
@@ -30,6 +35,7 @@ export default {
     }
 }
 </script>
+
 
 
 

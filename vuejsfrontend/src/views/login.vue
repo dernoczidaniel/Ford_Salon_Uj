@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import axios from 'axios';
 import router from '../router'
 import jwt_decode from 'jwt-decode';
+import { mapActions } from 'vuex'
 
 
 
@@ -80,7 +80,7 @@ export default {
       email: '',
       password: '',
       errorMessage: '',
-      userId: 0,
+      userId: 4,
       userData: {},
     }
   },
@@ -103,63 +103,20 @@ export default {
           console.log(data);
 
           const token = data.token;
+          localStorage.setItem('userId', this.userId);
           localStorage.setItem('token', token);
           const decoded = jwt_decode(token);
           console.log(decoded);
 
-          this.userId = decoded.userId; // Set the userId property with the actual user ID
-          router.push('/'); // navigálás a /dashboard oldalra
-
-          // Handle successful login, e.g. redirect to the user dashboard
+          router.push('/');
         } else if (response.status === 401) {
           const errorData = await response.json();
           this.errorMessage = errorData.message;
           console.log(errorData);
-          // Handle login error, e.g. display error message to user
         }
       } catch (error) {
         console.error(error);
-        // Handle unexpected errors, e.g. display
       }
     },
-    // ...
-    logout() {
-      localStorage.removeItem('token');
-      router.push('/');
-    }
-  },
-  created() {
-    const userToken = localStorage.getItem('token');
-    if (userToken) {
-      try {
-        const decoded = jwt_decode(userToken);
-        console.log(decoded);
-        // TODO: validate user token on server
-        router.push('/Configurator'); //Summary lecserelve
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  },
-  mounted() {
-    // Nothing to do here
-  },
-  async created() {
-    const userToken = localStorage.getItem('token');
-    if (userToken) {
-      try {
-        const decoded = jwt_decode(userToken);
-        console.log(decoded);
-        this.userId = decoded.userId;
-        const response = await axios.get(`/api/user/${this.userId}`);
-        this.userData = response.data;
-        router.push({ name: 'Profile', params: { id: this.userId } });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
-
-}
-
+  }}
 </script>

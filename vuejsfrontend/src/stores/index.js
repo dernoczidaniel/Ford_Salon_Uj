@@ -1,26 +1,25 @@
-import { createStore } from 'vuex'
 import Vuex from 'vuex';
 
-export const store = new Vuex.Store({
+
+const store = new Vuex.Store({
   state: {
-    selectedCar: {
-      color: '',
-      interiorColor: '',
-    },
+    userIndex: 0, 
   },
   mutations: {
-    setSelectedCar(state, selectedCar) {
-      state.selectedCar.color = selectedCar.color;
-      state.selectedCar.interiorColor = selectedCar.interiorcolor;
+    setUser(state, userIndex) {
+      state.userIndex = userIndex;
     },
   },
   actions: {
-    initializeStore({ commit }) {
-      if (localStorage.getItem('selectedCar')) {
-        const selectedCar = JSON.parse(localStorage.getItem('selectedCar'));
-        commit('setSelectedCar', selectedCar);
+    async login({ commit }, { userid }) {
+      try {
+        const userIndex = await loginUser(userid);
+        commit('setUser', userIndex);
+      } catch (error) {
+        console.error(error);
       }
     },
   },
 });
 
+export default store;
