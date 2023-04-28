@@ -11,9 +11,7 @@
                 <form @submit.prevent="register">
                   <div class="form-group">
                     <label for="name">Név</label>
-                    <input type="text" class="form-control" id="name" name="name" v-model="name" pattern="^[A-Za-z ]+$"
-                      title="A név csak betűket és szóközöket tartalmazhat, és legalább két szótagból kell állnia"
-                      required>
+                    <input type="text" class="form-control" id="name" name="name" v-model="name" required>
                   </div>
                   <div class="form-group">
                     <label for="email">Email</label>
