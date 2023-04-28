@@ -84,15 +84,6 @@ export default {
       userData: {},
     }
   },
-  mounted() {
-    axios.get(`/api/user/${this.userId}`)
-      .then(response => {
-        this.userData = response.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
   methods: {
     async login() {
       try {
@@ -117,7 +108,6 @@ export default {
           console.log(decoded);
 
           this.userId = decoded.userId; // Set the userId property with the actual user ID
-          router.push({ name: 'Profile', params: { id: this.userId } });
           router.push('/'); // navigálás a /dashboard oldalra
 
           // Handle successful login, e.g. redirect to the user dashboard
@@ -146,6 +136,24 @@ export default {
         console.log(decoded);
         // TODO: validate user token on server
         router.push('/Configurator'); //Summary lecserelve
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  mounted() {
+    // Nothing to do here
+  },
+  async created() {
+    const userToken = localStorage.getItem('token');
+    if (userToken) {
+      try {
+        const decoded = jwt_decode(userToken);
+        console.log(decoded);
+        this.userId = decoded.userId;
+        const response = await axios.get(`/api/user/${this.userId}`);
+        this.userData = response.data;
+        router.push({ name: 'Profile', params: { id: this.userId } });
       } catch (error) {
         console.error(error);
       }
