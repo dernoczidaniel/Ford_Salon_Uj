@@ -72,16 +72,12 @@ import router from '../router'
 import jwt_decode from 'jwt-decode';
 import { mapActions } from 'vuex'
 
-
-
 export default {
   data() {
     return {
       email: '',
       password: '',
       errorMessage: '',
-      userId: 4,
-      userData: {},
     }
   },
   methods: {
@@ -103,10 +99,11 @@ export default {
           console.log(data);
 
           const token = data.token;
-          localStorage.setItem('userId', this.userId);
-          localStorage.setItem('token', token);
           const decoded = jwt_decode(token);
           console.log(decoded);
+
+          localStorage.setItem('userId', decoded.userId);
+          localStorage.setItem('token', token);
 
           router.push('/');
         } else if (response.status === 401) {
@@ -118,5 +115,6 @@ export default {
         console.error(error);
       }
     },
-  }}
+  }
+}
 </script>
