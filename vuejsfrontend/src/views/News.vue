@@ -7,7 +7,6 @@
         </div>
 
 
-        <!-- F-150 Section -->
         <div class="container-fluid p-5">
             <div class="row gx-5">
                 <div class="col-lg-6">

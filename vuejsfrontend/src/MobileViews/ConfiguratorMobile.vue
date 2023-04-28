@@ -189,8 +189,8 @@ export default {
             color: 'fehér',
             interiorcolor: 'fehér',
             colors: [],
-            index: 0, // default value is 0
-            selectedCars: [], // change the property name to "selectedCar"
+            index: 0, 
+            selectedCars: [], 
             description: '',
             ellenorzes: false,
             LetoltesEllenorzes: false,
@@ -278,10 +278,8 @@ export default {
 
 
 
-            // Betűméret beállítása
             doc.setFontSize(14);
 
-            // Ford Szalon felirat elhelyezése
             doc.text("Ford Szalon", doc.internal.pageSize.width / 2, 100, { align: "center" });
 
             // Több soros szöveg elhelyezése
@@ -327,22 +325,18 @@ export default {
                         extra: this.selectedCars.extras,
                         price: this.selectedCars.price,
                         id: this.orderID,
-                        // salon: selectedSalon.name,
                     })
                 });
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data);
-                    // Handle successful registration, e.g. redirect to a "success" page
                 } else if (response.status === 409) {
                     const errorData = await response.json();
                     this.errorMessage = errorData.message;
                     console.log(errorData);
-                    // Handle registration error, e.g. display error message to user
                 }
             } catch (error) {
                 console.error(error);
-                // Handle unexpected errors, e.g. display
             }
         }
     },
@@ -402,7 +396,6 @@ export default {
                 .then((data) => {
                     this.description = data;
                 });
-            // add models[this.index].price to price
             this.price += this.models[this.index].price;
         },
     },
@@ -433,7 +426,6 @@ export default {
         text-align: left;
     }
 
-    /* Select menü stílusok */
     select {
         width: 100%;
         max-width: 300px;
@@ -455,7 +447,6 @@ export default {
 
 
 
-    /* Center the checkbox and label */
     .form-check {
         display: flex;
         flex-direction: row;
@@ -463,19 +454,16 @@ export default {
         align-items: center;
     }
 
-    /* Reduce the margin between checkboxes */
     .form-check+.form-check {
         margin-top: 0.5rem;
     }
 
-    /* Style the checkbox */
     .checkbox {
         height: 1rem;
         width: 1rem;
         margin-right: 0.5rem;
     }
 
-    /* Style the label */
     .label {
         font-size: 1rem;
     }
@@ -485,14 +473,12 @@ export default {
         padding: 10px;
     }
 
-    /* center elements */
     .container {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    /* adjust width and margins */
     .card {
         width: 90%;
         margin: 10px 0;
