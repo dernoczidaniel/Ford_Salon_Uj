@@ -11,7 +11,7 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
-app.use(express.json()); // json formátum beállítás
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -24,12 +24,12 @@ app.get('/', (req, res) => {
 });
 
 app.use(session({
-  secret: 'secret', // titkos kulcs a session adatok titkosításához
-  resave: false, // ha true, akkor minden requestnél újra menti a sessiont a szerver
-  saveUninitialized: true, // ha true, akkor ha az adott request nem módosítja a sessiont, akkor sem menti el
-  cookie: { // a session cookie beállításai
-    maxAge: 1000 * 60 * 60 * 24, // a session érvényessége 1 nap
-    sameSite: 'strict' // csak az azonos eredetű kérésekkel küldi el a cookie-t
+  secret: 'secret',
+  resave: false, 
+  saveUninitialized: true, 
+  cookie: { 
+    maxAge: 1000 * 60 * 60 * 24, 
+    sameSite: 'strict' 
   }
 }));
 
@@ -52,8 +52,12 @@ app.use(session({
 // Az útválasztók beállítása
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/user');
+const orderRouter = require('./routes/order');
 app.use('/', authRouter);
 app.use('/', usersRouter);
+app.use('/', orderRouter);
+
+
 
 
 
@@ -63,4 +67,5 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running http://localhost:${port}`);
 });
+
 
