@@ -148,11 +148,9 @@ export default {
             // Betűméret beállítása
             doc.setFontSize(14);
 
-            // Ford Szalon felirat elhelyezése
             doc.text("Ford Szalon", doc.internal.pageSize.width / 2, 100, { align: "center" });
 
-            // Több soros szöveg elhelyezése
-            // Szöveg elhelyezése
+
             doc.setFont("Helvetica", "normal");
             doc.text("Név:    ____________________", 20, 130);
             doc.text("Email cím:    ____________________", 20, 140);
@@ -194,22 +192,18 @@ export default {
                         extra: this.selectedCars.extras,
                         price: this.selectedCars.price,
                         id: this.orderID,
-                        // salon: selectedSalon.name,
                     })
                 });
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data);
-                    // Handle successful registration, e.g. redirect to a "success" page
                 } else if (response.status === 409) {
                     const errorData = await response.json();
                     this.errorMessage = errorData.message;
                     console.log(errorData);
-                    // Handle registration error, e.g. display error message to user
                 }
             } catch (error) {
                 console.error(error);
-                // Handle unexpected errors, e.g. display
             }
         }
     },
@@ -276,7 +270,6 @@ export default {
                 .then((data) => {
                     this.description = data;
                 });
-            // add models[this.index].price to price
             this.price += this.models[this.index].price;
         },
     },
@@ -497,7 +490,6 @@ export default {
 
 .tableColor {
     color: #fff;
-    /* Szöveg színe fehér */
 }
 
 select {
@@ -507,9 +499,7 @@ select {
     border-radius: 5px;
     border: none;
     background-color: #333;
-    /* Háttérszín */
     color: #fff;
-    /* Szöveg színe fehér */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -518,14 +508,11 @@ select {
 
 select:hover {
     background-color: #555;
-    /* Háttérszín hover állapotban */
 }
 
 select:focus {
     outline: none;
-    /* Eltávolítja a kijelölési keretet */
     box-shadow: 0 0 2px 1px #666;
-    /* Árnyék hozzáadása a fókuszált állapotban */
 
 }
 

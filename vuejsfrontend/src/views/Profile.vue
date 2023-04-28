@@ -29,7 +29,6 @@ export default {
         const checkLogin = () => {
             const userToken = localStorage.getItem('token');
             if (userToken) {
-                // TODO: validate user token on server
                 isLoggedIn.value = true;
             }
         };

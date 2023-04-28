@@ -196,12 +196,9 @@
 
 
 <style>
-/* Animáció az elemek felbukkanásához */
 .fade-in {
     opacity: 0;
-    /* Először láthatatlan */
     transform: translateY(10px);
-    /* Elsődlegesen 10px-re van eltoltva */
     animation: fadeInAnimation 0.8s ease-in-out forwards;
 }
 

@@ -16,13 +16,12 @@ export default {
     },
     data() {
         return {
-            userId: null, // kezdetben nincs ID
-            // további adatok...
+            userId: null, 
+            
         }
     },
     created() {
-        this.userId = this.$route.params.id; // beállítjuk az ID-t a URL-ből
-        // további adatok betöltése...
+        this.userId = this.$route.params.id; 
     },
     setup() {
         const models = ref([]);
@@ -40,7 +39,6 @@ export default {
         const checkLogin = () => {
             const userToken = localStorage.getItem('token');
             if (userToken) {
-                // TODO: validate user token on server
                 isLoggedIn.value = true;
             }
         };
@@ -285,7 +283,6 @@ export default {
 
 .icon-container i {
     font-size: 16px;
-    /* vagy más méret, amely megfelelő a designodhoz */
 }
 
 th,

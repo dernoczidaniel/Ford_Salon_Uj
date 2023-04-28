@@ -111,11 +111,9 @@ export default {
           const errorData = await response.json();
           this.errorMessage = errorData.message;
           console.log(errorData);
-          // Handle registration error, e.g. display error message to user
         }
       } catch (error) {
         console.error(error);
-        // Handle unexpected errors, e.g. display
       }
     }
 

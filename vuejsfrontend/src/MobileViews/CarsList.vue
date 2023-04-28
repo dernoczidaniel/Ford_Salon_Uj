@@ -43,7 +43,7 @@ export default {
                 <div class="container">
                     <div class="row">
                         <div class="center">
-                            <div class="col-12 col-sm-6"> <!-- használjuk a "col-sm-6" class-t a reszponzivitáshoz -->
+                            <div class="col-12 col-sm-6">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Keresés az autók között..."
                                         v-model="searchQuery" />
@@ -58,14 +58,12 @@ export default {
         <body class="BodySize">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" v-for="model in filteredModels" :key="model.id">
-                    <!-- használjuk a "col-lg-4" és "col-xl-3" class-okat a reszponzivitáshoz -->
                     <div class="card w-100">
                         <div class="card-body">
                             <h2>{{ model.name }}</h2>
                             <hr>
                             {{ model.fuel }} - {{ model.species }}
                             <img :src="model.img_url" :alt="model.img_url" class="w-100">
-                            <!-- használjuk a "w-100" class-t a kép reszponzivitásának biztosításához -->
                             <p>Ár: {{ model.price }} Ft-tól</p>
                             <router-link :to="{ name: 'Configurator', params: { modelId: model.id.toString() } }">
                                 <button :id="model.id" class="btn btn-primary" @click="() => IndexValaszto(model.id)">

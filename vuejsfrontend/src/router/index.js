@@ -12,21 +12,6 @@ import SummaryView from "../views/summary.vue";
 import login from "../views/login.vue";
 import registration from "../views/registration.vue";
 
-// const routes = [
-//   // other routes
-//   {
-//     path: '/summary',
-//     name: 'summary',
-//     component: Summary,
-//     props: true
-//   }
-// ]
-
-// const router = createRouter({
-//   history: createWebHistory(),
-//   routes
-// })
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
